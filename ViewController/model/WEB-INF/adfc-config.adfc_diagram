@@ -1,0 +1,47 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View2">
+      <property
+         name="activityId">HomeDashboard</property>
+      <property
+         name="x">151.63574</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>HomeDashboard&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">203.23438</property>
+      <property
+         name="page">/HomeDashboard.jsf</property>
+      <property
+         name="exceptionHandler">false</property>
+   </View>
+   <TaskFlowCall
+      id="TaskFlowCall4">
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>pm-task-flow&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Call&lt;/p></property>
+      <property
+         name="activityId">pm-task-flow</property>
+      <property
+         name="x">343.69336</property>
+      <property
+         name="y">194.30078</property>
+      <property
+         name="documentReference">/WEB-INF/pm-task-flow.xml</property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="taskFlowId">pm-task-flow</property>
+   </TaskFlowCall>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase5"
+      from="View2"
+      to="TaskFlowCall4">
+      <property
+         name="fromOutcome">toPMDashboard</property>
+      <property
+         name="sdm:polyPoints">R50,192.63574,203.16797,302.69336,194.23438,L50</property>
+   </ControlFlowCase>
+</SDM>

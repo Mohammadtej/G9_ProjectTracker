@@ -1,0 +1,69 @@
+<?xml version = '1.0' encoding = 'UTF-8' standalone = 'yes'?>
+<jazn-data xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="http://xmlns.oracle.com/oracleas/schema/jazn-data.xsd">
+    <jazn-realm default="jazn.com">
+        <realm>
+            <name>jazn.com</name>
+            <users>
+                <user>
+                    <name>mohammad</name>
+                    <credentials>{903}BUGhK2rNRyzDJQMRSdzMqdQ/zKkddUcO</credentials>
+                </user>
+            </users>
+        </realm>
+    </jazn-realm>
+    <policy-store>
+        <applications>
+            <application>
+                <name>ProjectTracker_G9</name>
+                <app-roles>
+                    <app-role>
+                        <name>ProjectManager</name>
+                        <class>oracle.security.jps.service.policystore.ApplicationRole</class>
+                        <display-name>Project Manager</display-name>
+                        <members>
+                            <member>
+                                <class>oracle.security.jps.internal.core.principals.JpsXmlUserImpl</class>
+                                <name>mohammad</name>
+                            </member>
+                        </members>
+                    </app-role>
+                    <app-role>
+                        <name>ProjectLeader</name>
+                        <class>oracle.security.jps.service.policystore.ApplicationRole</class>
+                        <display-name>Project Leader</display-name>
+                    </app-role>
+                    <app-role>
+                        <name>TeamLeader</name>
+                        <class>oracle.security.jps.service.policystore.ApplicationRole</class>
+                    </app-role>
+                    <app-role>
+                        <name>TeamMember</name>
+                        <class>oracle.security.jps.service.policystore.ApplicationRole</class>
+                        <display-name>Team Member</display-name>
+                    </app-role>
+                </app-roles>
+                <jazn-policy>
+                    <grant>
+                        <grantee>
+                            <principals>
+                                <principal>
+                                    <class>oracle.security.jps.service.policystore.ApplicationRole</class>
+                                    <name>ProjectManager</name>
+                                </principal>
+                            </principals>
+                        </grantee>
+                        <permissions>
+                            <permission>
+                                <class>oracle.adf.controller.security.TaskFlowPermission</class>
+                                <name>/WEB-INF/pm-task-flow.xml#pm-task-flow</name>
+                                <actions>view</actions>
+                            </permission>
+                        </permissions>
+                    </grant>
+                </jazn-policy>
+            </application>
+        </applications>
+    </policy-store>
+    <system-policy/>
+</jazn-data>
