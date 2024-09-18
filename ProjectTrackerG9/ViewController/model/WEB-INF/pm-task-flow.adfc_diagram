@@ -19,4 +19,29 @@
       <property
          name="exceptionHandler">false</property>
    </View>
+   <View
+      id="View3">
+      <property
+         name="activityId">createProject</property>
+      <property
+         name="x">492.71387</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>createProject&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">245.23438</property>
+      <property
+         name="page">/pmPages/createProject.jsf</property>
+      <property
+         name="exceptionHandler">false</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase4"
+      from="View2"
+      to="View3">
+      <property
+         name="fromOutcome">createProject</property>
+      <property
+         name="sdm:polyPoints">R50,301.9746,249.23438,451.71387,245.16797,L50</property>
+   </ControlFlowCase>
 </SDM>

@@ -1,3 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.2.1.22.48" id="DataBindings"
-             SeparateXMLFiles="false" Package="view" ClientType="Generic"></Application>
+             SeparateXMLFiles="false" Package="view" ClientType="Generic">
+  <pageMap>
+    <page path="/pmPages/pmDashboard.jsf" usageId="view_pmDashboardPageDef"/>
+    <page path="/pmPages/createProject.jsf" usageId="view_createProjectPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="view_pmDashboardPageDef" path="pmPages.pmDashboardPageDef"/>
+    <page id="view_createProjectPageDef" path="pmPages.createProjectPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="PMAppModuleDataControl" Package="model.services"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="PMAppModuleLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

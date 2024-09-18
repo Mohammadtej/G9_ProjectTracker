@@ -5,8 +5,23 @@
     <data-control-scope>
       <shared/>
     </data-control-scope>
+    <managed-bean id="__3">
+      <managed-bean-name>TaskFlowManagedBean</managed-bean-name>
+      <managed-bean-class>view.TaskFlowManagedBean</managed-bean-class>
+      <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
     <view id="pmDashboard">
       <page>/pmPages/pmDashboard.jsf</page>
     </view>
+    <view id="createProject">
+      <page>/pmPages/createProject.jsf</page>
+    </view>
+    <control-flow-rule id="__1">
+      <from-activity-id>pmDashboard</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>createProject</from-outcome>
+        <to-activity-id>createProject</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
   </task-flow-definition>
 </adfc-config>

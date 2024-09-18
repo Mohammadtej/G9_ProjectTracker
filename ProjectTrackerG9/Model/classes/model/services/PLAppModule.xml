@@ -13,6 +13,9 @@
         ResId="model.services.PLAppModule_LABEL"/>
     </SchemaBasedProperties>
   </Properties>
+  <ViewUsage
+    Name="Projects1"
+    ViewObjectName="model.views.ProjectsVO"/>
   <ResourceBundle>
     <PropertiesBundle
       PropertiesFile="model.ModelBundle"/>

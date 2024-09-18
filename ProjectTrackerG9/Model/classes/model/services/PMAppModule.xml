@@ -6,13 +6,24 @@
   Name="PMAppModule"
   Version="12.2.1.22.48"
   InheritPersonalization="merge"
-  ClearCacheOnRollback="true">
+  ClearCacheOnRollback="true"
+  ComponentClass="model.services.PMAppModuleImpl">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
   <Properties>
     <SchemaBasedProperties>
       <LABEL
         ResId="model.services.PMAppModule_LABEL"/>
     </SchemaBasedProperties>
   </Properties>
+  <ViewUsage
+    Name="Projects1"
+    ViewObjectName="model.views.ProjectsVO">
+    <ViewCriteriaUsage
+      Name="FilterByPMId"
+      FullName="model.views.ProjectsVO.FilterByPMId"/>
+  </ViewUsage>
   <ResourceBundle>
     <PropertiesBundle
       PropertiesFile="model.ModelBundle"/>

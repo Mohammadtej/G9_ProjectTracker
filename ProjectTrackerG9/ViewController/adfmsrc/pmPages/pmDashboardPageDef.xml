@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="pmDashboardPageDef"
+                Package="pmPages">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="Projects1" RangeSize="25" DataControl="PMAppModuleDataControl" id="Projects1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="Projects1Iterator" id="Projects1">
+      <nodeDefinition DefName="model.views.ProjectsVO" Name="Projects10">
+        <AttrNames>
+          <Item Value="EndDate"/>
+          <Item Value="PlId"/>
+          <Item Value="PmId"/>
+          <Item Value="ProjectCode"/>
+          <Item Value="ProjectName"/>
+          <Item Value="StartDate"/>
+          <Item Value="Status"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>
