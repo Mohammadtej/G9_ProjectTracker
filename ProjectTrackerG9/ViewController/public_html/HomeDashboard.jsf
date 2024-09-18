@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+             title="Welcome Page"
+             id="welcomePage">
+        <af:form id="f1">
+            <!-- Main layout for the entire page -->
+            <af:panelStretchLayout id="psl1">
+                
+                <!-- Center content area -->
+                <f:facet name="center">
+                    <af:panelGroupLayout id="pgl1" layout="vertical" horizontalAlign="center" verticalAlign="middle">
+    
+                        <!-- Welcome header in a panel box for better structure -->
+                        <af:panelBox id="welcomeBox" text="Welcome to the Dashboard" styleClass="AFStretchWidth" icon="adf/images/welcome_icon.png">
+                            
+                            <!-- Description under the welcome message -->
+                            <af:outputText id="welcomeText" value="Choose from the options below to navigate to the respective dashboards." inlineStyle="font-size: large; text-align: center; padding-bottom: 20px;" />
+                            
+                            <!-- 2x2 Grid Layout for the 4 dashboard links -->
+                            <af:panelGridLayout id="gridLayout" columns="2" halign="center">
+                                
+                                <!-- Row 1 with two links -->
+                                <af:gridRow>
+                                    <af:gridCell>
+                                        <!-- Link to Dashboard 1 inside a panel box for visual appeal -->
+                                        <af:panelBox id="pb1" text="PM Dashboard" inlineStyle="width: 250px;">
+                                            <af:commandLink text="Go to Dashboard 1" id="cl1" action="toPMDashboard"/>
+                                        </af:panelBox>
+                                    </af:gridCell>
+                                    <af:gridCell>
+                                        <!-- Link to Dashboard 2 -->
+                                        <af:panelBox id="pb2" text="PL Dashboard" inlineStyle="width: 250px;">
+                                            <af:commandLink text="Go to Dashboard 2" id="cl2" action="toPLDashboard"/>
+                                        </af:panelBox>
+                                    </af:gridCell>
+                                </af:gridRow>
+                                
+                                <!-- Row 2 with two more links -->
+                                <af:gridRow>
+                                    <af:gridCell>
+                                        <!-- Link to Dashboard 3 -->
+                                        <af:panelBox id="pb3" text="TL Dashboard" inlineStyle="width: 250px;">
+                                            <af:commandLink text="Go to Dashboard 3" id="cl3" action="toTLDashboard"/>
+                                        </af:panelBox>
+                                    </af:gridCell>
+                                    <af:gridCell>
+                                        <!-- Link to Dashboard 4 -->
+                                        <af:panelBox id="pb4" text="TM Dashboard" inlineStyle="width: 250px;">
+                                            <af:commandLink text="Go to Dashboard 4" id="cl4" action="toTMDashboard"/>
+                                        </af:panelBox>
+                                    </af:gridCell>
+                                </af:gridRow>
+    
+                            </af:panelGridLayout>
+                        </af:panelBox>
+                        
+                    </af:panelGroupLayout>
+                </f:facet>
+            </af:panelStretchLayout>
+        </af:form>
+    </af:document>
+</f:view>

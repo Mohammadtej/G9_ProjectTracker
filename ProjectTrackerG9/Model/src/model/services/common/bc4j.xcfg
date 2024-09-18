@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!---->
+<BC4JConfig xmlns="http://xmlns.oracle.com/bc4j/configuration" version="11.1">
+  <AppModuleConfigBag ApplicationName="model.services.HomeAppModule">
+    <AppModuleConfig name="HomeAppModuleLocal" jbo.project="model.Model" ApplicationName="model.services.HomeAppModule"
+                     DeployPlatform="LOCAL">
+      <Database jbo.TypeMapEntries="OracleApps" JDBCDataSource="java:comp/env/jdbc/G9DS"/>
+      <Security AppModuleJndiName="model.services.HomeAppModule"/>
+    </AppModuleConfig>
+    <AppModuleConfig name="HomeAppModuleShared" jbo.project="model.Model" ApplicationName="model.services.HomeAppModule"
+                     DeployPlatform="LOCAL">
+      <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+      <Database jbo.TypeMapEntries="OracleApps" JDBCDataSource="java:comp/env/jdbc/G9DS"/>
+      <Security AppModuleJndiName="model.services.HomeAppModule"/>
+    </AppModuleConfig>
+  </AppModuleConfigBag>
+  <AppModuleConfigBag ApplicationName="model.services.PMAppModule">
+    <AppModuleConfig name="PMAppModuleLocal" jbo.project="model.Model" ApplicationName="model.services.PMAppModule"
+                     DeployPlatform="LOCAL">
+      <Database jbo.TypeMapEntries="OracleApps" JDBCDataSource="java:comp/env/jdbc/G9DS"/>
+      <Security AppModuleJndiName="model.services.PMAppModule"/>
+    </AppModuleConfig>
+    <AppModuleConfig name="PMAppModuleShared" jbo.project="model.Model" ApplicationName="model.services.PMAppModule"
+                     DeployPlatform="LOCAL">
+      <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+      <Database jbo.TypeMapEntries="OracleApps" JDBCDataSource="java:comp/env/jdbc/G9DS"/>
+      <Security AppModuleJndiName="model.services.PMAppModule"/>
+    </AppModuleConfig>
+  </AppModuleConfigBag>
+  <AppModuleConfigBag ApplicationName="model.services.PLAppModule">
+    <AppModuleConfig name="PLAppModuleLocal" jbo.project="model.Model" ApplicationName="model.services.PLAppModule"
+                     DeployPlatform="LOCAL">
+      <Database jbo.TypeMapEntries="OracleApps" JDBCDataSource="java:comp/env/jdbc/G9DS"/>
+      <Security AppModuleJndiName="model.services.PLAppModule"/>
+    </AppModuleConfig>
+    <AppModuleConfig name="PLAppModuleShared" jbo.project="model.Model" ApplicationName="model.services.PLAppModule"
+                     DeployPlatform="LOCAL">
+      <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+      <Database jbo.TypeMapEntries="OracleApps" JDBCDataSource="java:comp/env/jdbc/G9DS"/>
+      <Security AppModuleJndiName="model.services.PLAppModule"/>
+    </AppModuleConfig>
+  </AppModuleConfigBag>
+  <AppModuleConfigBag ApplicationName="model.services.TLAppModule">
+    <AppModuleConfig name="TLAppModuleLocal" jbo.project="model.Model" ApplicationName="model.services.TLAppModule"
+                     DeployPlatform="LOCAL">
+      <Database jbo.TypeMapEntries="OracleApps" JDBCDataSource="java:comp/env/jdbc/G9DS"/>
+      <Security AppModuleJndiName="model.services.TLAppModule"/>
+    </AppModuleConfig>
+    <AppModuleConfig name="TLAppModuleShared" jbo.project="model.Model" ApplicationName="model.services.TLAppModule"
+                     DeployPlatform="LOCAL">
+      <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+      <Database jbo.TypeMapEntries="OracleApps" JDBCDataSource="java:comp/env/jdbc/G9DS"/>
+      <Security AppModuleJndiName="model.services.TLAppModule"/>
+    </AppModuleConfig>
+  </AppModuleConfigBag>
+  <AppModuleConfigBag ApplicationName="model.services.TMAppModule">
+    <AppModuleConfig name="TMAppModuleLocal" jbo.project="model.Model" ApplicationName="model.services.TMAppModule"
+                     DeployPlatform="LOCAL">
+      <Database jbo.TypeMapEntries="OracleApps" JDBCDataSource="java:comp/env/jdbc/G9DS"/>
+      <Security AppModuleJndiName="model.services.TMAppModule"/>
+    </AppModuleConfig>
+    <AppModuleConfig name="TMAppModuleShared" jbo.project="model.Model" ApplicationName="model.services.TMAppModule"
+                     DeployPlatform="LOCAL">
+      <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+      <Database jbo.TypeMapEntries="OracleApps" JDBCDataSource="java:comp/env/jdbc/G9DS"/>
+      <Security AppModuleJndiName="model.services.TMAppModule"/>
+    </AppModuleConfig>
+  </AppModuleConfigBag>
+</BC4JConfig>

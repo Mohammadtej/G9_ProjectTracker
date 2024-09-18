@@ -1,0 +1,22 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View2">
+      <property
+         name="activityId">plDashboard</property>
+      <property
+         name="x">219.10742</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>plDashboard&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">246.23438</property>
+      <property
+         name="page">/plPages/plDashboard.jsf</property>
+      <property
+         name="exceptionHandler">false</property>
+   </View>
+</SDM>

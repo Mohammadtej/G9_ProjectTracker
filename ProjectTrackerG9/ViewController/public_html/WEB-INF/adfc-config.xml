@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <view id="HomeDashboard">
+    <page>/HomeDashboard.jsf</page>
+  </view>
+  <task-flow-call id="pm-task-flow">
+    <task-flow-reference>
+      <document>/WEB-INF/pm-task-flow.xml</document>
+      <id>pm-task-flow</id>
+    </task-flow-reference>
+  </task-flow-call>
+  <task-flow-call id="pl-task-flow">
+    <task-flow-reference>
+      <document>/WEB-INF/pl-task-flow.xml</document>
+      <id>pl-task-flow</id>
+    </task-flow-reference>
+  </task-flow-call>
+  <task-flow-call id="tl-task-flow">
+    <task-flow-reference>
+      <document>/WEB-INF/tl-task-flow.xml</document>
+      <id>tl-task-flow</id>
+    </task-flow-reference>
+  </task-flow-call>
+  <task-flow-call id="tm-task-flow">
+    <task-flow-reference>
+      <document>/WEB-INF/tm-task-flow.xml</document>
+      <id>tm-task-flow</id>
+    </task-flow-reference>
+  </task-flow-call>
+  <control-flow-rule id="__1">
+    <from-activity-id>HomeDashboard</from-activity-id>
+    <control-flow-case id="__2">
+      <from-outcome>toPMDashboard</from-outcome>
+      <to-activity-id>pm-task-flow</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__3">
+      <from-outcome>toPLDashboard</from-outcome>
+      <to-activity-id>pl-task-flow</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__4">
+      <from-outcome>toTLDashboard</from-outcome>
+      <to-activity-id>tl-task-flow</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__5">
+      <from-outcome>toTMDashboard</from-outcome>
+      <to-activity-id>tm-task-flow</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+</adfc-config>

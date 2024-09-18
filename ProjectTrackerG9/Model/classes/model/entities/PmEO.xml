@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PmEO"
+  Version="12.2.1.22.48"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="G9_PM"
+  AliasName="PmEO"
+  BindingStyle="OracleName">
+  <Attribute
+    Name="PmId"
+    IsNotNull="true"
+    ColumnName="PM_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="G9_PM"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="EmployeeName"
+    Precision="100"
+    ColumnName="EMPLOYEE_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="G9_PM">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="Pl"
+    Association="model.entities.FkPlPmIdAssoc"
+    AssociationEnd="model.entities.FkPlPmIdAssoc.Pl"
+    AssociationOtherEnd="model.entities.FkPlPmIdAssoc.Pm"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="Employee"
+    Association="model.entities.FkPmEmpIdAssoc"
+    AssociationEnd="model.entities.FkPmEmpIdAssoc.Employee"
+    AssociationOtherEnd="model.entities.FkPmEmpIdAssoc.Pm"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="Project"
+    Association="model.entities.FkPmIdAssoc"
+    AssociationEnd="model.entities.FkPmIdAssoc.Project"
+    AssociationOtherEnd="model.entities.FkPmIdAssoc.Pm"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <Key
+    Name="SysC009722497"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C009722497"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.entities.PmEO.PmId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="FkPmEmpId">
+    <DesignTime>
+      <Attr Name="_isCascadeDelete" Value="true"/>
+      <Attr Name="_referencedKey" Value="PK_EMP_ID"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_PM_EMP_ID"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.entities.PmEO.PmId"/>
+    </AttrArray>
+  </Key>
+</Entity>

@@ -1,0 +1,4 @@
+The following Synchronization Actions were performed successfully:
+
+Entity :DocumentEO
+  Create Key for Constraint: CHK_DOCUMENT_TYPE

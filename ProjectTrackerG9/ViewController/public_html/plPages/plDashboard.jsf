@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <af:document title="plDashboard.jsf" id="d1">
+    <af:form id="f1">
+      <af:panelGridLayout id="pgl1">
+        <af:gridRow height="50px" id="gr2">
+          <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc1">
+            <af:panelHeader text="Welcome to PL Dashboard" id="ph1">
+              <f:facet name="context"/>
+              <f:facet name="toolbar"/>
+              <f:facet name="menuBar"/>
+              <f:facet name="legend"/>
+              <f:facet name="info"/>
+            </af:panelHeader>
+            <!-- Header -->
+          </af:gridCell>
+        </af:gridRow>
+        <af:gridRow height="100%" id="gr1">
+          <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc2">
+            <af:panelSplitter orientation="horizontal" splitterPosition="100" positionedFromEnd="true" id="ps1">
+              <f:facet name="first">
+                <!-- Content -->
+              </f:facet>
+              <f:facet name="second">
+                <!-- Right -->
+              </f:facet>
+            </af:panelSplitter>
+          </af:gridCell>
+        </af:gridRow>
+      </af:panelGridLayout>
+    </af:form>
+  </af:document>
+</f:view>

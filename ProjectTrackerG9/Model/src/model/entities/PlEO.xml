@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PlEO"
+  Version="12.2.1.22.48"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="G9_PL"
+  AliasName="PlEO"
+  BindingStyle="OracleName">
+  <Attribute
+    Name="PlId"
+    IsNotNull="true"
+    ColumnName="PL_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="G9_PL"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="EmployeeName"
+    Precision="100"
+    ColumnName="EMPLOYEE_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="G9_PL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="IsWorkingOnProject"
+    Precision="1"
+    Scale="0"
+    ColumnName="IS_WORKING_ON_PROJECT"
+    SQLType="NUMERIC"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    TableName="G9_PL"/>
+  <Attribute
+    Name="PmId"
+    ColumnName="PM_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="G9_PL"/>
+  <AccessorAttribute
+    Name="Module"
+    Association="model.entities.FkModulesPlIdAssoc"
+    AssociationEnd="model.entities.FkModulesPlIdAssoc.Module"
+    AssociationOtherEnd="model.entities.FkModulesPlIdAssoc.Pl"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="Document"
+    Association="model.entities.FkDocumentPlIdAssoc"
+    AssociationEnd="model.entities.FkDocumentPlIdAssoc.Document"
+    AssociationOtherEnd="model.entities.FkDocumentPlIdAssoc.Pl"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="Employee"
+    Association="model.entities.FkPlEmpIdAssoc"
+    AssociationEnd="model.entities.FkPlEmpIdAssoc.Employee"
+    AssociationOtherEnd="model.entities.FkPlEmpIdAssoc.Pl"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="Pm"
+    Association="model.entities.FkPlPmIdAssoc"
+    AssociationEnd="model.entities.FkPlPmIdAssoc.Pm"
+    AssociationOtherEnd="model.entities.FkPlPmIdAssoc.Pl"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="Project"
+    Association="model.entities.FkPlIdAssoc"
+    AssociationEnd="model.entities.FkPlIdAssoc.Project"
+    AssociationOtherEnd="model.entities.FkPlIdAssoc.Pl"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="Tl"
+    Association="model.entities.FkTlPlIdAssoc"
+    AssociationEnd="model.entities.FkTlPlIdAssoc.Tl"
+    AssociationOtherEnd="model.entities.FkTlPlIdAssoc.Pl"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <Key
+    Name="SysC009722499">
+    <DesignTime>
+      <Attr Name="_checkCondition" Value="is_working_on_project IN (0, 1)"/>
+      <Attr Name="_isCheck" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C009722499"/>
+    </DesignTime>
+    <AttrArray Name="Attributes"/>
+  </Key>
+  <Key
+    Name="SysC009722500"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C009722500"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.entities.PlEO.PlId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="FkPlEmpId">
+    <DesignTime>
+      <Attr Name="_isCascadeDelete" Value="true"/>
+      <Attr Name="_referencedKey" Value="PK_EMP_ID"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_PL_EMP_ID"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.entities.PlEO.PlId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="FkPlPmId">
+    <DesignTime>
+      <Attr Name="_isCascadeDelete" Value="true"/>
+      <Attr Name="_referencedKey" Value="SYS_C009722497"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_PL_PM_ID"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.entities.PlEO.PmId"/>
+    </AttrArray>
+  </Key>
+</Entity>
