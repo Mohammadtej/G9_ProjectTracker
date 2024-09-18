@@ -13,10 +13,14 @@
     <Attr Name="_jprName" Value="../../Model.jpr"/>
     <Attr Name="_NamedConnection" Value="G9"/>
     <Attr Name="_appModuleNames0" Value="model.services.HomeAppModule"/>
+    <Attr Name="_appModuleNames1" Value="model.services.PMAppModule"/>
+    <Attr Name="_appModuleNames2" Value="model.services.PLAppModule"/>
+    <Attr Name="_appModuleNames3" Value="model.services.TLAppModule"/>
+    <Attr Name="_appModuleNames4" Value="model.services.TMAppModule"/>
   </DesignTime>
   <Containee
     Name="entities"
-    PackageName="entities"
+    PackageName="model.entities"
     ObjectType="JboPackage">
     <DesignTime>
       <Attr Name="_AS" Value="true"/>

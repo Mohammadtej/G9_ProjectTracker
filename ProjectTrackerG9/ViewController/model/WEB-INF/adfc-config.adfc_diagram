@@ -96,7 +96,7 @@
       <property
          name="fromOutcome">toTLDashboard</property>
       <property
-         name="sdm:polyPoints">R54,192.63574,206.66797,414.29395,232.96875,L50</property>
+         name="sdm:polyPoints">R50,193.92194,203.16797,414.29395,232.96875,L50</property>
    </ControlFlowCase>
    <TaskFlowCall
       id="TaskFlowCall9">
@@ -123,6 +123,6 @@
       <property
          name="fromOutcome">toTMDashboard</property>
       <property
-         name="sdm:polyPoints">R72,L40</property>
+         name="sdm:polyPoints">R58,192.63574,210.16797,412.16113,355.23438,L50</property>
    </ControlFlowCase>
 </SDM>
