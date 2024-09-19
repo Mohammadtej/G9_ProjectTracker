@@ -18,12 +18,17 @@
     </SchemaBasedProperties>
   </Properties>
   <ViewUsage
-    Name="Projects1"
-    ViewObjectName="model.views.ProjectsVO">
-    <ViewCriteriaUsage
-      Name="FilterByPMId"
-      FullName="model.views.ProjectsVO.FilterByPMId"/>
-  </ViewUsage>
+    Name="PMProjects"
+    ViewObjectName="model.views.ProjectsVO"/>
+  <ViewUsage
+    Name="PMDocuments"
+    ViewObjectName="model.views.DocumentsVO"/>
+  <ViewLinkUsage
+    Name="DocumentsForProject"
+    ViewLinkObjectName="model.views.DocumentsForProject"
+    SrcViewUsageName="model.services.PMAppModule.PMProjects"
+    DstViewUsageName="model.services.PMAppModule.PMDocuments"
+    Reversed="false"/>
   <ResourceBundle>
     <PropertiesBundle
       PropertiesFile="model.ModelBundle"/>

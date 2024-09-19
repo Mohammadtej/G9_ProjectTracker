@@ -1,6 +1,7 @@
 package model.services;
 
 import oracle.jbo.server.ApplicationModuleImpl;
+import oracle.jbo.server.ViewLinkImpl;
 import oracle.jbo.server.ViewObjectImpl;
 
 // ---------------------------------------------------------------------
@@ -18,11 +19,27 @@ public class PMAppModuleImpl extends ApplicationModuleImpl {
 
 
     /**
-     * Container's getter for Projects1.
-     * @return Projects1
+     * Container's getter for Projects2.
+     * @return Projects2
      */
-    public ViewObjectImpl getProjects1() {
-        return (ViewObjectImpl) findViewObject("Projects1");
+    public ViewObjectImpl getPMProjects() {
+        return (ViewObjectImpl) findViewObject("PMProjects");
+    }
+
+    /**
+     * Container's getter for Documents2.
+     * @return Documents2
+     */
+    public ViewObjectImpl getPMDocuments() {
+        return (ViewObjectImpl) findViewObject("PMDocuments");
+    }
+
+    /**
+     * Container's getter for DocumentsForProject.
+     * @return DocumentsForProject
+     */
+    public ViewLinkImpl getDocumentsForProject() {
+        return (ViewLinkImpl) findViewLink("DocumentsForProject");
     }
 }
 

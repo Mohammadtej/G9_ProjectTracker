@@ -30,7 +30,7 @@ public class TaskFlowManagedBean {
             DCBindingContainer bindings = (DCBindingContainer) BindingContext.getCurrent().getCurrentBindingsEntry();
     
             // Find the View Object by its iterator binding name (replace with your actual VO iterator name)
-            ViewObject viewObject = bindings.findIteratorBinding("Projects1Iterator").getViewObject();
+            ViewObject viewObject = bindings.findIteratorBinding("PMProjectsIterator").getViewObject();
     
             // Set the bind variable with the value from getCurrentUser
             viewObject.setNamedWhereClauseParam("retrievedId", getCurrentUser());
