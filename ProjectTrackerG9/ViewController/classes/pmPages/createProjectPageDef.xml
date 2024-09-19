@@ -4,47 +4,43 @@
   <parameters/>
   <executables>
     <variableIterator id="variables"/>
-    <iterator Binds="Projects1" RangeSize="25" DataControl="PMAppModuleDataControl" id="Projects1Iterator"/>
+    <iterator Binds="PMProjects" RangeSize="25" DataControl="PMAppModuleDataControl" id="PMProjectsIterator"/>
   </executables>
   <bindings>
-    <attributeValues IterBinding="Projects1Iterator" id="EndDate">
-      <AttrNames>
-        <Item Value="EndDate"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="Projects1Iterator" id="PlId">
-      <AttrNames>
-        <Item Value="PlId"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="Projects1Iterator" id="PmId">
+    <attributeValues IterBinding="PMProjectsIterator" id="PmId">
       <AttrNames>
         <Item Value="PmId"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="Projects1Iterator" id="ProjectCode">
+    <attributeValues IterBinding="PMProjectsIterator" id="ProjectCode">
       <AttrNames>
         <Item Value="ProjectCode"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="Projects1Iterator" id="ProjectName">
+    <attributeValues IterBinding="PMProjectsIterator" id="ProjectName">
       <AttrNames>
         <Item Value="ProjectName"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="Projects1Iterator" id="StartDate">
+    <attributeValues IterBinding="PMProjectsIterator" id="PlId">
+      <AttrNames>
+        <Item Value="PlId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PMProjectsIterator" id="StartDate">
       <AttrNames>
         <Item Value="StartDate"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="Projects1Iterator" id="Status">
+    <attributeValues IterBinding="PMProjectsIterator" id="EndDate">
+      <AttrNames>
+        <Item Value="EndDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PMProjectsIterator" id="Status">
       <AttrNames>
         <Item Value="Status"/>
       </AttrNames>
     </attributeValues>
-    <action IterBinding="Projects1Iterator" id="First" RequiresUpdateModel="true" Action="first"/>
-    <action IterBinding="Projects1Iterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
-    <action IterBinding="Projects1Iterator" id="Next" RequiresUpdateModel="true" Action="next"/>
-    <action IterBinding="Projects1Iterator" id="Last" RequiresUpdateModel="true" Action="last"/>
   </bindings>
 </pageDefinition>

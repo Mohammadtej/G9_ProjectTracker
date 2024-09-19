@@ -1,0 +1,13 @@
+//Groovy Scripts for model.views.ProjectsVO
+
+package model.views
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+import java.util.Calendar
+
+@TransientValueExpression(attributeName="StartDate")
+def StartDate_ExpressionScript_Expression()
+{
+    return Calendar.getInstance().getTime()
+}
+

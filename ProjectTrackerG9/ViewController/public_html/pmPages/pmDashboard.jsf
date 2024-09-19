@@ -28,7 +28,8 @@
                                     <f:facet name="toolbar"/>
                                     <af:commandButton text="#{viewcontrollerBundle.VIEW_CURRENT_PROJECTS}"
                                                       action="#{taskFlowManagedBean.applyFilterToViewObject}" id="cb1"/>
-                                    <af:link text="Create Project" id="l1" action="createProject"/>
+                                    <af:separator id="s1"/>
+                                    <af:button text="#{viewcontrollerBundle.CREATE_PROJECT}" id="b1" action="createProject"/>
                                 </af:panelBox>
                             </f:facet>
                             <f:facet name="second">

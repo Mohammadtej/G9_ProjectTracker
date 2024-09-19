@@ -1,7 +1,7 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
    <AppModuleConfigBag ApplicationName="model.services.PMAppModule">
-      <AppModuleConfig name="192088DA715" IsLazyLoadingTrue="true" DBconnection="java:comp/env/jdbc/G9DS" ApplicationName="model.services.PMAppModule" jbo.project="model.Model" BC4JConfigName="PMAppModuleLocal" JDBCName="G9" DeployPlatform="LOCAL" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory">
+      <AppModuleConfig name="1920987874C" IsLazyLoadingTrue="true" DBconnection="java:comp/env/jdbc/G9DS" ApplicationName="model.services.PMAppModule" jbo.project="model.Model" BC4JConfigName="PMAppModuleLocal" JDBCName="G9" DeployPlatform="LOCAL" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory">
          <Database JDBCDataSource="java:comp/env/jdbc/G9DS" jbo.SQLBuilder="Oracle" jbo.locking.mode="optimistic" jbo.TypeMapEntries="OracleApps"/>
          <Security AppModuleJndiName="model.services.PMAppModule"/>
          <Tester FullProxyInterfaceName="model.services.common.PMAppModule"/>

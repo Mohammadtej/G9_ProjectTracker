@@ -3,4 +3,9 @@
   <application>
     <default-render-kit-id>oracle.adf.rich</default-render-kit-id>
   </application>
+  <managed-bean>
+    <managed-bean-name>createProjectBean</managed-bean-name>
+    <managed-bean-class>view.createProjectBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
 </faces-config>

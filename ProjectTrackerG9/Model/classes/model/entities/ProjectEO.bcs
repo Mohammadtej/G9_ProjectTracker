@@ -1,0 +1,15 @@
+//Groovy Scripts for model.entities.ProjectEO
+
+package model.entities
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+import java.util.Calendar
+
+@TransientValueExpression(attributeName="StartDate")
+def StartDate_ExpressionScript_Expression()
+{
+    if (getYourDateAttribute() == null) {
+        setYourDateAttribute(Calendar.getInstance().getTime())
+    }
+}
+

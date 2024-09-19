@@ -27,30 +27,32 @@
     Name="ProjectEO"
     Entity="model.entities.ProjectEO"/>
   <ViewAttribute
-    Name="EndDate"
-    PrecisionRule="true"
-    EntityAttrName="EndDate"
-    EntityUsage="ProjectEO"
-    AliasName="END_DATE"/>
-  <ViewAttribute
-    Name="PlId"
-    PrecisionRule="true"
-    EntityAttrName="PlId"
-    EntityUsage="ProjectEO"
-    AliasName="PL_ID"/>
-  <ViewAttribute
     Name="PmId"
     PrecisionRule="true"
     EntityAttrName="PmId"
     EntityUsage="ProjectEO"
-    AliasName="PM_ID"/>
+    AliasName="PM_ID">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.views.ProjectsVO.PmId_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="ProjectCode"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="ProjectCode"
     EntityUsage="ProjectEO"
-    AliasName="PROJECT_CODE"/>
+    AliasName="PROJECT_CODE">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.views.ProjectsVO.ProjectCode_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="ProjectName"
     PrecisionRule="true"
@@ -58,11 +60,28 @@
     EntityUsage="ProjectEO"
     AliasName="PROJECT_NAME"/>
   <ViewAttribute
+    Name="PlId"
+    PrecisionRule="true"
+    EntityAttrName="PlId"
+    EntityUsage="ProjectEO"
+    AliasName="PL_ID"/>
+  <ViewAttribute
     Name="StartDate"
     PrecisionRule="true"
     EntityAttrName="StartDate"
     EntityUsage="ProjectEO"
-    AliasName="START_DATE"/>
+    AliasName="START_DATE">
+    <TransientExpression
+      Name="ExpressionScript"
+      trustMode="untrusted"
+      CodeSourceName="ProjectsVORow"/>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="EndDate"
+    PrecisionRule="true"
+    EntityAttrName="EndDate"
+    EntityUsage="ProjectEO"
+    AliasName="END_DATE"/>
   <ViewAttribute
     Name="Status"
     PrecisionRule="true"
@@ -111,6 +130,21 @@
     ViewLink="model.views.DocumentsForProject"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
+  <LOVUIHints
+    ListType="105"
+    MRUCount="0"
+    NullValueFlag="none">
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="PmId"/>
+      <Item Value="ProjectCode"/>
+      <Item Value="ProjectName"/>
+      <Item Value="PlId"/>
+      <Item Value="StartDate"/>
+      <Item Value="EndDate"/>
+      <Item Value="Status"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </LOVUIHints>
   <ResourceBundle>
     <PropertiesBundle
       PropertiesFile="model.ModelBundle"/>

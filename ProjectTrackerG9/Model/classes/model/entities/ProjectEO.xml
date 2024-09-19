@@ -9,7 +9,8 @@
   DBObjectType="table"
   DBObjectName="G9_PROJECT"
   AliasName="ProjectEO"
-  BindingStyle="OracleName">
+  BindingStyle="OracleName"
+  xmlns:validation="http://xmlns.oracle.com/adfm/validation">
   <Attribute
     Name="ProjectCode"
     IsNotNull="true"
@@ -35,16 +36,39 @@
     Name="StartDate"
     ColumnName="START_DATE"
     SQLType="DATE"
-    Type="java.sql.Timestamp"
+    Type="oracle.jbo.domain.Date"
     ColumnType="DATE"
-    TableName="G9_PROJECT"/>
+    TableName="G9_PROJECT"
+    IsEffectiveStartDate="true">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.entities.ProjectEO.StartDate_LABEL"/>
+        <FMT_FORMATTER
+          ResId="model.entities.ProjectEO.StartDate_FMT_FORMATTER"/>
+        <FMT_FORMAT
+          ResId="model.entities.ProjectEO.StartDate_FMT_FORMAT"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
   <Attribute
     Name="EndDate"
     ColumnName="END_DATE"
     SQLType="DATE"
-    Type="java.sql.Timestamp"
+    Type="oracle.jbo.domain.Date"
     ColumnType="DATE"
-    TableName="G9_PROJECT"/>
+    TableName="G9_PROJECT">
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="model.entities.ProjectEO.EndDate_FMT_FORMATTER"/>
+        <FMT_FORMAT
+          ResId="model.entities.ProjectEO.EndDate_FMT_FORMAT"/>
+        <LABEL
+          ResId="model.entities.ProjectEO.EndDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
   <Attribute
     Name="PmId"
     ColumnName="PM_ID"
@@ -147,4 +171,8 @@
       <Item Value="model.entities.ProjectEO.PmId"/>
     </AttrArray>
   </Key>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
 </Entity>
