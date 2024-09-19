@@ -5,11 +5,7 @@
   <executables>
     <variableIterator id="variables"/>
     <iterator Binds="PMProjects" RangeSize="25" DataControl="PMAppModuleDataControl" id="PMProjectsIterator"/>
-    <searchRegion Binds="PMProjectsIterator" Criteria="" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
-                  id="PMProjectsQuery"/>
     <iterator Binds="PMDocuments" RangeSize="25" DataControl="PMAppModuleDataControl" id="PMDocumentsIterator"/>
-    <searchRegion Binds="PMDocumentsIterator" Criteria=""
-                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="PMDocumentsQuery"/>
   </executables>
   <bindings>
     <tree IterBinding="PMProjectsIterator" id="PMProjects">

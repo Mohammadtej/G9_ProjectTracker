@@ -26,7 +26,7 @@
                                 <!-- Left -->
                                 <af:panelBox text="PanelBox1" id="pb1">
                                     <f:facet name="toolbar"/>
-                                    <af:commandButton text="Filter"
+                                    <af:commandButton text="#{viewcontrollerBundle.VIEW_CURRENT_PROJECTS}"
                                                       action="#{taskFlowManagedBean.applyFilterToViewObject}" id="cb1"/>
                                     <af:link text="Create Project" id="l1" action="createProject"/>
                                 </af:panelBox>
@@ -42,121 +42,57 @@
                                                   selectedRowKeys="#{bindings.PMProjects.collectionModel.selectedRow}"
                                                   selectionListener="#{bindings.PMProjects.collectionModel.makeCurrent}"
                                                   rowSelection="single" fetchSize="#{bindings.PMProjects.rangeSize}"
-                                                  filterModel="#{bindings.PMProjectsQuery.queryDescriptor}"
-                                                  filterVisible="true"
-                                                  queryListener="#{bindings.PMProjectsQuery.processQuery}"
-                                                  varStatus="vs" id="t1">
-                                            <af:column sortProperty="#{bindings.PMProjects.hints.EndDate.name}"
-                                                       filterable="true" sortable="true"
-                                                       headerText="#{bindings.PMProjects.hints.EndDate.label}" id="c1">
-                                                <f:facet name="filter">
-                                                    <af:inputDate value="#{bindings.PMProjectsQuery.queryDescriptor.filterConjunctionCriterion.criterionMap.EndDate.value}"
-                                                                  id="id1">
-                                                        <af:convertDateTime pattern="#{bindings.PMProjects.hints.EndDate.format}"/>
-                                                    </af:inputDate>
-                                                </f:facet>
-                                                <af:inputDate value="#{row.bindings.EndDate.inputValue}"
-                                                              label="#{bindings.PMProjects.hints.EndDate.label}"
-                                                              required="#{bindings.PMProjects.hints.EndDate.mandatory}"
-                                                              columns="#{bindings.PMProjects.hints.EndDate.displayWidth}"
-                                                              shortDesc="#{bindings.PMProjects.hints.EndDate.tooltip}"
-                                                              id="id2">
-                                                    <f:validator binding="#{row.bindings.EndDate.validator}"/>
+                                                  id="t1">
+                                            <af:column headerText="#{bindings.PMProjects.hints.EndDate.label}" id="c1">
+                                                <af:outputText value="#{row.EndDate}"
+                                                               shortDesc="#{bindings.PMProjects.hints.EndDate.tooltip}"
+                                                               id="ot1">
                                                     <af:convertDateTime pattern="#{bindings.PMProjects.hints.EndDate.format}"/>
-                                                </af:inputDate>
+                                                </af:outputText>
                                             </af:column>
-                                            <af:column sortProperty="#{bindings.PMProjects.hints.PlId.name}"
-                                                       filterable="true" sortable="true"
-                                                       headerText="#{bindings.PMProjects.hints.PlId.label}" id="c2">
-                                                <af:inputText value="#{row.bindings.PlId.inputValue}"
-                                                              label="#{bindings.PMProjects.hints.PlId.label}"
-                                                              required="#{bindings.PMProjects.hints.PlId.mandatory}"
-                                                              columns="#{bindings.PMProjects.hints.PlId.displayWidth}"
-                                                              maximumLength="#{bindings.PMProjects.hints.PlId.precision}"
-                                                              shortDesc="#{bindings.PMProjects.hints.PlId.tooltip}"
-                                                              id="it1">
-                                                    <f:validator binding="#{row.bindings.PlId.validator}"/>
+                                            <af:column headerText="#{bindings.PMProjects.hints.PlId.label}" id="c2">
+                                                <af:outputText value="#{row.PlId}"
+                                                               shortDesc="#{bindings.PMProjects.hints.PlId.tooltip}"
+                                                               id="ot2">
                                                     <af:convertNumber groupingUsed="false"
                                                                       pattern="#{bindings.PMProjects.hints.PlId.format}"/>
-                                                </af:inputText>
+                                                </af:outputText>
                                             </af:column>
-                                            <af:column sortProperty="#{bindings.PMProjects.hints.PmId.name}"
-                                                       filterable="true" sortable="true"
-                                                       headerText="#{bindings.PMProjects.hints.PmId.label}" id="c3">
-                                                <af:inputText value="#{row.bindings.PmId.inputValue}"
-                                                              label="#{bindings.PMProjects.hints.PmId.label}"
-                                                              required="#{bindings.PMProjects.hints.PmId.mandatory}"
-                                                              columns="#{bindings.PMProjects.hints.PmId.displayWidth}"
-                                                              maximumLength="#{bindings.PMProjects.hints.PmId.precision}"
-                                                              shortDesc="#{bindings.PMProjects.hints.PmId.tooltip}"
-                                                              id="it2">
-                                                    <f:validator binding="#{row.bindings.PmId.validator}"/>
+                                            <af:column headerText="#{bindings.PMProjects.hints.PmId.label}" id="c3">
+                                                <af:outputText value="#{row.PmId}"
+                                                               shortDesc="#{bindings.PMProjects.hints.PmId.tooltip}"
+                                                               id="ot3">
                                                     <af:convertNumber groupingUsed="false"
                                                                       pattern="#{bindings.PMProjects.hints.PmId.format}"/>
-                                                </af:inputText>
+                                                </af:outputText>
                                             </af:column>
-                                            <af:column sortProperty="#{bindings.PMProjects.hints.ProjectCode.name}"
-                                                       filterable="true" sortable="true"
-                                                       headerText="#{bindings.PMProjects.hints.ProjectCode.label}"
+                                            <af:column headerText="#{bindings.PMProjects.hints.ProjectCode.label}"
                                                        id="c4">
-                                                <af:inputText value="#{row.bindings.ProjectCode.inputValue}"
-                                                              label="#{bindings.PMProjects.hints.ProjectCode.label}"
-                                                              required="#{bindings.PMProjects.hints.ProjectCode.mandatory}"
-                                                              columns="#{bindings.PMProjects.hints.ProjectCode.displayWidth}"
-                                                              maximumLength="#{bindings.PMProjects.hints.ProjectCode.precision}"
-                                                              shortDesc="#{bindings.PMProjects.hints.ProjectCode.tooltip}"
-                                                              id="it3">
-                                                    <f:validator binding="#{row.bindings.ProjectCode.validator}"/>
+                                                <af:outputText value="#{row.ProjectCode}"
+                                                               shortDesc="#{bindings.PMProjects.hints.ProjectCode.tooltip}"
+                                                               id="ot4">
                                                     <af:convertNumber groupingUsed="false"
                                                                       pattern="#{bindings.PMProjects.hints.ProjectCode.format}"/>
-                                                </af:inputText>
+                                                </af:outputText>
                                             </af:column>
-                                            <af:column sortProperty="#{bindings.PMProjects.hints.ProjectName.name}"
-                                                       filterable="true" sortable="true"
-                                                       headerText="#{bindings.PMProjects.hints.ProjectName.label}"
+                                            <af:column headerText="#{bindings.PMProjects.hints.ProjectName.label}"
                                                        id="c5">
-                                                <af:inputText value="#{row.bindings.ProjectName.inputValue}"
-                                                              label="#{bindings.PMProjects.hints.ProjectName.label}"
-                                                              required="#{bindings.PMProjects.hints.ProjectName.mandatory}"
-                                                              columns="#{bindings.PMProjects.hints.ProjectName.displayWidth}"
-                                                              maximumLength="#{bindings.PMProjects.hints.ProjectName.precision}"
-                                                              shortDesc="#{bindings.PMProjects.hints.ProjectName.tooltip}"
-                                                              id="it4">
-                                                    <f:validator binding="#{row.bindings.ProjectName.validator}"/>
-                                                </af:inputText>
+                                                <af:outputText value="#{row.ProjectName}"
+                                                               shortDesc="#{bindings.PMProjects.hints.ProjectName.tooltip}"
+                                                               id="ot5"/>
                                             </af:column>
-                                            <af:column sortProperty="#{bindings.PMProjects.hints.StartDate.name}"
-                                                       filterable="true" sortable="true"
-                                                       headerText="#{bindings.PMProjects.hints.StartDate.label}"
+                                            <af:column headerText="#{bindings.PMProjects.hints.StartDate.label}"
                                                        id="c6">
-                                                <f:facet name="filter">
-                                                    <af:inputDate value="#{bindings.PMProjectsQuery.queryDescriptor.filterConjunctionCriterion.criterionMap.StartDate.value}"
-                                                                  id="id3">
-                                                        <af:convertDateTime pattern="#{bindings.PMProjects.hints.StartDate.format}"/>
-                                                    </af:inputDate>
-                                                </f:facet>
-                                                <af:inputDate value="#{row.bindings.StartDate.inputValue}"
-                                                              label="#{bindings.PMProjects.hints.StartDate.label}"
-                                                              required="#{bindings.PMProjects.hints.StartDate.mandatory}"
-                                                              columns="#{bindings.PMProjects.hints.StartDate.displayWidth}"
-                                                              shortDesc="#{bindings.PMProjects.hints.StartDate.tooltip}"
-                                                              id="id4">
-                                                    <f:validator binding="#{row.bindings.StartDate.validator}"/>
+                                                <af:outputText value="#{row.StartDate}"
+                                                               shortDesc="#{bindings.PMProjects.hints.StartDate.tooltip}"
+                                                               id="ot6">
                                                     <af:convertDateTime pattern="#{bindings.PMProjects.hints.StartDate.format}"/>
-                                                </af:inputDate>
+                                                </af:outputText>
                                             </af:column>
-                                            <af:column sortProperty="#{bindings.PMProjects.hints.Status.name}"
-                                                       filterable="true" sortable="true"
-                                                       headerText="#{bindings.PMProjects.hints.Status.label}" id="c7">
-                                                <af:inputText value="#{row.bindings.Status.inputValue}"
-                                                              label="#{bindings.PMProjects.hints.Status.label}"
-                                                              required="#{bindings.PMProjects.hints.Status.mandatory}"
-                                                              columns="#{bindings.PMProjects.hints.Status.displayWidth}"
-                                                              maximumLength="#{bindings.PMProjects.hints.Status.precision}"
-                                                              shortDesc="#{bindings.PMProjects.hints.Status.tooltip}"
-                                                              id="it5">
-                                                    <f:validator binding="#{row.bindings.Status.validator}"/>
-                                                </af:inputText>
+                                            <af:column headerText="#{bindings.PMProjects.hints.Status.label}" id="c7">
+                                                <af:outputText value="#{row.Status}"
+                                                               shortDesc="#{bindings.PMProjects.hints.Status.tooltip}"
+                                                               id="ot7"/>
                                             </af:column>
                                         </af:table>
                                     </f:facet>
@@ -168,135 +104,63 @@
                                                   selectedRowKeys="#{bindings.PMDocuments.collectionModel.selectedRow}"
                                                   selectionListener="#{bindings.PMDocuments.collectionModel.makeCurrent}"
                                                   rowSelection="single" fetchSize="#{bindings.PMDocuments.rangeSize}"
-                                                  filterModel="#{bindings.PMDocumentsQuery.queryDescriptor}"
-                                                  filterVisible="true"
-                                                  queryListener="#{bindings.PMDocumentsQuery.processQuery}"
-                                                  varStatus="vs" id="t2">
-                                            <af:column sortProperty="#{bindings.PMDocuments.hints.DocId.name}"
-                                                       filterable="true" sortable="true"
-                                                       headerText="#{bindings.PMDocuments.hints.DocId.label}" id="c8">
-                                                <af:inputText value="#{row.bindings.DocId.inputValue}"
-                                                              label="#{bindings.PMDocuments.hints.DocId.label}"
-                                                              required="#{bindings.PMDocuments.hints.DocId.mandatory}"
-                                                              columns="#{bindings.PMDocuments.hints.DocId.displayWidth}"
-                                                              maximumLength="#{bindings.PMDocuments.hints.DocId.precision}"
-                                                              shortDesc="#{bindings.PMDocuments.hints.DocId.tooltip}"
-                                                              id="it6">
-                                                    <f:validator binding="#{row.bindings.DocId.validator}"/>
+                                                  id="t2">
+                                            <af:column headerText="#{bindings.PMDocuments.hints.DocId.label}" id="c8">
+                                                <af:outputText value="#{row.DocId}"
+                                                               shortDesc="#{bindings.PMDocuments.hints.DocId.tooltip}"
+                                                               id="ot8">
                                                     <af:convertNumber groupingUsed="false"
                                                                       pattern="#{bindings.PMDocuments.hints.DocId.format}"/>
-                                                </af:inputText>
+                                                </af:outputText>
                                             </af:column>
-                                            <af:column sortProperty="#{bindings.PMDocuments.hints.DocName.name}"
-                                                       filterable="true" sortable="true"
-                                                       headerText="#{bindings.PMDocuments.hints.DocName.label}" id="c9">
-                                                <af:inputText value="#{row.bindings.DocName.inputValue}"
-                                                              label="#{bindings.PMDocuments.hints.DocName.label}"
-                                                              required="#{bindings.PMDocuments.hints.DocName.mandatory}"
-                                                              columns="#{bindings.PMDocuments.hints.DocName.displayWidth}"
-                                                              maximumLength="#{bindings.PMDocuments.hints.DocName.precision}"
-                                                              shortDesc="#{bindings.PMDocuments.hints.DocName.tooltip}"
-                                                              id="it7">
-                                                    <f:validator binding="#{row.bindings.DocName.validator}"/>
-                                                </af:inputText>
+                                            <af:column headerText="#{bindings.PMDocuments.hints.DocName.label}" id="c9">
+                                                <af:outputText value="#{row.DocName}"
+                                                               shortDesc="#{bindings.PMDocuments.hints.DocName.tooltip}"
+                                                               id="ot9"/>
                                             </af:column>
-                                            <af:column sortProperty="#{bindings.PMDocuments.hints.DocumentType.name}"
-                                                       filterable="true" sortable="true"
-                                                       headerText="#{bindings.PMDocuments.hints.DocumentType.label}"
+                                            <af:column headerText="#{bindings.PMDocuments.hints.DocumentType.label}"
                                                        id="c10">
-                                                <af:inputText value="#{row.bindings.DocumentType.inputValue}"
-                                                              label="#{bindings.PMDocuments.hints.DocumentType.label}"
-                                                              required="#{bindings.PMDocuments.hints.DocumentType.mandatory}"
-                                                              columns="#{bindings.PMDocuments.hints.DocumentType.displayWidth}"
-                                                              maximumLength="#{bindings.PMDocuments.hints.DocumentType.precision}"
-                                                              shortDesc="#{bindings.PMDocuments.hints.DocumentType.tooltip}"
-                                                              id="it8">
-                                                    <f:validator binding="#{row.bindings.DocumentType.validator}"/>
-                                                </af:inputText>
+                                                <af:outputText value="#{row.DocumentType}"
+                                                               shortDesc="#{bindings.PMDocuments.hints.DocumentType.tooltip}"
+                                                               id="ot10"/>
                                             </af:column>
-                                            <af:column sortProperty="#{bindings.PMDocuments.hints.EndDate.name}"
-                                                       filterable="true" sortable="true"
-                                                       headerText="#{bindings.PMDocuments.hints.EndDate.label}"
+                                            <af:column headerText="#{bindings.PMDocuments.hints.EndDate.label}"
                                                        id="c11">
-                                                <f:facet name="filter">
-                                                    <af:inputDate value="#{bindings.PMDocumentsQuery.queryDescriptor.filterConjunctionCriterion.criterionMap.EndDate.value}"
-                                                                  id="id5">
-                                                        <af:convertDateTime pattern="#{bindings.PMDocuments.hints.EndDate.format}"/>
-                                                    </af:inputDate>
-                                                </f:facet>
-                                                <af:inputDate value="#{row.bindings.EndDate.inputValue}"
-                                                              label="#{bindings.PMDocuments.hints.EndDate.label}"
-                                                              required="#{bindings.PMDocuments.hints.EndDate.mandatory}"
-                                                              columns="#{bindings.PMDocuments.hints.EndDate.displayWidth}"
-                                                              shortDesc="#{bindings.PMDocuments.hints.EndDate.tooltip}"
-                                                              id="id6">
-                                                    <f:validator binding="#{row.bindings.EndDate.validator}"/>
+                                                <af:outputText value="#{row.EndDate}"
+                                                               shortDesc="#{bindings.PMDocuments.hints.EndDate.tooltip}"
+                                                               id="ot11">
                                                     <af:convertDateTime pattern="#{bindings.PMDocuments.hints.EndDate.format}"/>
-                                                </af:inputDate>
+                                                </af:outputText>
                                             </af:column>
-                                            <af:column sortProperty="#{bindings.PMDocuments.hints.PlId.name}"
-                                                       filterable="true" sortable="true"
-                                                       headerText="#{bindings.PMDocuments.hints.PlId.label}" id="c12">
-                                                <af:inputText value="#{row.bindings.PlId.inputValue}"
-                                                              label="#{bindings.PMDocuments.hints.PlId.label}"
-                                                              required="#{bindings.PMDocuments.hints.PlId.mandatory}"
-                                                              columns="#{bindings.PMDocuments.hints.PlId.displayWidth}"
-                                                              maximumLength="#{bindings.PMDocuments.hints.PlId.precision}"
-                                                              shortDesc="#{bindings.PMDocuments.hints.PlId.tooltip}"
-                                                              id="it9">
-                                                    <f:validator binding="#{row.bindings.PlId.validator}"/>
+                                            <af:column headerText="#{bindings.PMDocuments.hints.PlId.label}" id="c12">
+                                                <af:outputText value="#{row.PlId}"
+                                                               shortDesc="#{bindings.PMDocuments.hints.PlId.tooltip}"
+                                                               id="ot12">
                                                     <af:convertNumber groupingUsed="false"
                                                                       pattern="#{bindings.PMDocuments.hints.PlId.format}"/>
-                                                </af:inputText>
+                                                </af:outputText>
                                             </af:column>
-                                            <af:column sortProperty="#{bindings.PMDocuments.hints.ProjectCode.name}"
-                                                       filterable="true" sortable="true"
-                                                       headerText="#{bindings.PMDocuments.hints.ProjectCode.label}"
+                                            <af:column headerText="#{bindings.PMDocuments.hints.ProjectCode.label}"
                                                        id="c13">
-                                                <af:inputText value="#{row.bindings.ProjectCode.inputValue}"
-                                                              label="#{bindings.PMDocuments.hints.ProjectCode.label}"
-                                                              required="#{bindings.PMDocuments.hints.ProjectCode.mandatory}"
-                                                              columns="#{bindings.PMDocuments.hints.ProjectCode.displayWidth}"
-                                                              maximumLength="#{bindings.PMDocuments.hints.ProjectCode.precision}"
-                                                              shortDesc="#{bindings.PMDocuments.hints.ProjectCode.tooltip}"
-                                                              id="it10">
-                                                    <f:validator binding="#{row.bindings.ProjectCode.validator}"/>
+                                                <af:outputText value="#{row.ProjectCode}"
+                                                               shortDesc="#{bindings.PMDocuments.hints.ProjectCode.tooltip}"
+                                                               id="ot13">
                                                     <af:convertNumber groupingUsed="false"
                                                                       pattern="#{bindings.PMDocuments.hints.ProjectCode.format}"/>
-                                                </af:inputText>
+                                                </af:outputText>
                                             </af:column>
-                                            <af:column sortProperty="#{bindings.PMDocuments.hints.StartDate.name}"
-                                                       filterable="true" sortable="true"
-                                                       headerText="#{bindings.PMDocuments.hints.StartDate.label}"
+                                            <af:column headerText="#{bindings.PMDocuments.hints.StartDate.label}"
                                                        id="c14">
-                                                <f:facet name="filter">
-                                                    <af:inputDate value="#{bindings.PMDocumentsQuery.queryDescriptor.filterConjunctionCriterion.criterionMap.StartDate.value}"
-                                                                  id="id7">
-                                                        <af:convertDateTime pattern="#{bindings.PMDocuments.hints.StartDate.format}"/>
-                                                    </af:inputDate>
-                                                </f:facet>
-                                                <af:inputDate value="#{row.bindings.StartDate.inputValue}"
-                                                              label="#{bindings.PMDocuments.hints.StartDate.label}"
-                                                              required="#{bindings.PMDocuments.hints.StartDate.mandatory}"
-                                                              columns="#{bindings.PMDocuments.hints.StartDate.displayWidth}"
-                                                              shortDesc="#{bindings.PMDocuments.hints.StartDate.tooltip}"
-                                                              id="id8">
-                                                    <f:validator binding="#{row.bindings.StartDate.validator}"/>
+                                                <af:outputText value="#{row.StartDate}"
+                                                               shortDesc="#{bindings.PMDocuments.hints.StartDate.tooltip}"
+                                                               id="ot14">
                                                     <af:convertDateTime pattern="#{bindings.PMDocuments.hints.StartDate.format}"/>
-                                                </af:inputDate>
+                                                </af:outputText>
                                             </af:column>
-                                            <af:column sortProperty="#{bindings.PMDocuments.hints.Status.name}"
-                                                       filterable="true" sortable="true"
-                                                       headerText="#{bindings.PMDocuments.hints.Status.label}" id="c15">
-                                                <af:inputText value="#{row.bindings.Status.inputValue}"
-                                                              label="#{bindings.PMDocuments.hints.Status.label}"
-                                                              required="#{bindings.PMDocuments.hints.Status.mandatory}"
-                                                              columns="#{bindings.PMDocuments.hints.Status.displayWidth}"
-                                                              maximumLength="#{bindings.PMDocuments.hints.Status.precision}"
-                                                              shortDesc="#{bindings.PMDocuments.hints.Status.tooltip}"
-                                                              id="it11">
-                                                    <f:validator binding="#{row.bindings.Status.validator}"/>
-                                                </af:inputText>
+                                            <af:column headerText="#{bindings.PMDocuments.hints.Status.label}" id="c15">
+                                                <af:outputText value="#{row.Status}"
+                                                               shortDesc="#{bindings.PMDocuments.hints.Status.tooltip}"
+                                                               id="ot15"/>
                                             </af:column>
                                         </af:table>
                                     </f:facet>
