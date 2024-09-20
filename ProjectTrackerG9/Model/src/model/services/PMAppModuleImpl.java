@@ -1,5 +1,9 @@
 package model.services;
 
+
+import oracle.adf.share.ADFContext;
+
+import oracle.jbo.ViewObject;
 import oracle.jbo.server.ApplicationModuleImpl;
 import oracle.jbo.server.ViewLinkImpl;
 import oracle.jbo.server.ViewObjectImpl;
@@ -40,6 +44,54 @@ public class PMAppModuleImpl extends ApplicationModuleImpl {
      */
     public ViewLinkImpl getDocumentsForProject() {
         return (ViewLinkImpl) findViewLink("DocumentsForProject");
+    }
+
+    /**
+     * Container's getter for TLs1.
+     * @return TLs1
+     */
+    public ViewObjectImpl getTLs1() {
+        return (ViewObjectImpl) findViewObject("TLs1");
+    }
+
+    /**
+     * Container's getter for PLs1.
+     * @return PLs1
+     */
+    public ViewObjectImpl getPLs1() {
+        return (ViewObjectImpl) findViewObject("PLs1");
+    }
+
+    /**
+     * Container's getter for PLs2.
+     * @return PLs2
+     */
+    public ViewObjectImpl getPLs2() {
+        return (ViewObjectImpl) findViewObject("PLs2");
+    }
+
+    /**
+     * Container's getter for PLs.
+     * @return PLs
+     */
+    public ViewObjectImpl getPLs() {
+        return (ViewObjectImpl) findViewObject("PLs");
+    }
+
+    /**
+     * Container's getter for DocumentsVO1.
+     * @return DocumentsVO1
+     */
+    public ViewObjectImpl getDocumentsVO1() {
+        return (ViewObjectImpl) findViewObject("DocumentsVO1");
+    }
+
+    /**
+     * Container's getter for ProjectLeaders1.
+     * @return ProjectLeaders1
+     */
+    public ViewObjectImpl getProjectLeadersForAParticularPM() {
+        return (ViewObjectImpl) findViewObject("ProjectLeadersForAParticularPM");
     }
 }
 

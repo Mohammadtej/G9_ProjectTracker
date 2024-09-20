@@ -6,6 +6,8 @@
     <variableIterator id="variables"/>
     <iterator Binds="PMProjects" RangeSize="25" DataControl="PMAppModuleDataControl" id="PMProjectsIterator"/>
     <iterator Binds="PMDocuments" RangeSize="25" DataControl="PMAppModuleDataControl" id="PMDocumentsIterator"/>
+    <iterator id="PLsForAParticularPMIterator" Binds="PLsForAParticularPM" DataControl="PMAppModuleDataControl"
+              RangeSize="25"/>
   </executables>
   <bindings>
     <tree IterBinding="PMProjectsIterator" id="PMProjects">

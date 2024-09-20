@@ -44,4 +44,9 @@
       <Attr Name="_VL" Value="true"/>
     </DesignTime>
   </Containee>
+  <AppModuleUsage
+    Name="PMAppModule"
+    FullName="model.services.PMAppModule"
+    ConfigurationName="model.services.PMAppModuleShared"
+    SharedScope="2"/>
 </JboProject>

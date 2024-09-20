@@ -11,14 +11,15 @@ import java.util.Date;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+
 import oracle.adf.model.BindingContext;
 import oracle.adf.model.binding.DCBindingContainer;
 import oracle.adf.model.binding.DCIteratorBinding;
+import oracle.adf.share.ADFContext;
+
 import oracle.jbo.Row;
 import oracle.jbo.ViewObject;
 import oracle.jbo.ApplicationModule;
-import oracle.jbo.client.Configuration;
-
 
 
 public class createProjectBean {
@@ -193,5 +194,31 @@ public class createProjectBean {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error committing transaction: " + e.getMessage(), null));
             System.out.println("Exception found in commit button " + e);
         }
+    }
+    
+    public Integer getCurrentUser() {
+        String userName = ADFContext.getCurrent().getSecurityContext().getUserName();
+        System.out.println("In the managed bean" + userName);
+        try {
+            return Integer.parseInt(userName);  // Convert to Integer
+        } catch (NumberFormatException e) {
+            // Handle exception in case userName is not a number
+            return null;  // Or return a default value, e.g., -1
+        }
+    }
+
+    public String filterProjectLeaders() {
+        // Get the current Application Module's DataControl
+        DCBindingContainer bindings = (DCBindingContainer) BindingContext.getCurrent().getCurrentBindingsEntry();
+        
+        // Find the View Object by its iterator binding name (replace with your actual VO iterator name)
+        ViewObject viewObject = bindings.findIteratorBinding("ProjectLeadersForAParticularPMIterator").getViewObject();
+        
+        // Set the bind variable with the value from getCurrentUser
+        viewObject.setNamedWhereClauseParam("pmIdForFilterProjectLeader", getCurrentUser());
+        
+        // Execute the query
+        viewObject.executeQuery();
+        return null;
     }
 }

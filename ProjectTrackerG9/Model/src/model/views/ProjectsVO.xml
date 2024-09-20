@@ -12,7 +12,8 @@
   BindingStyle="OracleName"
   CustomQuery="false"
   SelectAllAttributes="false"
-  PageIterMode="Full">
+  PageIterMode="Full"
+  AccessMode="DEFAULT">
   <Properties>
     <SchemaBasedProperties>
       <LABEL
@@ -23,6 +24,24 @@
     Name="retrievedId"
     Kind="where"
     Type="oracle.jbo.domain.Number"/>
+  <ViewAccessor
+    Name="PMAppModule_PLs1"
+    ViewObjectName="model.views.PLsForAParticularPMVO"
+    AMUsageName="PMAppModule"
+    ViewInstanceName="PLs"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="PMAppModule_PLsForAParticularPM"
+    ViewObjectName="model.views.PLsForAParticularPMVO"
+    AMUsageName="PMAppModule"
+    ViewInstanceName="PLsForAParticularPM"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="PMAppModule_PLsForAParticularPM1"
+    ViewObjectName="model.views.PLsForAParticularPMVO"
+    AMUsageName="PMAppModule"
+    ViewInstanceName="PLsForAParticularPM"
+    RowLevelBinds="true"/>
   <EntityUsage
     Name="ProjectEO"
     Entity="model.entities.ProjectEO"/>

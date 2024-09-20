@@ -19,10 +19,21 @@
   </Properties>
   <ViewUsage
     Name="PMProjects"
-    ViewObjectName="model.views.ProjectsVO"/>
+    ViewObjectName="model.views.ProjectsVO"
+    AccessMode="SCROLLABLE"/>
   <ViewUsage
     Name="PMDocuments"
     ViewObjectName="model.views.DocumentsVO"/>
+  <ViewUsage
+    Name="DocumentsVO1"
+    ViewObjectName="model.views.DocumentsVO"/>
+  <ViewUsage
+    Name="ProjectLeadersForAParticularPM"
+    ViewObjectName="model.views.ProjectLeadersVO">
+    <ViewCriteriaUsage
+      Name="FilterProjectLeadersForAProjectManagerVOCriteria"
+      FullName="model.views.ProjectLeadersVO.FilterProjectLeadersForAProjectManagerVOCriteria"/>
+  </ViewUsage>
   <ViewLinkUsage
     Name="DocumentsForProject"
     ViewLinkObjectName="model.views.DocumentsForProject"

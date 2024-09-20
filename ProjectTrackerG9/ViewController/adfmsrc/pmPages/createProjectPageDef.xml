@@ -5,6 +5,8 @@
   <executables>
     <variableIterator id="variables"/>
     <iterator Binds="PMProjects" RangeSize="25" DataControl="PMAppModuleDataControl" id="PMProjectsIterator"/>
+    <iterator Binds="ProjectLeadersForAParticularPM" RangeSize="25" DataControl="PMAppModuleDataControl"
+              id="ProjectLeadersForAParticularPMIterator"/>
   </executables>
   <bindings>
     <attributeValues IterBinding="PMProjectsIterator" id="PmId">
@@ -42,5 +44,15 @@
         <Item Value="Status"/>
       </AttrNames>
     </attributeValues>
+    <tree IterBinding="ProjectLeadersForAParticularPMIterator" id="ProjectLeadersForAParticularPM">
+      <nodeDefinition DefName="model.views.ProjectLeadersVO" Name="ProjectLeadersForAParticularPM0">
+        <AttrNames>
+          <Item Value="EmployeeName"/>
+          <Item Value="IsWorkingOnProject"/>
+          <Item Value="PlId"/>
+          <Item Value="PmId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
   </bindings>
 </pageDefinition>
