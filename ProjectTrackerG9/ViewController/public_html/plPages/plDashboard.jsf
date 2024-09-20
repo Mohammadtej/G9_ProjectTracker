@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
   <af:document title="plDashboard.jsf" id="d1">
+    <af:messages id="m1"/>
     <af:form id="f1">
       <af:panelGridLayout id="pgl1">
         <af:gridRow height="50px" id="gr2">
@@ -21,6 +22,54 @@
             <af:panelSplitter orientation="horizontal" splitterPosition="100" positionedFromEnd="true" id="ps1">
               <f:facet name="first">
                 <!-- Content -->
+                <af:table value="#{bindings.PLProjects.collectionModel}" var="row"
+                          rows="#{bindings.PLProjects.rangeSize}"
+                          emptyText="#{bindings.PLProjects.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          rowBandingInterval="0" selectedRowKeys="#{bindings.PLProjects.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.PLProjects.collectionModel.makeCurrent}" rowSelection="single"
+                          fetchSize="#{bindings.PLProjects.rangeSize}" id="t1">
+                  <af:column headerText="#{bindings.PLProjects.hints.PmId.label}" id="c1">
+                    <af:outputText value="#{row.PmId}" shortDesc="#{bindings.PLProjects.hints.PmId.tooltip}" id="ot1">
+                      <af:convertNumber groupingUsed="false" pattern="#{bindings.PLProjects.hints.PmId.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column headerText="#{bindings.PLProjects.hints.ProjectCode.label}" id="c2">
+                    <af:outputText value="#{row.ProjectCode}"
+                                   shortDesc="#{bindings.PLProjects.hints.ProjectCode.tooltip}" id="ot2">
+                      <af:convertNumber groupingUsed="false" pattern="#{bindings.PLProjects.hints.ProjectCode.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column headerText="#{bindings.PLProjects.hints.ProjectName.label}" id="c3">
+                    <af:outputText value="#{row.ProjectName}"
+                                   shortDesc="#{bindings.PLProjects.hints.ProjectName.tooltip}" id="ot3"/>
+                  </af:column>
+                  <af:column headerText="#{bindings.PLProjects.hints.PlId.label}" id="c4">
+                    <af:outputText value="#{row.PlId}" shortDesc="#{bindings.PLProjects.hints.PlId.tooltip}" id="ot4">
+                      <af:convertNumber groupingUsed="false" pattern="#{bindings.PLProjects.hints.PlId.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column headerText="#{bindings.PLProjects.hints.StartDate.label}" id="c5">
+                    <af:outputText value="#{row.StartDate}" shortDesc="#{bindings.PLProjects.hints.StartDate.tooltip}"
+                                   id="ot5">
+                      <af:convertDateTime pattern="#{bindings.PLProjects.hints.StartDate.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column headerText="#{bindings.PLProjects.hints.EndDate.label}" id="c6">
+                    <af:outputText value="#{row.EndDate}" shortDesc="#{bindings.PLProjects.hints.EndDate.tooltip}"
+                                   id="ot6">
+                      <af:convertDateTime pattern="#{bindings.PLProjects.hints.EndDate.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column headerText="#{bindings.PLProjects.hints.Status.label}" id="c7">
+                    <af:selectOneChoice value="#{row.bindings.Status.inputValue}" label="#{row.bindings.Status.label}"
+                                        required="#{bindings.PLProjects.hints.Status.mandatory}"
+                                        shortDesc="#{bindings.PLProjects.hints.Status.tooltip}" readOnly="true"
+                                        id="soc1">
+                      <f:selectItems value="#{row.bindings.Status.items}" id="si1"/>
+                      <f:validator binding="#{row.bindings.Status.validator}"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                </af:table>
               </f:facet>
               <f:facet name="second">
                 <!-- Right -->

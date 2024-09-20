@@ -44,4 +44,34 @@
       <property
          name="sdm:polyPoints">R50,301.9746,249.23438,451.71387,245.16797,L50</property>
    </ControlFlowCase>
+   <TaskFlowReturn
+      id="TaskFlowReturn5">
+      <property
+         name="activityId">Cancel</property>
+      <property
+         name="x">633.0</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>Cancel&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Return&lt;/p>&lt;p>Outcome:  Cancel&lt;/p></property>
+      <property
+         name="y">143.46875</property>
+      <property
+         name="finish">true</property>
+      <property
+         name="exceptionHandler">false</property>
+   </TaskFlowReturn>
+   <TaskFlowReturn
+      id="TaskFlowReturn6">
+      <property
+         name="activityId">Submit</property>
+      <property
+         name="x">631.0</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>Submit&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Return&lt;/p>&lt;p>Outcome:  Submit&lt;/p></property>
+      <property
+         name="y">300.60156</property>
+      <property
+         name="finish">true</property>
+      <property
+         name="exceptionHandler">false</property>
+   </TaskFlowReturn>
 </SDM>

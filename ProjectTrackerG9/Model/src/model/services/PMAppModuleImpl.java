@@ -25,30 +25,6 @@ public class PMAppModuleImpl extends ApplicationModuleImpl {
 
 
     /**
-     * Container's getter for Projects2.
-     * @return Projects2
-     */
-    public ViewObjectImpl getPMProjects() {
-        return (ViewObjectImpl) findViewObject("PMProjects");
-    }
-
-    /**
-     * Container's getter for Documents2.
-     * @return Documents2
-     */
-    public ViewObjectImpl getPMDocuments() {
-        return (ViewObjectImpl) findViewObject("PMDocuments");
-    }
-
-    /**
-     * Container's getter for DocumentsForProject.
-     * @return DocumentsForProject
-     */
-    public ViewLinkImpl getDocumentsForProject() {
-        return (ViewLinkImpl) findViewLink("DocumentsForProject");
-    }
-
-    /**
      * Container's getter for TLs1.
      * @return TLs1
      */
@@ -102,6 +78,39 @@ public class PMAppModuleImpl extends ApplicationModuleImpl {
      */
     public StaticStatusVOImpl getStaticStatus1() {
         return (StaticStatusVOImpl) findViewObject("StaticStatus1");
+    }
+
+
+    /**
+     * Container's getter for ProjectsVO3.
+     * @return ProjectsVO3
+     */
+    public ViewObjectImpl getPMProjects() {
+        return (ViewObjectImpl) findViewObject("PMProjects");
+    }
+
+    /**
+     * Container's getter for DocumentsVO2.
+     * @return DocumentsVO2
+     */
+    public ViewObjectImpl getPMDocuments() {
+        return (ViewObjectImpl) findViewObject("PMDocuments");
+    }
+
+    /**
+     * Container's getter for DocumentsForProject1.
+     * @return DocumentsForProject1
+     */
+    public ViewLinkImpl getDocumentsForPMProject() {
+        return (ViewLinkImpl) findViewLink("DocumentsForPMProject");
+    }
+
+    /**
+     * Container's getter for ProjectsVO2.
+     * @return ProjectsVO2
+     */
+    public ViewObjectImpl getPLProjects() {
+        return (ViewObjectImpl) findViewObject("PLProjects");
     }
 }
 

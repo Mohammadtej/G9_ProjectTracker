@@ -20,10 +20,6 @@
         ResId="model.views.ProjectsVO_LABEL"/>
     </SchemaBasedProperties>
   </Properties>
-  <Variable
-    Name="retrievedId"
-    Kind="where"
-    Type="oracle.jbo.domain.Number"/>
   <ViewAccessor
     Name="PMAppModule_PLs1"
     ViewObjectName="model.views.PLsForAParticularPMVO"
@@ -138,7 +134,7 @@
     </Properties>
   </ViewAttribute>
   <ViewCriteria
-    Name="FilterByPMId"
+    Name="FilterProjectsForProjectManager"
     ViewObjectName="model.views.ProjectsVO"
     Conjunction="AND">
     <Properties Name="_Props">
@@ -169,7 +165,6 @@
         Operator="="
         Conjunction="AND"
         Value=":retrievedId"
-        GenerateIsNullClauseForBindVars="false"
         IsBindVarValue="true"
         Required="Optional"/>
     </ViewCriteriaRow>
@@ -198,26 +193,4 @@
     <PropertiesBundle
       PropertiesFile="model.ModelBundle"/>
   </ResourceBundle>
-  <DeclarativeWhereClause
-    Name="DeclarativeWhereClause">
-    <ViewCriteria
-      Name="ProjectsVOWhereCriteria"
-      ViewObjectName="model.views.ProjectsVO"
-      Conjunction="AND"
-      Mode="3">
-      <ViewCriteriaRow
-        Name="ProjectsVOWhereCriteria_row_0"
-        UpperColumns="1">
-        <ViewCriteriaItem
-          Name="PmId"
-          ViewAttribute="PmId"
-          Operator="="
-          Conjunction="AND"
-          Value=":retrievedId"
-          GenerateIsNullClauseForBindVars="false"
-          IsBindVarValue="true"
-          Required="Optional"/>
-      </ViewCriteriaRow>
-    </ViewCriteria>
-  </DeclarativeWhereClause>
 </ViewObject>

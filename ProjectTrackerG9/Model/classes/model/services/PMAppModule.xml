@@ -18,13 +18,6 @@
     </SchemaBasedProperties>
   </Properties>
   <ViewUsage
-    Name="PMProjects"
-    ViewObjectName="model.views.ProjectsVO"
-    AccessMode="SCROLLABLE"/>
-  <ViewUsage
-    Name="PMDocuments"
-    ViewObjectName="model.views.DocumentsVO"/>
-  <ViewUsage
     Name="DocumentsVO1"
     ViewObjectName="model.views.DocumentsVO"/>
   <ViewUsage
@@ -37,8 +30,21 @@
   <ViewUsage
     Name="StaticStatus1"
     ViewObjectName="model.views.staticvo.StaticStatusVO"/>
+  <ViewUsage
+    Name="PMProjects"
+    ViewObjectName="model.views.ProjectsVO">
+    <ViewCriteriaUsage
+      Name="FilterProjectsForProjectManager"
+      FullName="model.views.ProjectsVO.FilterProjectsForProjectManager"/>
+  </ViewUsage>
+  <ViewUsage
+    Name="PMDocuments"
+    ViewObjectName="model.views.DocumentsVO"/>
+  <ViewUsage
+    Name="PLProjects"
+    ViewObjectName="model.views.ProjectsVO"/>
   <ViewLinkUsage
-    Name="DocumentsForProject"
+    Name="DocumentsForPMProject"
     ViewLinkObjectName="model.views.DocumentsForProject"
     SrcViewUsageName="model.services.PMAppModule.PMProjects"
     DstViewUsageName="model.services.PMAppModule.PMDocuments"

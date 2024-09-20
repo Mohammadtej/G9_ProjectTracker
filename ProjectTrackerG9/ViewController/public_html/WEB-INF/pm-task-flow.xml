@@ -16,6 +16,16 @@
     <view id="createProject">
       <page>/pmPages/createProject.jsf</page>
     </view>
+    <task-flow-return id="Cancel">
+      <outcome>
+        <name>Cancel</name>
+      </outcome>
+    </task-flow-return>
+    <task-flow-return id="Submit">
+      <outcome>
+        <name>Submit</name>
+      </outcome>
+    </task-flow-return>
     <control-flow-rule id="__1">
       <from-activity-id>pmDashboard</from-activity-id>
       <control-flow-case id="__2">

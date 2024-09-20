@@ -44,56 +44,61 @@
                                                   selectionListener="#{bindings.PMProjects.collectionModel.makeCurrent}"
                                                   rowSelection="single" fetchSize="#{bindings.PMProjects.rangeSize}"
                                                   id="t1">
-                                            <af:column headerText="#{bindings.PMProjects.hints.EndDate.label}" id="c1">
-                                                <af:outputText value="#{row.EndDate}"
-                                                               shortDesc="#{bindings.PMProjects.hints.EndDate.tooltip}"
-                                                               id="ot1">
-                                                    <af:convertDateTime pattern="#{bindings.PMProjects.hints.EndDate.format}"/>
-                                                </af:outputText>
-                                            </af:column>
-                                            <af:column headerText="#{bindings.PMProjects.hints.PlId.label}" id="c2">
-                                                <af:outputText value="#{row.PlId}"
-                                                               shortDesc="#{bindings.PMProjects.hints.PlId.tooltip}"
-                                                               id="ot2">
-                                                    <af:convertNumber groupingUsed="false"
-                                                                      pattern="#{bindings.PMProjects.hints.PlId.format}"/>
-                                                </af:outputText>
-                                            </af:column>
-                                            <af:column headerText="#{bindings.PMProjects.hints.PmId.label}" id="c3">
+                                            <af:column headerText="#{bindings.PMProjects.hints.PmId.label}" id="c1">
                                                 <af:outputText value="#{row.PmId}"
                                                                shortDesc="#{bindings.PMProjects.hints.PmId.tooltip}"
-                                                               id="ot3">
+                                                               id="ot1">
                                                     <af:convertNumber groupingUsed="false"
                                                                       pattern="#{bindings.PMProjects.hints.PmId.format}"/>
                                                 </af:outputText>
                                             </af:column>
                                             <af:column headerText="#{bindings.PMProjects.hints.ProjectCode.label}"
-                                                       id="c4">
+                                                       id="c2">
                                                 <af:outputText value="#{row.ProjectCode}"
                                                                shortDesc="#{bindings.PMProjects.hints.ProjectCode.tooltip}"
-                                                               id="ot4">
+                                                               id="ot2">
                                                     <af:convertNumber groupingUsed="false"
                                                                       pattern="#{bindings.PMProjects.hints.ProjectCode.format}"/>
                                                 </af:outputText>
                                             </af:column>
                                             <af:column headerText="#{bindings.PMProjects.hints.ProjectName.label}"
-                                                       id="c5">
+                                                       id="c3">
                                                 <af:outputText value="#{row.ProjectName}"
                                                                shortDesc="#{bindings.PMProjects.hints.ProjectName.tooltip}"
-                                                               id="ot5"/>
+                                                               id="ot3"/>
+                                            </af:column>
+                                            <af:column headerText="#{bindings.PMProjects.hints.PlId.label}" id="c4">
+                                                <af:outputText value="#{row.PlId}"
+                                                               shortDesc="#{bindings.PMProjects.hints.PlId.tooltip}"
+                                                               id="ot4">
+                                                    <af:convertNumber groupingUsed="false"
+                                                                      pattern="#{bindings.PMProjects.hints.PlId.format}"/>
+                                                </af:outputText>
                                             </af:column>
                                             <af:column headerText="#{bindings.PMProjects.hints.StartDate.label}"
-                                                       id="c6">
+                                                       id="c5">
                                                 <af:outputText value="#{row.StartDate}"
                                                                shortDesc="#{bindings.PMProjects.hints.StartDate.tooltip}"
-                                                               id="ot6">
+                                                               id="ot5">
                                                     <af:convertDateTime pattern="#{bindings.PMProjects.hints.StartDate.format}"/>
                                                 </af:outputText>
                                             </af:column>
+                                            <af:column headerText="#{bindings.PMProjects.hints.EndDate.label}" id="c6">
+                                                <af:outputText value="#{row.EndDate}"
+                                                               shortDesc="#{bindings.PMProjects.hints.EndDate.tooltip}"
+                                                               id="ot6">
+                                                    <af:convertDateTime pattern="#{bindings.PMProjects.hints.EndDate.format}"/>
+                                                </af:outputText>
+                                            </af:column>
                                             <af:column headerText="#{bindings.PMProjects.hints.Status.label}" id="c7">
-                                                <af:outputText value="#{row.Status}"
-                                                               shortDesc="#{bindings.PMProjects.hints.Status.tooltip}"
-                                                               id="ot7"/>
+                                                <af:selectOneChoice value="#{row.bindings.Status.inputValue}"
+                                                                    label="#{row.bindings.Status.label}"
+                                                                    required="#{bindings.PMProjects.hints.Status.mandatory}"
+                                                                    shortDesc="#{bindings.PMProjects.hints.Status.tooltip}"
+                                                                    readOnly="true" id="soc1">
+                                                    <f:selectItems value="#{row.bindings.Status.items}" id="si1"/>
+                                                    <f:validator binding="#{row.bindings.Status.validator}"/>
+                                                </af:selectOneChoice>
                                             </af:column>
                                         </af:table>
                                     </f:facet>
@@ -109,7 +114,7 @@
                                             <af:column headerText="#{bindings.PMDocuments.hints.DocId.label}" id="c8">
                                                 <af:outputText value="#{row.DocId}"
                                                                shortDesc="#{bindings.PMDocuments.hints.DocId.tooltip}"
-                                                               id="ot8">
+                                                               id="ot7">
                                                     <af:convertNumber groupingUsed="false"
                                                                       pattern="#{bindings.PMDocuments.hints.DocId.format}"/>
                                                 </af:outputText>
@@ -117,26 +122,26 @@
                                             <af:column headerText="#{bindings.PMDocuments.hints.DocName.label}" id="c9">
                                                 <af:outputText value="#{row.DocName}"
                                                                shortDesc="#{bindings.PMDocuments.hints.DocName.tooltip}"
-                                                               id="ot9"/>
+                                                               id="ot8"/>
                                             </af:column>
                                             <af:column headerText="#{bindings.PMDocuments.hints.DocumentType.label}"
                                                        id="c10">
                                                 <af:outputText value="#{row.DocumentType}"
                                                                shortDesc="#{bindings.PMDocuments.hints.DocumentType.tooltip}"
-                                                               id="ot10"/>
+                                                               id="ot9"/>
                                             </af:column>
                                             <af:column headerText="#{bindings.PMDocuments.hints.EndDate.label}"
                                                        id="c11">
                                                 <af:outputText value="#{row.EndDate}"
                                                                shortDesc="#{bindings.PMDocuments.hints.EndDate.tooltip}"
-                                                               id="ot11">
+                                                               id="ot10">
                                                     <af:convertDateTime pattern="#{bindings.PMDocuments.hints.EndDate.format}"/>
                                                 </af:outputText>
                                             </af:column>
                                             <af:column headerText="#{bindings.PMDocuments.hints.PlId.label}" id="c12">
                                                 <af:outputText value="#{row.PlId}"
                                                                shortDesc="#{bindings.PMDocuments.hints.PlId.tooltip}"
-                                                               id="ot12">
+                                                               id="ot11">
                                                     <af:convertNumber groupingUsed="false"
                                                                       pattern="#{bindings.PMDocuments.hints.PlId.format}"/>
                                                 </af:outputText>
@@ -145,7 +150,7 @@
                                                        id="c13">
                                                 <af:outputText value="#{row.ProjectCode}"
                                                                shortDesc="#{bindings.PMDocuments.hints.ProjectCode.tooltip}"
-                                                               id="ot13">
+                                                               id="ot12">
                                                     <af:convertNumber groupingUsed="false"
                                                                       pattern="#{bindings.PMDocuments.hints.ProjectCode.format}"/>
                                                 </af:outputText>
@@ -154,14 +159,14 @@
                                                        id="c14">
                                                 <af:outputText value="#{row.StartDate}"
                                                                shortDesc="#{bindings.PMDocuments.hints.StartDate.tooltip}"
-                                                               id="ot14">
+                                                               id="ot13">
                                                     <af:convertDateTime pattern="#{bindings.PMDocuments.hints.StartDate.format}"/>
                                                 </af:outputText>
                                             </af:column>
                                             <af:column headerText="#{bindings.PMDocuments.hints.Status.label}" id="c15">
                                                 <af:outputText value="#{row.Status}"
                                                                shortDesc="#{bindings.PMDocuments.hints.Status.tooltip}"
-                                                               id="ot15"/>
+                                                               id="ot14"/>
                                             </af:column>
                                         </af:table>
                                     </f:facet>
