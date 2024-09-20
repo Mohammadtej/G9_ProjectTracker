@@ -1,6 +1,8 @@
 package model.services;
 
 
+import model.views.staticvo.StaticStatusVOImpl;
+
 import oracle.adf.share.ADFContext;
 
 import oracle.jbo.ViewObject;
@@ -92,6 +94,14 @@ public class PMAppModuleImpl extends ApplicationModuleImpl {
      */
     public ViewObjectImpl getProjectLeadersForAParticularPM() {
         return (ViewObjectImpl) findViewObject("ProjectLeadersForAParticularPM");
+    }
+
+    /**
+     * Container's getter for StaticStatus1.
+     * @return StaticStatus1
+     */
+    public StaticStatusVOImpl getStaticStatus1() {
+        return (StaticStatusVOImpl) findViewObject("StaticStatus1");
     }
 }
 

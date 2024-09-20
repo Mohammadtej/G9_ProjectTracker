@@ -42,6 +42,28 @@
     AMUsageName="PMAppModule"
     ViewInstanceName="PLsForAParticularPM"
     RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="StaticStatusVO1"
+    ViewObjectName="model.views.staticvo.StaticStatusVO"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_Status"
+    ListVOName="StaticStatusVO1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Status"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="status"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="status"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
   <EntityUsage
     Name="ProjectEO"
     Entity="model.entities.ProjectEO"/>
@@ -106,7 +128,15 @@
     PrecisionRule="true"
     EntityAttrName="Status"
     EntityUsage="ProjectEO"
-    AliasName="STATUS"/>
+    AliasName="STATUS"
+    LOVName="LOV_Status">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewCriteria
     Name="FilterByPMId"
     ViewObjectName="model.views.ProjectsVO"

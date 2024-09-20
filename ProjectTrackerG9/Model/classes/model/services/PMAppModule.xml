@@ -34,6 +34,9 @@
       Name="FilterProjectLeadersForAProjectManagerVOCriteria"
       FullName="model.views.ProjectLeadersVO.FilterProjectLeadersForAProjectManagerVOCriteria"/>
   </ViewUsage>
+  <ViewUsage
+    Name="StaticStatus1"
+    ViewObjectName="model.views.staticvo.StaticStatusVO"/>
   <ViewLinkUsage
     Name="DocumentsForProject"
     ViewLinkObjectName="model.views.DocumentsForProject"

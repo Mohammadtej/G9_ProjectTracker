@@ -36,6 +36,14 @@
     </DesignTime>
   </Containee>
   <Containee
+    Name="staticvo"
+    PackageName="model.views.staticvo"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_VO" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
     Name="views"
     PackageName="model.views"
     ObjectType="JboPackage">

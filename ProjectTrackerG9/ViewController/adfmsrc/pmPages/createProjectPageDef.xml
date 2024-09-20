@@ -4,29 +4,22 @@
   <parameters/>
   <executables>
     <variableIterator id="variables"/>
-    <iterator Binds="PMProjects" RangeSize="25" DataControl="PMAppModuleDataControl" id="PMProjectsIterator"/>
     <iterator Binds="ProjectLeadersForAParticularPM" RangeSize="25" DataControl="PMAppModuleDataControl"
               id="ProjectLeadersForAParticularPMIterator"/>
+    <iterator Binds="PMProjects" RangeSize="25" DataControl="PMAppModuleDataControl" id="PMProjectsIterator"/>
   </executables>
   <bindings>
-    <attributeValues IterBinding="PMProjectsIterator" id="PmId">
+    <list IterBinding="ProjectLeadersForAParticularPMIterator" ListOperMode="navigation"
+          ListIter="ProjectLeadersForAParticularPMIterator" id="ProjectLeadersForAParticularPM" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject">
       <AttrNames>
-        <Item Value="PmId"/>
+        <Item Value="PlId"/>
+        <Item Value="EmployeeName"/>
       </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="PMProjectsIterator" id="ProjectCode">
-      <AttrNames>
-        <Item Value="ProjectCode"/>
-      </AttrNames>
-    </attributeValues>
+    </list>
     <attributeValues IterBinding="PMProjectsIterator" id="ProjectName">
       <AttrNames>
         <Item Value="ProjectName"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="PMProjectsIterator" id="PlId">
-      <AttrNames>
-        <Item Value="PlId"/>
       </AttrNames>
     </attributeValues>
     <attributeValues IterBinding="PMProjectsIterator" id="StartDate">
@@ -39,20 +32,7 @@
         <Item Value="EndDate"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="PMProjectsIterator" id="Status">
-      <AttrNames>
-        <Item Value="Status"/>
-      </AttrNames>
-    </attributeValues>
-    <tree IterBinding="ProjectLeadersForAParticularPMIterator" id="ProjectLeadersForAParticularPM">
-      <nodeDefinition DefName="model.views.ProjectLeadersVO" Name="ProjectLeadersForAParticularPM0">
-        <AttrNames>
-          <Item Value="EmployeeName"/>
-          <Item Value="IsWorkingOnProject"/>
-          <Item Value="PlId"/>
-          <Item Value="PmId"/>
-        </AttrNames>
-      </nodeDefinition>
-    </tree>
+    <list IterBinding="PMProjectsIterator" StaticList="false" Uses="LOV_Status" id="Status" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
   </bindings>
 </pageDefinition>

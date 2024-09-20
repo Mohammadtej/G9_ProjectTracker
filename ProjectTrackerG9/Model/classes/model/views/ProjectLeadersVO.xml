@@ -12,7 +12,8 @@
   BindingStyle="OracleName"
   CustomQuery="false"
   SelectAllAttributes="false"
-  PageIterMode="Full">
+  PageIterMode="Full"
+  AccessMode="DEFAULT">
   <Properties>
     <SchemaBasedProperties>
       <LABEL
@@ -76,7 +77,15 @@
     </Properties>
     <ViewCriteriaRow
       Name="ProjectLeadersVOCriteria_row_0"
-      UpperColumns="1">
+      UpperColumns="1"
+      Conjunction="AND">
+      <ViewCriteriaItem
+        Name="IsWorkingOnProject"
+        ViewAttribute="IsWorkingOnProject"
+        Operator="="
+        Conjunction="AND"
+        Value="0"
+        Required="Optional"/>
       <ViewCriteriaItem
         Name="PmId"
         ViewAttribute="PmId"

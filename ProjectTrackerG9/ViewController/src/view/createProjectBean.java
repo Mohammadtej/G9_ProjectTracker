@@ -23,6 +23,7 @@ import oracle.jbo.ApplicationModule;
 
 
 public class createProjectBean {
+    private static BigDecimal projectCodeSeq = new BigDecimal("0");
     private BigDecimal pmid;
     private BigDecimal projectCode;
     private String projectName;
@@ -32,7 +33,7 @@ public class createProjectBean {
     private String status;
     
     public createProjectBean() {
-            
+        String ret = filterProjectLeaders();
     }
 
     public void setPmid(BigDecimal pmid) {
@@ -92,37 +93,9 @@ public class createProjectBean {
         return status;
     }
     
-    
-    public static String convertToDateTime(String inputDate) throws ParseException {
-        //try {
-            // Input date format (M/d/yyyy)
-            // SimpleDateFormat inputFormat = new SimpleDateFormat("M/d/yyyy");
-            // Date date = inputFormat.parse(inputDate);
-            // Get current time
-            SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
-            String currentTime = timeFormat.format(new Date());
-            // Output format (yyyy-dd-MM HH24:MI:SS)
-            // SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd");
-            // String formattedDate = outputFormat.format(date);
-            // Return the formatted date with current time
-            return inputDate + " " + currentTime;
-        //} catch (ParseException e) {
-         //   e.printStackTrace();
-         //   return null;
-        //}
-    }
-    public static Timestamp convertStringToTimestamp(String dateString) {
-        try {
-            // Define the format of the input string
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            // Parse the input string to a Date object
-            Date parsedDate = dateFormat.parse(dateString);
-            // Convert Date to Timestamp
-            return new Timestamp(parsedDate.getTime());
-        } catch (ParseException e) {
-            e.printStackTrace();
-            return null;
-        }
+    private static synchronized BigDecimal getNextProjectCode() {
+        projectCodeSeq = projectCodeSeq.add(BigDecimal.ONE); // Increment by 1
+        return projectCodeSeq;
     }
         
     public String doSubmit() {
@@ -140,6 +113,9 @@ public class createProjectBean {
             System.out.println("Exception in Converting the dates");
         }
         */
+        
+        setProjectCode(getNextProjectCode());
+        setPmid(BigDecimal.valueOf(getCurrentUser()));
         
         System.out.println(getPmid());
         System.out.println(getProjectCode());
@@ -208,6 +184,7 @@ public class createProjectBean {
     }
 
     public String filterProjectLeaders() {
+        System.out.println("Ooooh Nice");
         // Get the current Application Module's DataControl
         DCBindingContainer bindings = (DCBindingContainer) BindingContext.getCurrent().getCurrentBindingsEntry();
         
