@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
-  <view id="HomeDashboard">
-    <page>/HomeDashboard.jsf</page>
+  <view id="login">
+    <page>/login.jsf</page>
   </view>
   <task-flow-call id="pm-task-flow">
     <task-flow-reference>
@@ -27,8 +27,14 @@
       <id>tm-task-flow</id>
     </task-flow-reference>
   </task-flow-call>
+  <task-flow-call id="admin-task-flow">
+    <task-flow-reference>
+      <document>/WEB-INF/admin-task-flow.xml</document>
+      <id>admin-task-flow</id>
+    </task-flow-reference>
+  </task-flow-call>
   <control-flow-rule id="__1">
-    <from-activity-id>HomeDashboard</from-activity-id>
+    <from-activity-id>login</from-activity-id>
     <control-flow-case id="__2">
       <from-outcome>toPMDashboard</from-outcome>
       <to-activity-id>pm-task-flow</to-activity-id>
@@ -45,5 +51,14 @@
       <from-outcome>toTMDashboard</from-outcome>
       <to-activity-id>tm-task-flow</to-activity-id>
     </control-flow-case>
+    <control-flow-case id="__8">
+      <from-outcome>toAdminDashboard</from-outcome>
+      <to-activity-id>admin-task-flow</to-activity-id>
+    </control-flow-case>
   </control-flow-rule>
+  <managed-bean id="__9">
+    <managed-bean-name>LoginUserManagedBean</managed-bean-name>
+    <managed-bean-class>view.LoginUserManagedBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
 </adfc-config>

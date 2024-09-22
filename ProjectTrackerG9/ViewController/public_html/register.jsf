@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="register.jsf" id="d1">
+            <af:panelSplitter orientation="vertical" splitterPosition="50" id="ps1">
+                <f:facet name="first">
+                    <af:panelHeader text="Register a new user" id="ph1">
+                        <f:facet name="context"/>
+                        <f:facet name="toolbar"/>
+                        <f:facet name="menuBar"/>
+                        <f:facet name="legend"/>
+                        <f:facet name="info"/>
+                    </af:panelHeader>
+                </f:facet>
+                <f:facet name="second">
+                    <af:form>
+                        <af:panelFormLayout>
+                          <af:inputText label="Username" required="true" value="#{RegisterUser.userName}"/>
+                          <af:inputText label="Email" required="true" value="#{RegisterUser.email}"/>
+                          <af:inputText label="Password" required="true" secret="true"
+                                        value="#{RegisterUser.password}"/>
+                          <af:commandButton text="Register" action="#{RegisterUser.doRegister}"/>
+                        </af:panelFormLayout>
+                    </af:form>
+                </f:facet>
+            </af:panelSplitter>
+    </af:document>
+</f:view>

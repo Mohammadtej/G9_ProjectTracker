@@ -5,11 +5,13 @@
     <page path="/pmPages/pmDashboard.jsf" usageId="view_pmDashboardPageDef"/>
     <page path="/pmPages/createProject.jsf" usageId="view_createProjectPageDef"/>
     <page path="/plPages/plDashboard.jsf" usageId="view_plDashboardPageDef"/>
+    <page path="/login.jsf" usageId="view_loginPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="view_pmDashboardPageDef" path="pmPages.pmDashboardPageDef"/>
     <page id="view_createProjectPageDef" path="pmPages.createProjectPageDef"/>
     <page id="view_plDashboardPageDef" path="plPages.plDashboardPageDef"/>
+    <page id="view_loginPageDef" path="view.pageDefs.loginPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <BC4JDataControl id="PMAppModuleDataControl" Package="model.services"

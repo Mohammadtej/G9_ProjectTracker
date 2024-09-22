@@ -2,21 +2,6 @@
 <SDM>
    <OverallProperties
       id="OverallProperties1"/>
-   <View
-      id="View2">
-      <property
-         name="activityId">HomeDashboard</property>
-      <property
-         name="x">151.63574</property>
-      <property
-         name="description">&lt;html>&lt;p>&lt;b>HomeDashboard&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
-      <property
-         name="y">203.23438</property>
-      <property
-         name="page">/HomeDashboard.jsf</property>
-      <property
-         name="exceptionHandler">false</property>
-   </View>
    <TaskFlowCall
       id="TaskFlowCall4">
       <property
@@ -34,16 +19,6 @@
       <property
          name="taskFlowId">pm-task-flow</property>
    </TaskFlowCall>
-   <ControlFlowCase
-      islink="true"
-      id="ControlFlowCase5"
-      from="View2"
-      to="TaskFlowCall4">
-      <property
-         name="fromOutcome">toPMDashboard</property>
-      <property
-         name="sdm:polyPoints">T50,151.63574,149.16797,403.69336,-11.1640625,L50</property>
-   </ControlFlowCase>
    <TaskFlowCall
       id="TaskFlowCall5">
       <property
@@ -61,16 +36,6 @@
       <property
          name="taskFlowId">pl-task-flow</property>
    </TaskFlowCall>
-   <ControlFlowCase
-      islink="true"
-      id="ControlFlowCase6"
-      from="View2"
-      to="TaskFlowCall5">
-      <property
-         name="fromOutcome">toPLDashboard</property>
-      <property
-         name="sdm:polyPoints">R46,192.63574,199.66797,407.82617,98.96875,L50</property>
-   </ControlFlowCase>
    <TaskFlowCall
       id="TaskFlowCall7">
       <property
@@ -88,16 +53,6 @@
       <property
          name="taskFlowId">tl-task-flow</property>
    </TaskFlowCall>
-   <ControlFlowCase
-      islink="true"
-      id="ControlFlowCase8"
-      from="View2"
-      to="TaskFlowCall7">
-      <property
-         name="fromOutcome">toTLDashboard</property>
-      <property
-         name="sdm:polyPoints">R50,193.92194,203.16797,414.29395,232.96875,L50</property>
-   </ControlFlowCase>
    <TaskFlowCall
       id="TaskFlowCall9">
       <property
@@ -115,14 +70,106 @@
       <property
          name="taskFlowId">tm-task-flow</property>
    </TaskFlowCall>
+   <TaskFlowCall
+      id="TaskFlowCall13">
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>admin-task-flow&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Call&lt;/p></property>
+      <property
+         name="activityId">admin-task-flow</property>
+      <property
+         name="x">419.46484</property>
+      <property
+         name="y">479.30078</property>
+      <property
+         name="documentReference">/WEB-INF/admin-task-flow.xml</property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="taskFlowId">admin-task-flow</property>
+   </TaskFlowCall>
+   <View
+      id="View16">
+      <property
+         name="activityId">login</property>
+      <property
+         name="x">203.5</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>login&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">197.23438</property>
+      <property
+         name="page">/login.jsf</property>
+      <property
+         name="exceptionHandler">false</property>
+   </View>
    <ControlFlowCase
       islink="true"
-      id="ControlFlowCase10"
-      from="View2"
+      id="ControlFlowCase17"
+      from="View16"
+      to="TaskFlowCall5">
+      <property
+         name="tosrcid">__3</property>
+      <property
+         name="fromOutcome">toPLDashboard</property>
+      <property
+         name="fromsrcid">__1</property>
+      <property
+         name="sdm:polyPoints">R42,244.5,190.16797,407.82617,98.96875,L50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase18"
+      from="View16"
+      to="TaskFlowCall7">
+      <property
+         name="tosrcid">__4</property>
+      <property
+         name="fromOutcome">toTLDashboard</property>
+      <property
+         name="fromsrcid">__1</property>
+      <property
+         name="sdm:polyPoints">R50,246.20918,197.16797,414.29395,232.96875,L50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase19"
+      from="View16"
       to="TaskFlowCall9">
+      <property
+         name="tosrcid">__5</property>
       <property
          name="fromOutcome">toTMDashboard</property>
       <property
-         name="sdm:polyPoints">R58,192.63574,210.16797,412.16113,355.23438,L50</property>
+         name="fromsrcid">__1</property>
+      <property
+         name="sdm:polyPoints">R58,244.5,204.16797,412.16113,355.23438,L50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase20"
+      from="View16"
+      to="TaskFlowCall13">
+      <property
+         name="tosrcid">__8</property>
+      <property
+         name="fromOutcome">toAdminDashboard</property>
+      <property
+         name="fromsrcid">__1</property>
+      <property
+         name="sdm:polyPoints">B50,203.5,251.16797,419.46484,425.23438,T50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase21"
+      from="View16"
+      to="TaskFlowCall4">
+      <property
+         name="tosrcid">__2</property>
+      <property
+         name="fromOutcome">toPMDashboard</property>
+      <property
+         name="fromsrcid">__1</property>
+      <property
+         name="sdm:polyPoints">T50,203.5,143.16797,403.69336,-11.1640625,L50</property>
    </ControlFlowCase>
 </SDM>

@@ -12,10 +12,45 @@
   BindingStyle="OracleName"
   CustomQuery="false"
   SelectAllAttributes="false"
-  PageIterMode="Full">
+  PageIterMode="Full"
+  AccessMode="DEFAULT">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.views.EmployeesVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewAccessor
+    Name="EmployeePositionsVO1"
+    ViewObjectName="model.views.staticvo.EmployeePositionsVO"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_Position"
+    ListVOName="EmployeePositionsVO1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Position"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="position"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="position"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
   <EntityUsage
     Name="EmployeeEO"
     Entity="model.entities.EmployeeEO"/>
+  <ViewAttribute
+    Name="Email"
+    PrecisionRule="true"
+    EntityAttrName="Email"
+    EntityUsage="EmployeeEO"
+    AliasName="EMAIL"/>
   <ViewAttribute
     Name="EmpId"
     IsNotNull="true"
@@ -30,9 +65,39 @@
     EntityUsage="EmployeeEO"
     AliasName="EMPLOYEE_NAME"/>
   <ViewAttribute
+    Name="Password"
+    PrecisionRule="true"
+    EntityAttrName="Password"
+    EntityUsage="EmployeeEO"
+    AliasName="PASSWORD"/>
+  <ViewAttribute
+    Name="Phonenumber"
+    PrecisionRule="true"
+    EntityAttrName="Phonenumber"
+    EntityUsage="EmployeeEO"
+    AliasName="PHONENUMBER"/>
+  <ViewAttribute
+    Name="Photopath"
+    PrecisionRule="true"
+    EntityAttrName="Photopath"
+    EntityUsage="EmployeeEO"
+    AliasName="PHOTOPATH"/>
+  <ViewAttribute
     Name="Position"
     PrecisionRule="true"
     EntityAttrName="Position"
     EntityUsage="EmployeeEO"
-    AliasName="POSITION"/>
+    AliasName="POSITION"
+    LOVName="LOV_Position">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
 </ViewObject>

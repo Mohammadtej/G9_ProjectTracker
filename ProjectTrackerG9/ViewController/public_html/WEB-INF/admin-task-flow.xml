@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="admin-task-flow">
+    <default-activity>register</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__1">
+      <managed-bean-name>RegisterUser</managed-bean-name>
+      <managed-bean-class>view.RegisterUser</managed-bean-class>
+      <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <view id="register">
+      <page>/register.jsf</page>
+    </view>
+  </task-flow-definition>
+</adfc-config>

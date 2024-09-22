@@ -20,6 +20,10 @@
         ResId="model.views.ProjectsVO_LABEL"/>
     </SchemaBasedProperties>
   </Properties>
+  <Variable
+    Name="retrievedPMId"
+    Kind="viewcriteria"
+    Type="oracle.jbo.domain.Number"/>
   <ViewAccessor
     Name="PMAppModule_PLs1"
     ViewObjectName="model.views.PLsForAParticularPMVO"
@@ -164,7 +168,7 @@
         ViewAttribute="PmId"
         Operator="="
         Conjunction="AND"
-        Value=":retrievedId"
+        Value=":retrievedPMId"
         IsBindVarValue="true"
         Required="Optional"/>
     </ViewCriteriaRow>

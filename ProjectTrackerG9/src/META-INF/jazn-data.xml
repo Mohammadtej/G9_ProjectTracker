@@ -105,6 +105,11 @@
                     <name>vandan</name>
                     <credentials>{903}Cy8dr3AQ1i1qF+iossz4o3YD1l+Qvr7+LXxjZY3PGwg=</credentials>
                 </user>
+                <user>
+                    <name>admin</name>
+                    <credentials>{903}pRZk82nJC7CzpzodWugwFQcRJEGMq7aMsS5X9UvnrkQ=</credentials>
+                    <display-name>Admin</display-name>
+                </user>
             </users>
         </realm>
     </jazn-realm>
@@ -225,6 +230,31 @@
                             </member>
                         </members>
                     </app-role>
+                    <app-role>
+                        <name>Admin</name>
+                        <class>oracle.security.jps.service.policystore.ApplicationRole</class>
+                        <members>
+                            <member>
+                                <class>oracle.security.jps.internal.core.principals.JpsXmlUserImpl</class>
+                                <name>admin</name>
+                            </member>
+                        </members>
+                    </app-role>
+                    <app-role>
+                        <class>oracle.security.jps.service.policystore.ApplicationRole</class>
+                        <name>test-all</name>
+                        <display-name>test-all</display-name>
+                        <members>
+                            <member>
+                                <class>oracle.security.jps.internal.core.principals.JpsAnonymousRoleImpl</class>
+                                <name>anonymous-role</name>
+                            </member>
+                            <member>
+                                <class>oracle.security.jps.internal.core.principals.JpsXmlUserImpl</class>
+                                <name>admin</name>
+                            </member>
+                        </members>
+                    </app-role>
                 </app-roles>
                 <jazn-policy>
                     <grant>
@@ -291,6 +321,23 @@
                             <permission>
                                 <class>oracle.adf.controller.security.TaskFlowPermission</class>
                                 <name>/WEB-INF/tm-task-flow.xml#tm-task-flow</name>
+                                <actions>view</actions>
+                            </permission>
+                        </permissions>
+                    </grant>
+                    <grant>
+                        <grantee>
+                            <principals>
+                                <principal>
+                                    <class>oracle.security.jps.service.policystore.ApplicationRole</class>
+                                    <name>Admin</name>
+                                </principal>
+                            </principals>
+                        </grantee>
+                        <permissions>
+                            <permission>
+                                <class>oracle.adf.controller.security.TaskFlowPermission</class>
+                                <name>/WEB-INF/admin-task-flow.xml#admin-task-flow</name>
                                 <actions>view</actions>
                             </permission>
                         </permissions>

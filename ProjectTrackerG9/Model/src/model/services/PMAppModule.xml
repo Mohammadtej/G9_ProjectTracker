@@ -43,6 +43,12 @@
   <ViewUsage
     Name="PLProjects"
     ViewObjectName="model.views.ProjectsVO"/>
+  <ViewUsage
+    Name="Employees"
+    ViewObjectName="model.views.EmployeesVO"/>
+  <ViewUsage
+    Name="EmployeePositions1"
+    ViewObjectName="model.views.staticvo.EmployeePositionsVO"/>
   <ViewLinkUsage
     Name="DocumentsForPMProject"
     ViewLinkObjectName="model.views.DocumentsForProject"

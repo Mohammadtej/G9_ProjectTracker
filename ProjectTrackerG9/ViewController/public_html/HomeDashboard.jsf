@@ -55,7 +55,7 @@
     
                             </af:panelGridLayout>
                         </af:panelBox>
-                        
+                        <af:button text="Admin Dashboard" id="b1" action="toAdminDashboard"/>
                     </af:panelGroupLayout>
                 </f:facet>
             </af:panelStretchLayout>

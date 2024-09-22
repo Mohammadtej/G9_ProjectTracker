@@ -1,6 +1,7 @@
 package model.services;
 
 
+import model.views.staticvo.EmployeePositionsVOImpl;
 import model.views.staticvo.StaticStatusVOImpl;
 
 import oracle.adf.share.ADFContext;
@@ -111,6 +112,22 @@ public class PMAppModuleImpl extends ApplicationModuleImpl {
      */
     public ViewObjectImpl getPLProjects() {
         return (ViewObjectImpl) findViewObject("PLProjects");
+    }
+
+    /**
+     * Container's getter for EmployeesVO1.
+     * @return EmployeesVO1
+     */
+    public ViewObjectImpl getEmployees() {
+        return (ViewObjectImpl) findViewObject("Employees");
+    }
+
+    /**
+     * Container's getter for EmployeePositions1.
+     * @return EmployeePositions1
+     */
+    public EmployeePositionsVOImpl getEmployeePositions1() {
+        return (EmployeePositionsVOImpl) findViewObject("EmployeePositions1");
     }
 }
 

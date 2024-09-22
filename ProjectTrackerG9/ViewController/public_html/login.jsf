@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="login.jsf" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:panelSplitter orientation="vertical" splitterPosition="50" id="ps1">
+                <f:facet name="first">
+                    <af:panelHeader text="Login" id="ph1">
+                        <f:facet name="context"/>
+                        <f:facet name="toolbar"/>
+                        <f:facet name="menuBar"/>
+                        <f:facet name="legend"/>
+                        <f:facet name="info"/>
+                    </af:panelHeader>
+                </f:facet>
+                <f:facet name="second">
+                    <af:panelGroupLayout layout="scroll" id="pgl1">
+                        <af:panelFormLayout id="pfl1">
+                            <af:inputText value="#{LoginUserManagedBean.email}" label="#{bindings.Email.hints.label}"
+                                          required="#{bindings.Email.hints.mandatory}"
+                                          columns="#{bindings.Email.hints.displayWidth}"
+                                          maximumLength="#{bindings.Email.hints.precision}"
+                                          shortDesc="#{bindings.Email.hints.tooltip}" id="it1">
+                                <f:validator binding="#{bindings.Email.validator}"/>
+                            </af:inputText>
+                            <af:inputText value="#{LoginUserManagedBean.password}"
+                                          label="#{bindings.Password.hints.label}"
+                                          required="#{bindings.Password.hints.mandatory}"
+                                          columns="#{bindings.Password.hints.displayWidth}"
+                                          maximumLength="#{bindings.Password.hints.precision}"
+                                          shortDesc="#{bindings.Password.hints.tooltip}" id="it2">
+                                <f:validator binding="#{bindings.Password.validator}"/>
+                            </af:inputText>
+                            <af:selectOneChoice value="#{LoginUserManagedBean.position}"
+                                                label="#{bindings.Position.label}"
+                                                required="#{bindings.Position.hints.mandatory}"
+                                                shortDesc="#{bindings.Position.hints.tooltip}" id="soc1">
+                                <f:selectItems value="#{bindings.Position.items}" id="si1"/>
+                                <f:validator binding="#{bindings.Position.validator}"/>
+                            </af:selectOneChoice>
+                            <f:facet name="footer">
+                                <af:button text="Submit" id="b1" action="#{LoginUserManagedBean.doSubmit}"/>
+                            </f:facet>
+                        </af:panelFormLayout>
+                    </af:panelGroupLayout>
+                </f:facet>
+            </af:panelSplitter>
+        </af:form>
+    </af:document>
+</f:view>
