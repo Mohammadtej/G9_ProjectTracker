@@ -5,7 +5,7 @@
     <c:set var="viewcontrollerBundle" value="#{adfBundle['view.ViewControllerBundle']}"/>
     <af:document title="untitled1.jsf" id="d1">
         <af:messages id="m1"/>
-        <af:form id="f1">
+        <af:form id="f1" usesUpload="true">
             <af:selectOneChoice
                                 label="#{viewcontrollerBundle.ASSIGN_TO_PROJECT_LEADER}"
                                 required="#{bindings.ProjectLeadersForAParticularPM.hints.mandatory}"
@@ -42,6 +42,9 @@
                     <f:selectItems value="#{bindings.Status.items}" id="si2"/>
                     <f:validator binding="#{bindings.Status.validator}"/>
                 </af:selectOneChoice>
+                <af:inputFile id="fileUpload" label="Upload File" valueChangeListener="#{createProjectBean.handleFileUpload}" autoSubmit="true"
+                              >
+                </af:inputFile>
                 <f:facet name="footer">
                     <af:button text="Submit" id="b1" action="#{createProjectBean.doSubmit}"/>
                 </f:facet>

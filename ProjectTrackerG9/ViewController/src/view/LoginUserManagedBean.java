@@ -97,7 +97,9 @@ public class LoginUserManagedBean {
                 context.getExternalContext().getSessionMap().put("userPhone", userRow.getAttribute("Phonenumber"));
                 context.getExternalContext().getSessionMap().put("userEmail", getEmail());
                 context.getExternalContext().getSessionMap().put("userPhotoPath", userRow.getAttribute("Photopath"));
+                
                 if ("PM".equals(positionVal)) {
+                    System.out.println(positionVal);
                     return "toPMDashboard"; // Navigate to admin home
                 } else if ("PL".equals(positionVal)) {
                     return "toPLDashboard"; // Navigate to user home

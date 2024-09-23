@@ -26,11 +26,20 @@
         <name>Submit</name>
       </outcome>
     </task-flow-return>
+    <task-flow-return id="Logout">
+      <outcome>
+        <name>Logout</name>
+      </outcome>
+    </task-flow-return>
     <control-flow-rule id="__1">
       <from-activity-id>pmDashboard</from-activity-id>
       <control-flow-case id="__2">
         <from-outcome>createProject</from-outcome>
         <to-activity-id>createProject</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__4">
+        <from-outcome>toLogout</from-outcome>
+        <to-activity-id>Logout</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
   </task-flow-definition>

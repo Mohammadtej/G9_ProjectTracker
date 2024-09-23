@@ -47,6 +47,13 @@
     Type="java.math.BigDecimal"
     ColumnType="NUMBER"
     TableName="G9_TL"/>
+  <Attribute
+    Name="ProjectCode"
+    ColumnName="PROJECT_CODE"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="G9_TL"/>
   <AccessorAttribute
     Name="Module"
     Association="model.entities.FkModulesTlIdAssoc"
@@ -82,6 +89,13 @@
     AssociationOtherEnd="model.entities.FkPlTlIdAssoc.Tl"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="Project"
+    Association="model.entities.FkProjectCodeAssoc"
+    AssociationEnd="model.entities.FkProjectCodeAssoc.Project"
+    AssociationOtherEnd="model.entities.FkProjectCodeAssoc.Tl"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
   <Key
     Name="SysC009722503">
     <DesignTime>
@@ -99,6 +113,17 @@
     </DesignTime>
     <AttrArray Name="Attributes">
       <Item Value="model.entities.TlEO.TlId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="FkProjectCode">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C009722512"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_PROJECT_CODE"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.entities.TlEO.ProjectCode"/>
     </AttrArray>
   </Key>
   <Key

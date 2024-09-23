@@ -47,6 +47,13 @@
     Type="java.math.BigDecimal"
     ColumnType="NUMBER"
     TableName="G9_TM"/>
+  <Attribute
+    Name="ProjectCode"
+    ColumnName="PROJECT_CODE"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="G9_TM"/>
   <AccessorAttribute
     Name="Submodule"
     Association="model.entities.FkSubmoduleTmIdAssoc"
@@ -66,6 +73,13 @@
     Association="model.entities.FkTmEmpIdAssoc"
     AssociationEnd="model.entities.FkTmEmpIdAssoc.Employee"
     AssociationOtherEnd="model.entities.FkTmEmpIdAssoc.Tm"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="Project"
+    Association="model.entities.FkProjectCodeTmAssoc"
+    AssociationEnd="model.entities.FkProjectCodeTmAssoc.Project"
+    AssociationOtherEnd="model.entities.FkProjectCodeTmAssoc.Tm"
     Type="oracle.jbo.server.EntityImpl"
     IsUpdateable="true"/>
   <Key
@@ -97,6 +111,17 @@
     </DesignTime>
     <AttrArray Name="Attributes">
       <Item Value="model.entities.TmEO.TlId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="FkProjectCodeTm">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C009722512"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_PROJECT_CODE_TM"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.entities.TmEO.ProjectCode"/>
     </AttrArray>
   </Key>
   <Key

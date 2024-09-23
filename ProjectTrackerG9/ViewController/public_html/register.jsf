@@ -2,6 +2,8 @@
 <!DOCTYPE html>
 <f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
     <af:document title="register.jsf" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
             <af:panelSplitter orientation="vertical" splitterPosition="50" id="ps1">
                 <f:facet name="first">
                     <af:panelHeader text="Register a new user" id="ph1">
@@ -13,16 +15,64 @@
                     </af:panelHeader>
                 </f:facet>
                 <f:facet name="second">
-                    <af:form>
-                        <af:panelFormLayout>
-                          <af:inputText label="Username" required="true" value="#{RegisterUser.userName}"/>
-                          <af:inputText label="Email" required="true" value="#{RegisterUser.email}"/>
-                          <af:inputText label="Password" required="true" secret="true"
-                                        value="#{RegisterUser.password}"/>
-                          <af:commandButton text="Register" action="#{RegisterUser.doRegister}"/>
-                        </af:panelFormLayout>
-                    </af:form>
+                    <af:panelFormLayout id="pfl1">
+                        <af:inputText value="#{RegisterUserManagedBean.email}" label="#{bindings.Email.hints.label}"
+                                      required="#{bindings.Email.hints.mandatory}"
+                                      columns="#{bindings.Email.hints.displayWidth}"
+                                      maximumLength="#{bindings.Email.hints.precision}"
+                                      shortDesc="#{bindings.Email.hints.tooltip}" id="it1">
+                            <f:validator binding="#{bindings.Email.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{RegisterUserManagedBean.name}"
+                                      label="#{bindings.EmployeeName.hints.label}"
+                                      required="#{bindings.EmployeeName.hints.mandatory}"
+                                      columns="#{bindings.EmployeeName.hints.displayWidth}"
+                                      maximumLength="#{bindings.EmployeeName.hints.precision}"
+                                      shortDesc="#{bindings.EmployeeName.hints.tooltip}" id="it2">
+                            <f:validator binding="#{bindings.EmployeeName.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{RegisterUserManagedBean.phoneNumber}"
+                                      label="#{bindings.Phonenumber.hints.label}"
+                                      required="#{bindings.Phonenumber.hints.mandatory}"
+                                      columns="#{bindings.Phonenumber.hints.displayWidth}"
+                                      maximumLength="#{bindings.Phonenumber.hints.precision}"
+                                      shortDesc="#{bindings.Phonenumber.hints.tooltip}" id="it3">
+                            <f:validator binding="#{bindings.Phonenumber.validator}"/>
+                        </af:inputText>
+                        <af:selectOneChoice value="#{RegisterUserManagedBean.position}" label="#{bindings.Position.label}"
+                                            required="#{bindings.Position.hints.mandatory}"
+                                            shortDesc="#{bindings.Position.hints.tooltip}" id="soc1">
+                            <f:selectItems value="#{bindings.Position.items}" id="si1"/>
+                            <f:validator binding="#{bindings.Position.validator}"/>
+                        </af:selectOneChoice>
+                        <af:inputText value="#{RegisterUserManagedBean.password}"
+                                      label="#{bindings.Password.hints.label}"
+                                      required="#{bindings.EmployeeName.hints.mandatory}"
+                                      columns="#{bindings.EmployeeName.hints.displayWidth}"
+                                      maximumLength="#{bindings.EmployeeName.hints.precision}"
+                                      shortDesc="#{bindings.EmployeeName.hints.tooltip}" id="it4">
+                            <f:validator binding="#{bindings.EmployeeName.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{RegisterUserManagedBean.confirmPassword}" label="Confirm Password"
+                                      required="#{bindings.Password.hints.mandatory}"
+                                      columns="#{bindings.Password.hints.displayWidth}"
+                                      maximumLength="#{bindings.Password.hints.precision}"
+                                      shortDesc="#{bindings.Password.hints.tooltip}" id="it5">
+                            <f:validator binding="#{bindings.Password.validator}"/>
+                        </af:inputText>
+                        <af:selectOneChoice value="#{bindings.ProjectManagers.inputValue}"
+                                            label="#{bindings.ProjectManagers.label}"
+                                            required="#{bindings.ProjectManagers.hints.mandatory}"
+                                            shortDesc="#{bindings.ProjectManagers.hints.tooltip}" id="soc2">
+                            <f:selectItems value="#{bindings.ProjectManagers.items}" id="si2"/>
+                            <f:validator binding="#{bindings.ProjectManagers.validator}"/>
+                        </af:selectOneChoice>
+                        <f:facet name="footer">
+                            <af:button text="Submit" id="b1" action="#{RegisterUserManagedBean.doRegister}"/>
+                        </f:facet>
+                    </af:panelFormLayout>
                 </f:facet>
             </af:panelSplitter>
+        </af:form>
     </af:document>
 </f:view>

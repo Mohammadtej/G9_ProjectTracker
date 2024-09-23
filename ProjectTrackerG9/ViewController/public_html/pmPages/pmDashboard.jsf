@@ -12,9 +12,12 @@
                         <af:panelHeader text="#{viewcontrollerBundle.WELCOME_TO_PROJECT_MANAGER_DASHBOARD}" id="ph1">
                             <f:facet name="context"/>
                             <f:facet name="toolbar"/>
-                            <f:facet name="menuBar"/>
+                            <f:facet name="menuBar">
+                                <af:button text="Logout" id="b2" action="#{LogoutUserManagedBean.doLogout}"/>
+                            </f:facet>
                             <f:facet name="legend"/>
                             <f:facet name="info"/>
+                            <af:outputText value="#{sessionScope.userName} " id="ot15"/>
                         </af:panelHeader>
                         <!-- Header -->
                     </af:gridCell>
@@ -100,6 +103,12 @@
                                                     <f:validator binding="#{row.bindings.Status.validator}"/>
                                                 </af:selectOneChoice>
                                             </af:column>
+                                            <af:column headerText="Uploaded File" id="c8">
+                                                <af:link text="Download File"
+                                                    id="l1" action="#{TaskFlowManagedBean.downloadFile}"
+                                                         rendered="true" disabled="false"/>
+                                            </af:column>
+                                            
                                         </af:table>
                                     </f:facet>
                                     <f:facet name="second">

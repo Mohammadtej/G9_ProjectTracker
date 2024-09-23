@@ -137,6 +137,12 @@
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
+  <ViewAttribute
+    Name="ProjectFilePath"
+    PrecisionRule="true"
+    EntityAttrName="ProjectFilePath"
+    EntityUsage="ProjectEO"
+    AliasName="PROJECT_FILE_PATH"/>
   <ViewCriteria
     Name="FilterProjectsForProjectManager"
     ViewObjectName="model.views.ProjectsVO"

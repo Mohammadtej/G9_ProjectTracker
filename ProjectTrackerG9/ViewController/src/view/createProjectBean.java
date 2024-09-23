@@ -1,5 +1,6 @@
 package view;
 
+import java.io.File;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
@@ -21,6 +22,19 @@ import oracle.jbo.Row;
 import oracle.jbo.ViewObject;
 import oracle.jbo.ApplicationModule;
 
+import java.util.UUID;
+
+import javax.faces.event.ValueChangeEvent;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ValueChangeEvent;
+import org.apache.myfaces.trinidad.model.UploadedFile;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
+import java.util.UUID;
+import org.apache.myfaces.trinidad.model.UploadedFile;
 
 public class createProjectBean {
     private static BigDecimal projectCodeSeq = new BigDecimal("0");
@@ -31,6 +45,18 @@ public class createProjectBean {
     private Date startDate;
     private Date endDate;
     private String status;
+    private static UploadedFile uploadedFile;
+   //private static String DIRECTORY_PATH=System.getProperty("user.dir") + File.separator + "uploads";
+    private static String DIRECTORY_PATH="/Users/mtejabwa/Documents/projectFiles";
+    private String filePath;
+    
+    @SuppressWarnings("oracle.jdeveloper.java.semantic-warning")
+    public void setUploadedFile(UploadedFile uploadedFile) {
+        this.uploadedFile = uploadedFile;
+    }
+    public UploadedFile getUploadedFile() {
+        return uploadedFile;
+    }
     
     public createProjectBean() {
         String ret = filterProjectLeaders();
@@ -93,9 +119,40 @@ public class createProjectBean {
         return status;
     }
     
+    public String getFilePath() {
+        return filePath;
+    }
+    
     private static synchronized BigDecimal getNextProjectCode() {
         projectCodeSeq = projectCodeSeq.add(BigDecimal.ONE); // Increment by 1
         return projectCodeSeq;
+    }
+    
+    public void handleFileUpload(ValueChangeEvent event) {
+        System.out.println("In Handle Upload");
+       UploadedFile file = (UploadedFile) event.getNewValue();
+       if (file != null) {
+           setUploadedFile(file);
+           System.out.println("File uploaded: " + uploadedFile.getFilename());
+           try{
+               File uploadDir = new File(DIRECTORY_PATH);
+               if (!uploadDir.exists()) {
+                   uploadDir.mkdirs();
+               }
+               String uniqueFilename = UUID.randomUUID().toString() + "_" + file.getFilename();
+               File savedFile = new File(uploadDir, uniqueFilename);
+               Files.copy(file.getInputStream(), savedFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+               String filePath = savedFile.getAbsolutePath();
+               System.out.println(filePath);
+               this.filePath=filePath;
+               FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("File uploaded successfully!"));
+           }catch(IOException e){
+               e.printStackTrace();
+               FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Error uploading file."));
+           }
+       } else {
+           System.out.println("No file uploaded.");
+       }
     }
         
     public String doSubmit() {
@@ -115,7 +172,7 @@ public class createProjectBean {
         */
         
         setProjectCode(getNextProjectCode());
-        setPmid(BigDecimal.valueOf(getCurrentUser()));
+        setPmid(getCurrentUser());
         
         System.out.println(getPmid());
         System.out.println(getProjectCode());
@@ -140,10 +197,10 @@ public class createProjectBean {
             newRow.setAttribute("ProjectName", getProjectName());
             newRow.setAttribute("StartDate", getStartDate()); // Today's date
             newRow.setAttribute("EndDate", getEndDate()); // Example end date
-            newRow.setAttribute("PmId", 1); // Project manager id (make sure this exists)
+            newRow.setAttribute("PmId", getCurrentUser()); // Project manager id (make sure this exists)
             newRow.setAttribute("PlId", getPlid()); // Project leader id (ensure it exists in the PL table)
             newRow.setAttribute("Status", getStatus()); // Example status
-            
+            newRow.setAttribute("ProjectFilePath", getFilePath());
             // Insert the new row into the View Object
             projectVO.insertRow(newRow);
             
@@ -172,15 +229,9 @@ public class createProjectBean {
         }
     }
     
-    public Integer getCurrentUser() {
-        String userName = ADFContext.getCurrent().getSecurityContext().getUserName();
-        System.out.println("In the managed bean" + userName);
-        try {
-            return Integer.parseInt(userName);  // Convert to Integer
-        } catch (NumberFormatException e) {
-            // Handle exception in case userName is not a number
-            return null;  // Or return a default value, e.g., -1
-        }
+    public BigDecimal getCurrentUser() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        return (BigDecimal) context.getExternalContext().getSessionMap().get("userId");
     }
 
     public String filterProjectLeaders() {

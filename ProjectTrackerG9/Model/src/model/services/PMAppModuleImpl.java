@@ -122,12 +122,46 @@ public class PMAppModuleImpl extends ApplicationModuleImpl {
         return (ViewObjectImpl) findViewObject("Employees");
     }
 
+
     /**
-     * Container's getter for EmployeePositions1.
-     * @return EmployeePositions1
+     * Container's getter for EmployeePositionsVO1.
+     * @return EmployeePositionsVO1
      */
-    public EmployeePositionsVOImpl getEmployeePositions1() {
-        return (EmployeePositionsVOImpl) findViewObject("EmployeePositions1");
+    public EmployeePositionsVOImpl getEmployeePositions() {
+        return (EmployeePositionsVOImpl) findViewObject("EmployeePositions");
+    }
+
+    /**
+     * Container's getter for ProjectManagers1.
+     * @return ProjectManagers1
+     */
+    public ViewObjectImpl getProjectManagers() {
+        return (ViewObjectImpl) findViewObject("ProjectManagers");
+    }
+
+    /**
+     * Container's getter for ProjectLeadersVO1.
+     * @return ProjectLeadersVO1
+     */
+    public ViewObjectImpl getProjectLeaders() {
+        return (ViewObjectImpl) findViewObject("ProjectLeaders");
+    }
+
+
+    /**
+     * Container's getter for TeamMembers1.
+     * @return TeamMembers1
+     */
+    public ViewObjectImpl getTeamMembers() {
+        return (ViewObjectImpl) findViewObject("TeamMembers");
+    }
+
+    /**
+     * Container's getter for TeamLeadersVO1.
+     * @return TeamLeadersVO1
+     */
+    public ViewObjectImpl getTeamLeaders() {
+        return (ViewObjectImpl) findViewObject("TeamLeaders");
     }
 }
 

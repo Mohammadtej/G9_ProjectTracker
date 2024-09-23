@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="registerPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="Employees" RangeSize="25" DataControl="PMAppModuleDataControl" id="EmployeesIterator"/>
+    <iterator id="ProjectManagersIterator" Binds="ProjectManagers" DataControl="PMAppModuleDataControl" RangeSize="25"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="EmployeesIterator" id="Email">
+      <AttrNames>
+        <Item Value="Email"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EmployeesIterator" id="EmployeeName">
+      <AttrNames>
+        <Item Value="EmployeeName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EmployeesIterator" id="Phonenumber">
+      <AttrNames>
+        <Item Value="Phonenumber"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="EmployeesIterator" StaticList="false" Uses="LOV_Position" id="Position" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="EmployeesIterator" id="Password">
+      <AttrNames>
+        <Item Value="Password"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="ProjectManagersIterator" ListOperMode="navigation" ListIter="ProjectManagersIterator"
+          id="ProjectManagers" DTSupportsMRU="true" SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="EmployeeName"/>
+        <Item Value="PmId"/>
+      </AttrNames>
+    </list>
+  </bindings>
+</pageDefinition>

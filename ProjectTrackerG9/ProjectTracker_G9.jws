@@ -137,20 +137,6 @@
             <value n="isJDK" v="false"/>
          </hash>
       </list>
-      <list n="modulePathLibraryReferences">
-         <hash>
-            <value n="id" v="Wls-api.jar"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
-            <value n="id" v="Weblogic.jar"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
-            <value n="id" v="Wlthint3client.jar"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-      </list>
    </hash>
    <hash n="oracle.jdeveloper.model.PathsConfiguration">
       <hash n="ApplicationSrcContentSet">

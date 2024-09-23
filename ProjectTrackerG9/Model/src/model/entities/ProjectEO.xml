@@ -95,6 +95,18 @@
       <Attr Name="_DisplaySize" Value="15"/>
     </DesignTime>
   </Attribute>
+  <Attribute
+    Name="ProjectFilePath"
+    Precision="200"
+    ColumnName="PROJECT_FILE_PATH"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="G9_PROJECT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+  </Attribute>
   <AccessorAttribute
     Name="Document"
     Association="model.entities.FkDocumentProjectCodeAssoc"
@@ -128,6 +140,20 @@
     Association="model.entities.FkModuleProjectCodeAssoc"
     AssociationEnd="model.entities.FkModuleProjectCodeAssoc.Module"
     AssociationOtherEnd="model.entities.FkModuleProjectCodeAssoc.Project"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="Tl"
+    Association="model.entities.FkProjectCodeAssoc"
+    AssociationEnd="model.entities.FkProjectCodeAssoc.Tl"
+    AssociationOtherEnd="model.entities.FkProjectCodeAssoc.Project"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="Tm"
+    Association="model.entities.FkProjectCodeTmAssoc"
+    AssociationEnd="model.entities.FkProjectCodeTmAssoc.Tm"
+    AssociationOtherEnd="model.entities.FkProjectCodeTmAssoc.Project"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
   <Key

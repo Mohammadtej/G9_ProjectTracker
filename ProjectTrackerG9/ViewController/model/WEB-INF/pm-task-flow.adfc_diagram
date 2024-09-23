@@ -74,4 +74,29 @@
       <property
          name="exceptionHandler">false</property>
    </TaskFlowReturn>
+   <TaskFlowReturn
+      id="TaskFlowReturn7">
+      <property
+         name="activityId">Logout</property>
+      <property
+         name="x">263.0</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>Logout&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Return&lt;/p>&lt;p>Outcome:  Logout&lt;/p></property>
+      <property
+         name="y">401.60156</property>
+      <property
+         name="finish">true</property>
+      <property
+         name="exceptionHandler">false</property>
+   </TaskFlowReturn>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase8"
+      from="View2"
+      to="TaskFlowReturn7">
+      <property
+         name="fromOutcome">toLogout</property>
+      <property
+         name="sdm:polyPoints">B50,260.9746,303.23438,263.0,347.53516,T50</property>
+   </ControlFlowCase>
 </SDM>

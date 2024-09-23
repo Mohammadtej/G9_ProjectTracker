@@ -172,4 +172,39 @@
       <property
          name="sdm:polyPoints">T50,203.5,143.16797,403.69336,-11.1640625,L50</property>
    </ControlFlowCase>
+   <View
+      id="View22">
+      <property
+         name="activityId">register</property>
+      <property
+         name="x">15.5</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>register&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">195.23438</property>
+      <property
+         name="page">/register.jsf</property>
+      <property
+         name="exceptionHandler">false</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase23"
+      from="View16"
+      to="View22">
+      <property
+         name="fromOutcome">toRegister</property>
+      <property
+         name="sdm:polyPoints">L46,162.5,193.66797,56.56605,191.66797,R46</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase24"
+      from="View22"
+      to="View16">
+      <property
+         name="fromOutcome">toLogin</property>
+      <property
+         name="sdm:polyPoints">R54,56.5,198.66797,162.43398,200.66797,L54</property>
+   </ControlFlowCase>
 </SDM>

@@ -33,6 +33,9 @@
       <id>admin-task-flow</id>
     </task-flow-reference>
   </task-flow-call>
+  <view id="register">
+    <page>/register.jsf</page>
+  </view>
   <control-flow-rule id="__1">
     <from-activity-id>login</from-activity-id>
     <control-flow-case id="__2">
@@ -55,10 +58,31 @@
       <from-outcome>toAdminDashboard</from-outcome>
       <to-activity-id>admin-task-flow</to-activity-id>
     </control-flow-case>
+    <control-flow-case id="__10">
+      <from-outcome>toRegister</from-outcome>
+      <to-activity-id>register</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__11">
+    <from-activity-id>register</from-activity-id>
+    <control-flow-case id="__12">
+      <from-outcome>toLogin</from-outcome>
+      <to-activity-id>login</to-activity-id>
+    </control-flow-case>
   </control-flow-rule>
   <managed-bean id="__9">
     <managed-bean-name>LoginUserManagedBean</managed-bean-name>
     <managed-bean-class>view.LoginUserManagedBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__13">
+    <managed-bean-name>RegisterUserManagedBean</managed-bean-name>
+    <managed-bean-class>view.RegisterUserManagedBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__6">
+    <managed-bean-name>LogoutUserManagedBean</managed-bean-name>
+    <managed-bean-class>view.LogoutManagedBean</managed-bean-class>
     <managed-bean-scope>session</managed-bean-scope>
   </managed-bean>
 </adfc-config>
