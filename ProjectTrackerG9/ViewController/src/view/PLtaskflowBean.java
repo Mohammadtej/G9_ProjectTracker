@@ -18,18 +18,29 @@ import oracle.adf.model.binding.DCIteratorBinding;
 import oracle.jbo.ApplicationModule;
 import oracle.jbo.Row;
 import oracle.jbo.ViewObject;
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 
 @ManagedBean(name = "PLtaskflowBean")
-
-
+@ViewScoped
 public class PLtaskflowBean{
     private Map<Integer, String> statusMap;
     
     public PLtaskflowBean() {
+        System.out.println("In normal constructor");
         statusMap = new HashMap<>();
         statusMap.put(0, "In Progress");
         statusMap.put(1, "Completed");
         //String ref = ViewProjects();
+    }
+    
+    @PostConstruct
+    public void init() {
+        // Code that runs when the page is loaded or the bean is instantiated
+        System.out.println("PL Bean initialized on page load - post constructor");
+        ViewProjects();
+        //fetchLatestNotifications();
     }
     
     public Map<Integer, String> getStatusMap() {

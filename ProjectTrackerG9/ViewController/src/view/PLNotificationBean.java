@@ -17,6 +17,8 @@ import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.time.format.DateTimeFormatter;
 
+import javax.annotation.PostConstruct;
+
 
 @ManagedBean
 @ViewScoped
@@ -33,7 +35,16 @@ public class PLNotificationBean {
         //notifications.add(new Notification("You have a new message.", "2024-09-23"));
         //notifications.add(new Notification("Your password is expiring soon.", "2024-09-22"));
     }
+    
+    @PostConstruct
+    public void init() {
+        // Code that runs when the page is loaded or the bean is instantiated
+        System.out.println("In post construct notification");
+        //ViewProjects();
+        //fetchLatestNotifications();
+    }
 
+    
     // Method to retrieve the list of notifications
     public List<Notification> getNotifications() {
         return notifications;

@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE html>
 <f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  
   <af:document title="plDashboard.jsf" id="d1">
     <af:messages id="m1"/>
     <af:form id="f1">
@@ -19,24 +20,24 @@
         </af:gridRow>
         <af:gridRow height="100%" id="gr1">
           <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc2">
-            <af:panelSplitter id="ps1">
+            <af:panelSplitter id="ps1" splitterPosition="241">
               <f:facet name="first">
   <af:panelGridLayout id="pgl2">
     <af:gridRow marginTop="5px" height="auto" id="gr3">
       <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc3">
-        <af:button text="View Projects" id="b1" action="#{PLtaskflowBean.ViewProjects}"/>
+        <af:button text="View Projects" id="b1" action="#{viewScope.PLtaskflowBean.ViewProjects}" immediate="true"/>
       </af:gridCell>
     </af:gridRow>
 
     <af:gridRow marginTop="5px" height="auto" id="gr4">
       <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc4">
-        <af:button text="Create Document" id="b2" action="#{PLtaskflowBean.createDocument}"/>
+        <af:button text="Create Document" id="b2" action="createDocument"/>
       </af:gridCell>
     </af:gridRow>
 
     <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr5">
       <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc5">
-        <af:button text="Create Module" id="b3" action="#{PLtaskflowBean.createModule}"/>
+        <af:button text="Create Module" id="b3" action="createModule"/>
       </af:gridCell>
     </af:gridRow>
 

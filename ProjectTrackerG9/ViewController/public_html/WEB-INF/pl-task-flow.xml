@@ -8,7 +8,7 @@
     <managed-bean id="__1">
       <managed-bean-name>PLtaskflowBean</managed-bean-name>
       <managed-bean-class>view.PLtaskflowBean</managed-bean-class>
-      <managed-bean-scope>session</managed-bean-scope>
+      <managed-bean-scope>view</managed-bean-scope>
     </managed-bean>
     <managed-bean id="__11">
       <managed-bean-name>createDocumentBean</managed-bean-name>
@@ -28,6 +28,16 @@
     <managed-bean id="__14">
       <managed-bean-name>Notification</managed-bean-name>
       <managed-bean-class>view.Notification</managed-bean-class>
+      <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__15">
+      <managed-bean-name>ProjectLeaderBean</managed-bean-name>
+      <managed-bean-class>view.NewPlTaskFlowBean</managed-bean-class>
+      <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__16">
+      <managed-bean-name>NewPlTaskFlowBean</managed-bean-name>
+      <managed-bean-class>view.NewPlTaskFlowBean</managed-bean-class>
       <managed-bean-scope>view</managed-bean-scope>
     </managed-bean>
     <view id="plDashboard">
