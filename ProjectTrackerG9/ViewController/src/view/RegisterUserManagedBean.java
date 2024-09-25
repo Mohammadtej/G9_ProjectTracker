@@ -27,7 +27,6 @@ import oracle.adf.controller.TaskFlowId;
 import oracle.adf.controller.TaskFlowId;
 import oracle.adf.controller.TaskFlowContext;
 import oracle.adf.controller.ControllerContext;
-import oracle.adf.controller.internal.binding.DCTaskFlowBinding;
 
 import javax.faces.context.FacesContext;
 import oracle.adf.view.rich.context.AdfFacesContext;
@@ -44,7 +43,7 @@ public class RegisterUserManagedBean {
     private String password;
     private String confirmPassword;
     private Map<String, String> positionMap;
-    private int pmRendered;
+    private String pmRendered;
     private boolean plRendered;
     private boolean tlRendered;
     
@@ -57,7 +56,7 @@ public class RegisterUserManagedBean {
         positionMap.put("Team Leader", "TL");
         positionMap.put("Team Member", "TM");
         positionMap.put("Admin", "AD");
-        pmRendered = 0;
+        pmRendered = "false";
         plRendered = false;
         tlRendered = false;
     }
@@ -248,34 +247,38 @@ public class RegisterUserManagedBean {
 
     public void changePositionListener(ValueChangeEvent valueChangeEvent) {
         String newValue = (String)valueChangeEvent.getNewValue();
+        setPosition(newValue);
         String positionVal = positionMap.get(newValue);
         
         System.out.println("New Value " + positionVal);
         if (positionVal.equals("PL")) {
             System.out.println("Hereeeeeee at last");
-            setPmRendered(1);
+            setPmRendered("true");
             this.plRendered = false;
             this.tlRendered = false;
         } else if(positionVal.equals("TL")) {
-            setPmRendered(0);
+            setPmRendered("false");
             this.plRendered = true;
             this.tlRendered = false;
         } else if(positionVal.equals("TM")) {
-            setPmRendered(0);
+            setPmRendered("false");
             this.plRendered = false;
             this.tlRendered = true;
         } else {
-            setPmRendered(0);
+            setPmRendered("false");
             this.plRendered = false;
             this.tlRendered = false;
         }
+        
+        System.out.println(getPmRendered());
+        System.out.println(getPosition());
     }
 
-    public void setPmRendered(int pmRendered) {
+    public void setPmRendered(String pmRendered) {
         this.pmRendered = pmRendered;
     }
 
-    public int getPmRendered() {
+    public String getPmRendered() {
         return pmRendered;
     }
 

@@ -30,6 +30,25 @@
                                 <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr3">
                                     <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc3"/>
                                 </af:gridRow>
+
+ <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr6">
+      <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc6">
+        <af:commandButton text="Fetch Latest notifications" 
+                          action="#{viewScope.tMNotificationBean.viewNotifications}"/>
+      </af:gridCell>
+    </af:gridRow>
+
+    <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr7">
+      <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc7" halign="stretch">
+        <af:table value="#{tMNotificationBean.notifications}" var="notification"
+                  rows="10" emptyText="No notifications available" 
+                  id="plnot1" immediate="true">
+          <af:column headerText="Messages" id="not1">
+            <af:outputText value="#{notification.message}" id="not11"/>
+          </af:column>
+        </af:table>
+      </af:gridCell>
+    </af:gridRow>
                             </af:panelGridLayout>
                         </f:facet>
                         <f:facet name="second">

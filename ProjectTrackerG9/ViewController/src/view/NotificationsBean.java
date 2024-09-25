@@ -17,6 +17,8 @@ import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.time.format.DateTimeFormatter;
 
+import javax.annotation.PostConstruct;
+
 
 @ManagedBean
 @ViewScoped
@@ -26,12 +28,19 @@ public class NotificationsBean {
 
     // Constructor to initialize the notification list
     public NotificationsBean() {
-        System.out.println("Here");
+        System.out.println("Pre construct in Notifications bean");
         notifications = new ArrayList<>();
         //fetchLatestNotifications();
         // Example notifications (you can add notifications dynamically as needed)
         //notifications.add(new Notification("You have a new message.", "2024-09-23"));
         //notifications.add(new Notification("Your password is expiring soon.", "2024-09-22"));
+    }
+    
+    @PostConstruct
+    public void init() {
+        // Code that runs when the page is loaded or the bean is instantiated
+        System.out.println("Notifications Bean Post construct");
+        //fetchLatestNotifications();
     }
 
     // Method to retrieve the list of notifications
@@ -67,7 +76,7 @@ public class NotificationsBean {
         DCBindingContainer bindings = (DCBindingContainer) bindingContext.getCurrentBindingsEntry();
 
         // Get the iterator binding for your View Object (replace 'YourIteratorName' with the actual iterator name)
-        DCIteratorBinding iteratorBinding = bindings.findIteratorBinding("PLDocumentsIterator");
+        DCIteratorBinding iteratorBinding = bindings.findIteratorBinding("PMDocumentsIterator");
         
         
         // Ensure the iterator is valid and has rows to iterate over

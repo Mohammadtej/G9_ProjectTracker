@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="model.services.PMAppModule">
+      <AppModuleConfig name="19229A28F32" JDBCName="G9" DeployPlatform="LOCAL" jbo.project="model.Model" IsLazyLoadingTrue="true" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory" BC4JConfigName="PMAppModuleLocal" ApplicationName="model.services.PMAppModule" DBconnection="java:comp/env/jdbc/G9DS">
+         <Database jbo.locking.mode="optimistic" jbo.TypeMapEntries="OracleApps" JDBCDataSource="java:comp/env/jdbc/G9DS" jbo.SQLBuilder="Oracle"/>
+         <Security AppModuleJndiName="model.services.PMAppModule"/>
+         <Tester FullProxyInterfaceName="model.services.common.PMAppModule"/>
+         <Custom ns0:tester_classloader_enabled="true" ns0:_testers_credentials_needed="false" xmlns:ns0="http://xmlns.oracle.com/bc4j/configuration"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>

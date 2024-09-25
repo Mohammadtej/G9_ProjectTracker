@@ -49,16 +49,6 @@
     <view id="createModule">
       <page>/plPages/createModule.jsf</page>
     </view>
-    <task-flow-return id="Submit">
-      <outcome>
-        <name>Submit</name>
-      </outcome>
-    </task-flow-return>
-    <task-flow-return id="Back">
-      <outcome>
-        <name>Back</name>
-      </outcome>
-    </task-flow-return>
     <control-flow-rule id="__4">
       <from-activity-id>plDashboard</from-activity-id>
       <control-flow-case id="__5">
@@ -70,15 +60,18 @@
         <to-activity-id>createModule</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
-    <control-flow-rule id="__7">
-      <from-activity-id>*</from-activity-id>
-      <control-flow-case id="__8">
-        <from-outcome>submit</from-outcome>
-        <to-activity-id>Submit</to-activity-id>
+    <control-flow-rule id="__2">
+      <from-activity-id>createDocument</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome>returnToDashboard</from-outcome>
+        <to-activity-id>plDashboard</to-activity-id>
       </control-flow-case>
-      <control-flow-case id="__9">
-        <from-outcome>back</from-outcome>
-        <to-activity-id>Back</to-activity-id>
+    </control-flow-rule>
+    <control-flow-rule id="__7">
+      <from-activity-id>createModule</from-activity-id>
+      <control-flow-case id="__8">
+        <from-outcome>returnToDashboard</from-outcome>
+        <to-activity-id>plDashboard</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
   </task-flow-definition>

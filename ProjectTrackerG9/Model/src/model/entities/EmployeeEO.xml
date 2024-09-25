@@ -129,7 +129,7 @@
   <Key
     Name="ChkPosition">
     <DesignTime>
-      <Attr Name="_checkCondition" Value="position IN ('PM', 'PL', 'TL', 'TM')"/>
+      <Attr Name="_checkCondition" Value="position IN ('AD', 'PM', 'PL', 'TL', 'TM')"/>
       <Attr Name="_isCheck" Value="true"/>
       <Attr Name="_DBObjectName" Value="CHK_POSITION"/>
     </DesignTime>

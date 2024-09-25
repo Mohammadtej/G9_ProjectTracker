@@ -106,6 +106,9 @@
       Name="FilterByTM"
       FullName="model.views.SubmoduleVO.FilterByTM"/>
   </ViewUsage>
+  <ViewUsage
+    Name="StaticDocument1"
+    ViewObjectName="model.views.staticvo.StaticDocumentVO"/>
   <ViewLinkUsage
     Name="DocumentsForPMProject"
     ViewLinkObjectName="model.views.DocumentsForProject"

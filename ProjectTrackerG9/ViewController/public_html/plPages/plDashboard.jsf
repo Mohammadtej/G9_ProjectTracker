@@ -25,7 +25,7 @@
   <af:panelGridLayout id="pgl2">
     <af:gridRow marginTop="5px" height="auto" id="gr3">
       <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc3">
-        <af:button text="View Projects" id="b1" action="#{viewScope.PLtaskflowBean.ViewProjects}" immediate="true"/>
+        <af:button text="View Projects" id="b1" action="#{viewScope.pLNotificationBean.ViewProjects}" immediate="true"/>
       </af:gridCell>
     </af:gridRow>
 

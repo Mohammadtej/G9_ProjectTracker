@@ -2,6 +2,7 @@ package model.services;
 
 
 import model.views.staticvo.EmployeePositionsVOImpl;
+import model.views.staticvo.StaticDocumentVOImpl;
 import model.views.staticvo.StaticStatusVOImpl;
 
 import oracle.adf.share.ADFContext;
@@ -290,6 +291,14 @@ public class PMAppModuleImpl extends ApplicationModuleImpl {
      */
     public ViewObjectImpl getSubmoduleForPM() {
         return (ViewObjectImpl) findViewObject("SubmoduleForPM");
+    }
+
+    /**
+     * Container's getter for StaticDocument1.
+     * @return StaticDocument1
+     */
+    public StaticDocumentVOImpl getStaticDocument1() {
+        return (StaticDocumentVOImpl) findViewObject("StaticDocument1");
     }
 }
 

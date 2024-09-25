@@ -23,7 +23,9 @@ import oracle.jbo.ViewObject;
 
 
 public class TmTaskFlowBean{
+    
     private Map<Integer, String> statusMap;
+    
     public TmTaskFlowBean() {
         statusMap = new HashMap<>();
         statusMap.put(1, "In Progress");

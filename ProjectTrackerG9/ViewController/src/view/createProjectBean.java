@@ -206,6 +206,8 @@ public class createProjectBean {
             
             // Commit the changes to the database
             commitTransaction();
+            
+            return "backToDashboard";
         }
         catch(Exception e) {
             System.out.println("Exception found in submit  button " + e);

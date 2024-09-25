@@ -24,11 +24,11 @@
       <property
          name="activityId">createDocument</property>
       <property
-         name="x">574.66016</property>
+         name="x">634.66016</property>
       <property
          name="description">&lt;html>&lt;p>&lt;b>createDocument&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
       <property
-         name="y">130.10156</property>
+         name="y">63.96875</property>
       <property
          name="page">/plPages/createDocument.jsf</property>
       <property
@@ -39,11 +39,11 @@
       <property
          name="activityId">createModule</property>
       <property
-         name="x">562.20215</property>
+         name="x">648.20215</property>
       <property
          name="description">&lt;html>&lt;p>&lt;b>createModule&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
       <property
-         name="y">285.10156</property>
+         name="y">347.96875</property>
       <property
          name="page">/plPages/createModule.jsf</property>
       <property
@@ -57,7 +57,7 @@
       <property
          name="fromOutcome">createDocument</property>
       <property
-         name="sdm:polyPoints">R46,353.10742,219.9414,533.66016,130.03516,L50</property>
+         name="sdm:polyPoints">R46,353.10742,219.9414,593.66016,63.902344,L50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -67,65 +67,26 @@
       <property
          name="fromOutcome">createModule</property>
       <property
-         name="sdm:polyPoints">R54,353.10742,226.9414,521.20215,285.03516,L50</property>
-   </ControlFlowCase>
-   <TaskFlowReturn
-      id="TaskFlowReturn13">
-      <property
-         name="activityId">Submit</property>
-      <property
-         name="x">838.0</property>
-      <property
-         name="description">&lt;html>&lt;p>&lt;b>Submit&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Return&lt;/p>&lt;p>Outcome:  Submit&lt;/p></property>
-      <property
-         name="y">79.60156</property>
-      <property
-         name="finish">true</property>
-      <property
-         name="exceptionHandler">false</property>
-   </TaskFlowReturn>
-   <TaskFlowReturn
-      id="TaskFlowReturn14">
-      <property
-         name="activityId">Back</property>
-      <property
-         name="x">843.0</property>
-      <property
-         name="description">&lt;html>&lt;p>&lt;b>Back&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Return&lt;/p>&lt;p>Outcome:  Back&lt;/p></property>
-      <property
-         name="y">322.53516</property>
-      <property
-         name="finish">true</property>
-      <property
-         name="exceptionHandler">false</property>
-   </TaskFlowReturn>
-   <WildcardControlFlowRule
-      id="WildcardControlFlowRule16">
-      <property
-         name="activityId">*</property>
-      <property
-         name="x">725.0</property>
-      <property
-         name="y">190.86719</property>
-   </WildcardControlFlowRule>
-   <ControlFlowCase
-      islink="true"
-      id="ControlFlowCase17"
-      from="WildcardControlFlowRule16"
-      to="TaskFlowReturn13">
-      <property
-         name="fromOutcome">submit</property>
-      <property
-         name="sdm:polyPoints">R45,761.0,187.80078,838.0,133.53516,B50</property>
+         name="sdm:polyPoints">R54,353.10742,226.9414,607.20215,347.90234,L50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
-      id="ControlFlowCase18"
-      from="WildcardControlFlowRule16"
-      to="TaskFlowReturn14">
+      id="ControlFlowCase12"
+      from="View6"
+      to="View2">
       <property
-         name="fromOutcome">back</property>
+         name="fromOutcome">returnToDashboard</property>
       <property
-         name="sdm:polyPoints">R95,L15</property>
+         name="sdm:polyPoints">L54,593.66016,67.40234,355.17892,223.4414,R50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase13"
+      from="View7"
+      to="View2">
+      <property
+         name="fromOutcome">returnToDashboard</property>
+      <property
+         name="sdm:polyPoints">L54,605.6582,351.40234,353.10742,233.9414,R62</property>
    </ControlFlowCase>
 </SDM>

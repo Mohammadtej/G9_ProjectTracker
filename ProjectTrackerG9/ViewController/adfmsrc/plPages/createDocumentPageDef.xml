@@ -12,21 +12,13 @@
         <Item Value="ProjectCode"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="DocumentsVO1Iterator" id="DocId">
-      <AttrNames>
-        <Item Value="DocId"/>
-      </AttrNames>
-    </attributeValues>
     <attributeValues IterBinding="DocumentsVO1Iterator" id="DocName">
       <AttrNames>
         <Item Value="DocName"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="DocumentsVO1Iterator" id="DocumentType">
-      <AttrNames>
-        <Item Value="DocumentType"/>
-      </AttrNames>
-    </attributeValues>
+    <list IterBinding="DocumentsVO1Iterator" StaticList="false" Uses="LOV_DocumentType" id="DocumentType"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
     <attributeValues IterBinding="DocumentsVO1Iterator" id="StartDate">
       <AttrNames>
         <Item Value="StartDate"/>
@@ -37,12 +29,5 @@
         <Item Value="EndDate"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="DocumentsVO1Iterator" id="PlId">
-      <AttrNames>
-        <Item Value="PlId"/>
-      </AttrNames>
-    </attributeValues>
-    <list IterBinding="DocumentsVO1Iterator" StaticList="false" Uses="LOV_Status" id="Status" DTSupportsMRU="false"
-          SelectItemValueMode="ListObject"/>
   </bindings>
 </pageDefinition>

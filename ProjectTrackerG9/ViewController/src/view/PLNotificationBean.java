@@ -1,4 +1,7 @@
 package view;
+
+import java.math.BigDecimal;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import java.util.ArrayList;
@@ -18,6 +21,8 @@ import java.time.temporal.ChronoUnit;
 import java.time.format.DateTimeFormatter;
 
 import javax.annotation.PostConstruct;
+
+import oracle.jbo.ViewObject;
 
 
 @ManagedBean
@@ -40,6 +45,7 @@ public class PLNotificationBean {
     public void init() {
         // Code that runs when the page is loaded or the bean is instantiated
         System.out.println("In post construct notification");
+        String ref = ViewProjects();
         //ViewProjects();
         //fetchLatestNotifications();
     }
@@ -160,5 +166,27 @@ public class PLNotificationBean {
         }
         return null;
     }
+    
+    public BigDecimal getCurrentUser() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        return (BigDecimal) context.getExternalContext().getSessionMap().get("userId");
+    }
+
+    public String ViewProjects() {
+        System.out.println("Inside ViewProject Method");
+        //System.out.println(getCurrentUser());
+        // Get the current Application Module's DataControl
+        DCBindingContainer bindings = (DCBindingContainer) BindingContext.getCurrent().getCurrentBindingsEntry();
+        // Find the View Object by its iterator binding name (replace with your actual VO iterator name)
+        ViewObject viewObject = bindings.findIteratorBinding("PLProjectsIterator").getViewObject();
+        // Set the bind variable with the value from getCurrentUser
+        System.out.println(getCurrentUser());
+        viewObject.setNamedWhereClauseParam("retrievedPLId", getCurrentUser());
+        // Execute the query
+        viewObject.executeQuery();
+        return null;
+    }
+    
+    
 }
 

@@ -26,7 +26,7 @@ public class createModuleBean {
     private Date startDate;
     private Date endDate;
     private BigDecimal tlId;
-    private String status;
+    //private String status;
 
     public createModuleBean() {
     }
@@ -80,12 +80,17 @@ public class createModuleBean {
         return tlId;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
+    //public void setStatus(String status) {
+    //    this.status = status;
+    //}
 
-    public String getStatus() {
-        return status;
+    //public String getStatus() {
+    //    return status;
+    //}
+    
+    public BigDecimal getCurrentUser() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        return (BigDecimal) context.getExternalContext().getSessionMap().get("userId");
     }
     
     public String submitModule() {
@@ -100,10 +105,10 @@ public class createModuleBean {
             //add validation to check if userId exists, generate new if yes.
             userRow.setAttribute("EndDate", endDate);
             userRow.setAttribute("ModuleId", moduleId);
-            userRow.setAttribute("PlId", plId);
+            userRow.setAttribute("PlId", getCurrentUser());
             userRow.setAttribute("ProjectCode", projectCode);
             userRow.setAttribute("StartDate", startDate);
-            userRow.setAttribute("Status", status);
+            userRow.setAttribute("Status", "In Progress");
             userRow.setAttribute("TlId", tlId);
             // why not? usersVO.insertRow(userRow);
             System.out.println("Before Insert");

@@ -9,7 +9,8 @@
   DBObjectType="table"
   DBObjectName="G9_DOCUMENT"
   AliasName="DocumentEO"
-  BindingStyle="OracleName">
+  BindingStyle="OracleName"
+  xmlns:validation="http://xmlns.oracle.com/adfm/validation">
   <Attribute
     Name="DocId"
     IsNotNull="true"
@@ -83,6 +84,15 @@
       <Attr Name="_DisplaySize" Value="30"/>
     </DesignTime>
   </Attribute>
+  <Attribute
+    Name="IsDeleted"
+    Precision="1"
+    Scale="0"
+    ColumnName="IS_DELETED"
+    SQLType="NUMERIC"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    TableName="G9_DOCUMENT"/>
   <AccessorAttribute
     Name="Pl"
     Association="model.entities.FkDocumentPlIdAssoc"
@@ -132,6 +142,7 @@
       <Attr Name="_isCascadeDelete" Value="true"/>
       <Attr Name="_isForeign" Value="true"/>
       <Attr Name="_DBObjectName" Value="FK_DOCUMENT_PL_ID"/>
+      <Attr Name="_referencedKey" Value="SYS_C009722500"/>
     </DesignTime>
     <AttrArray Name="Attributes">
       <Item Value="model.entities.DocumentEO.PlId"/>
@@ -148,4 +159,8 @@
       <Item Value="model.entities.DocumentEO.ProjectCode"/>
     </AttrArray>
   </Key>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
 </Entity>

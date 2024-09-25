@@ -24,7 +24,7 @@
                             <f:validator binding="#{bindings.Email.validator}"/>
                         </af:inputText>
                         <af:inputText value="#{RegisterUserManagedBean.name}"
-                                      label="#{bindings.EmployeeName.hints.label}"
+                                      label="Employee Name"
                                       required="#{bindings.EmployeeName.hints.mandatory}"
                                       columns="#{bindings.EmployeeName.hints.displayWidth}"
                                       maximumLength="#{bindings.EmployeeName.hints.precision}"
@@ -32,18 +32,21 @@
                             <f:validator binding="#{bindings.EmployeeName.validator}"/>
                         </af:inputText>
                         <af:inputText value="#{RegisterUserManagedBean.phoneNumber}"
-                                      label="#{bindings.Phonenumber.hints.label}"
+                                      label="Phone number"
                                       required="#{bindings.Phonenumber.hints.mandatory}"
                                       columns="#{bindings.Phonenumber.hints.displayWidth}"
                                       maximumLength="#{bindings.Phonenumber.hints.precision}"
                                       shortDesc="#{bindings.Phonenumber.hints.tooltip}" id="it3">
                             <f:validator binding="#{bindings.Phonenumber.validator}"/>
                         </af:inputText>
-                        <af:selectOneChoice value="#{RegisterUserManagedBean.position}" label="#{bindings.Position.label}"
-                                            required="#{bindings.Position.hints.mandatory}"
-                                            shortDesc="#{bindings.Position.hints.tooltip}" id="soc1">
-                            <f:selectItems value="#{bindings.Position.items}" id="si1"/>
-                            <f:validator binding="#{bindings.Position.validator}"/>
+                        <af:selectOneChoice value="#{RegisterUserManagedBean.position}"
+                                                label="#{bindings.Position.label}"
+                                                required="#{bindings.Position.hints.mandatory}"
+                                                shortDesc="#{bindings.Position.hints.tooltip}" id="soc4"
+                                            valueChangeListener="#{RegisterUserManagedBean.changePositionListener}"
+                                            immediate="true" autoSubmit="true">
+                                <f:selectItems value="#{bindings.Position.items}" id="si4"/>
+                                <f:validator binding="#{bindings.Position.validator}"/>
                         </af:selectOneChoice>
                         <af:inputText value="#{RegisterUserManagedBean.password}"
                                       label="#{bindings.Password.hints.label}"
@@ -61,15 +64,38 @@
                             <f:validator binding="#{bindings.Password.validator}"/>
                         </af:inputText>
                         <af:selectOneChoice value="#{bindings.ProjectManagers.inputValue}"
-                                            label="#{bindings.ProjectManagers.label}"
-                                            required="#{bindings.ProjectManagers.hints.mandatory}"
-                                            shortDesc="#{bindings.ProjectManagers.hints.tooltip}" id="soc2">
+                                            label="Assign to Project Manager"
+                                            shortDesc="#{bindings.ProjectManagers.hints.tooltip}" id="soc2" immediate="true"
+                                            partialTriggers="soc4" autoSubmit="true"
+                                            visible="#{RegisterUserManagedBean.position == 'Project Leader'}">
                             <f:selectItems value="#{bindings.ProjectManagers.items}" id="si2"/>
                             <f:validator binding="#{bindings.ProjectManagers.validator}"/>
+                        </af:selectOneChoice>
+<af:outputText id="ot1" value="What is this: #{RegisterUserManagedBean.position}"
+               partialTriggers="soc4"/>
+
+                        <af:selectOneChoice value="#{bindings.ProjectLeaders.inputValue}"
+                                            label="Assign to Project Leader"
+                                            required="#{bindings.ProjectLeaders.hints.mandatory}"
+                                            shortDesc="#{bindings.ProjectLeaders.hints.tooltip}" id="soc3"
+                                            immediate="true" autoSubmit="true" partialTriggers="soc4"
+                                            visible="#{RegisterUserManagedBean.position == 'Team Leader'}">
+                            <f:selectItems value="#{bindings.ProjectLeaders.items}" id="si3"/>
+                            <f:validator binding="#{bindings.ProjectLeaders.validator}"/>
+                        </af:selectOneChoice>
+                        <af:selectOneChoice value="#{bindings.TeamLeaders.inputValue}"
+                                            label="Assign to Team Leader"
+                                            required="#{bindings.TeamLeaders.hints.mandatory}"
+                                            shortDesc="#{bindings.TeamLeaders.hints.tooltip}" id="soc1"
+                                            autoSubmit="true" immediate="true" partialTriggers="soc4"
+                                            visible="#{RegisterUserManagedBean.position == 'Team Member'}">
+                            <f:selectItems value="#{bindings.TeamLeaders.items}" id="si1"/>
+                            <f:validator binding="#{bindings.TeamLeaders.validator}"/>
                         </af:selectOneChoice>
                         <f:facet name="footer">
                             <af:button text="Submit" id="b1" action="#{RegisterUserManagedBean.doRegister}"/>
                         </f:facet>
+                        <af:button text="Cancel" id="b2" action="#{RegisterUserManagedBean.doCancel}"/>
                     </af:panelFormLayout>
                 </f:facet>
             </af:panelSplitter>

@@ -19,6 +19,7 @@ import oracle.jbo.ApplicationModule;
 
 
 public class createDocumentBean {
+    private static BigDecimal docIdSeq = new BigDecimal("0");
     private BigDecimal projectCode;
     private BigDecimal docId;
     private String docName;
@@ -26,9 +27,14 @@ public class createDocumentBean {
     private Date startDate;
     private Date endDate;
     private BigDecimal plId;
-    private String status;
+    //private String status;
 
     public createDocumentBean() {
+    }
+    
+    private static synchronized BigDecimal getNextdocId() {
+        docIdSeq = docIdSeq.add(BigDecimal.ONE); // Increment by 1
+        return docIdSeq;
     }
 
     
@@ -89,23 +95,17 @@ public class createDocumentBean {
         return plId;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
+    //public void setStatus(String status) {
+    //    this.status = status;
+    //}
 
-    public String getStatus() {
-        return status;
-    }
+    //public String getStatus() {
+    //    return status;
+    //}
     
-    public Integer getCurrentUser() {
-        String userName = ADFContext.getCurrent().getSecurityContext().getUserName();
-        System.out.println("In the managed bean" + userName);
-        try {
-            return Integer.parseInt(userName);  // Convert to Integer
-        } catch (NumberFormatException e) {
-            // Handle exception in case userName is not a number
-            return null;  // Or return a default value, e.g., -1
-        }
+    public BigDecimal getCurrentUser() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        return (BigDecimal) context.getExternalContext().getSessionMap().get("userId");
     }
     
     public String SubmitDocument() {
@@ -116,23 +116,33 @@ public class createDocumentBean {
             ApplicationModule am = (ApplicationModule) dataControl.getDataProvider();
             ViewObject usersVO = am.findViewObject("DocumentsVO1");
             Row userRow = usersVO.createRow();
+            
+            setDocId(getNextdocId());
+            
             //int userId = getNewUserId();
             //add validation to check if userId exists, generate new if yes.
-            userRow.setAttribute("PlId", plId);
+            userRow.setAttribute("PlId", getCurrentUser());
             userRow.setAttribute("DocId", docId);
             userRow.setAttribute("DocName", docName);
             userRow.setAttribute("DocumentType", documentType);
             userRow.setAttribute("EndDate", endDate);
             userRow.setAttribute("ProjectCode", projectCode);
             userRow.setAttribute("StartDate", startDate);
-            userRow.setAttribute("Status", status);
+            userRow.setAttribute("Status", "In Progress");
             // why not? usersVO.insertRow(userRow);
             System.out.println("Before Insert");
             usersVO.insertRow(userRow);
             System.out.println("Before COmmit");
             am.getTransaction().commit();
-            System.out.println("After COmmit");
-            return "submit";
+            System.out.println("After Commit");
+            
+            //FacesContext context = FacesContext.getCurrentInstance();
+            //FacesMessage message = new FacesMessage("Document Created Successfully");
+            //context.addMessage(null, message);
+            
+            
+            
+            return "returnToDashboard";
         }
         catch(Exception e) {
             System.out.println("Error in submitting the form" + e);

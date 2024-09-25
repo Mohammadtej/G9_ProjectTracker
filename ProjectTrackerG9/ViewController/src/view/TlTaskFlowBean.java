@@ -19,9 +19,13 @@ import oracle.jbo.ApplicationModule;
 import oracle.jbo.Row;
 import oracle.jbo.ViewObject;
 
-@ManagedBean(name = "TlTaskFlowBean")
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+@ManagedBean
+@ViewScoped
 
-public class TlTaskFlowBean implements Serializable {
+public class TlTaskFlowBean {
     private Map<Integer, String> statusMap;
     private Map<Integer, String> statusMap2;
     
@@ -35,6 +39,17 @@ public class TlTaskFlowBean implements Serializable {
         statusMap2.put(2, "Completed");
         
     }
+    
+    @PostConstruct
+    public void init() {
+        // Code that runs when the page is loaded or the bean is instantiated
+        System.out.println("PM Bean initialized on page load");
+        viewmodules();
+        //fetchLatestNotifications();
+    }
+
+
+
     
     public Map<Integer, String> getStatusMap() {
         return statusMap;

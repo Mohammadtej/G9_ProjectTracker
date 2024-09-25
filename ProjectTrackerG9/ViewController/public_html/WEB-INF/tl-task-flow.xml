@@ -15,6 +15,16 @@
       <managed-bean-class>view.createsubmoduleBean</managed-bean-class>
       <managed-bean-scope>pageFlow</managed-bean-scope>
     </managed-bean>
+    <managed-bean id="__7">
+      <managed-bean-name>TLNotificationBean</managed-bean-name>
+      <managed-bean-class>view.TLNotificationBean</managed-bean-class>
+      <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__8">
+      <managed-bean-name>Notification</managed-bean-name>
+      <managed-bean-class>view.Notification</managed-bean-class>
+      <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
     <view id="tlDashboard">
       <page>/tlPages/tlDashboard.jsf</page>
     </view>

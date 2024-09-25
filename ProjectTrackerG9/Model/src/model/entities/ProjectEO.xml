@@ -107,6 +107,15 @@
       <Attr Name="_DisplaySize" Value="200"/>
     </DesignTime>
   </Attribute>
+  <Attribute
+    Name="IsDeleted"
+    Precision="1"
+    Scale="0"
+    ColumnName="IS_DELETED"
+    SQLType="NUMERIC"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    TableName="G9_PROJECT"/>
   <AccessorAttribute
     Name="Document"
     Association="model.entities.FkDocumentProjectCodeAssoc"

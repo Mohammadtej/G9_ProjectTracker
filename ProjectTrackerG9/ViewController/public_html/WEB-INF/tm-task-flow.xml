@@ -10,6 +10,11 @@
       <managed-bean-class>view.TmTaskFlowBean</managed-bean-class>
       <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
+    <managed-bean id="__2">
+      <managed-bean-name>TMNotificationBean</managed-bean-name>
+      <managed-bean-class>view.TMNotificationBean</managed-bean-class>
+      <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
     <view id="tmDashboard">
       <page>/tmPages/tmDashboard.jsf</page>
     </view>

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE html>
 <f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
-        xmlns:c="http://java.sun.com/jsp/jstl/core">
+        xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:h="http://java.sun.com/jsf/html">
     <c:set var="viewcontrollerBundle" value="#{adfBundle['view.ViewControllerBundle']}"/>
     <af:document title="pmDashboard.jsf" id="d1">
         <af:messages id="m1"/>
@@ -30,12 +30,16 @@
                                 <af:panelBox text="PanelBox1" id="pb1">
                                     <f:facet name="toolbar"/>
                                     <af:commandButton text="#{viewcontrollerBundle.VIEW_CURRENT_PROJECTS}"
-                                                      action="#{taskFlowManagedBean.applyFilterToViewObject}" id="cb1"/>
+                                                      action="#{viewScope.TaskFlowManagedBean.applyFilterToViewObject}" id="cb1"/>
                                     <af:separator id="s1"/>
                                     <af:button text="#{viewcontrollerBundle.CREATE_PROJECT}" id="b1" action="createProject"/>
-                                    <af:commandButton text="Add Notification"
-                                                      action="#{NotificationsBean.fetchLatestNotifications}"/>
-                                    <af:table value="#{NotificationsBean.notifications}" var="notification"
+                                    <af:separator id="s2"/>
+                                    <af:commandButton text="Fetch Latest Notifications"
+                                                      action="#{viewScope.taskFlowManagedBean.fetchLatestNotifications}"/>
+                                    <af:separator id="s3"/>
+                                    <af:commandButton text="Delete Project"
+                                                    action="#{viewScope.TaskFlowManagedBean.deleteProject}"/>
+                                    <af:table value="#{viewScope.TaskFlowManagedBean.notifications}" var="notification"
                                               rows="10" emptyText="No notifications available"
                                               id="notificationsTable55" immediate="true">
                                         
@@ -97,9 +101,10 @@
                                                 </af:outputText>
                                             </af:column>
                                             <af:column headerText="#{bindings.PMProjects.hints.EndDate.label}" id="c6">
-                                                <af:outputText value="#{row.EndDate}"
+                                                <af:outputText
                                                                shortDesc="#{bindings.PMProjects.hints.EndDate.tooltip}"
-                                                               id="ot6">
+                                                               id="ot6"
+                                                               value="#{row.EndDate}">
                                                     <af:convertDateTime pattern="#{bindings.PMProjects.hints.EndDate.format}"/>
                                                 </af:outputText>
                                             </af:column>

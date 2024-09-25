@@ -8,7 +8,22 @@
     <managed-bean id="__3">
       <managed-bean-name>TaskFlowManagedBean</managed-bean-name>
       <managed-bean-class>view.TaskFlowManagedBean</managed-bean-class>
-      <managed-bean-scope>session</managed-bean-scope>
+      <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__5">
+      <managed-bean-name>NotificationsBean</managed-bean-name>
+      <managed-bean-class>view.NotificationsBean</managed-bean-class>
+      <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__6">
+      <managed-bean-name>Notification</managed-bean-name>
+      <managed-bean-class>view.Notification</managed-bean-class>
+      <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__7">
+      <managed-bean-name>PMTaskFlowManagedBean</managed-bean-name>
+      <managed-bean-class>view.PMTaskFlowManagedBean</managed-bean-class>
+      <managed-bean-scope>view</managed-bean-scope>
     </managed-bean>
     <view id="pmDashboard">
       <page>/pmPages/pmDashboard.jsf</page>
@@ -16,16 +31,6 @@
     <view id="createProject">
       <page>/pmPages/createProject.jsf</page>
     </view>
-    <task-flow-return id="Cancel">
-      <outcome>
-        <name>Cancel</name>
-      </outcome>
-    </task-flow-return>
-    <task-flow-return id="Submit">
-      <outcome>
-        <name>Submit</name>
-      </outcome>
-    </task-flow-return>
     <task-flow-return id="Logout">
       <outcome>
         <name>Logout</name>
@@ -42,9 +47,9 @@
         <to-activity-id>Logout</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
-    <control-flow-rule id="__7">
+    <control-flow-rule id="__10">
       <from-activity-id>createProject</from-activity-id>
-      <control-flow-case id="__8">
+      <control-flow-case id="__11">
         <from-outcome>backToDashboard</from-outcome>
         <to-activity-id>pmDashboard</to-activity-id>
       </control-flow-case>

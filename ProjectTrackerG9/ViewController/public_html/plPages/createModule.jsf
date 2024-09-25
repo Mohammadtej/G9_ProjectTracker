@@ -8,6 +8,13 @@
                 <af:gridRow height="50px" id="gr1">
                     <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc1">
                         <!-- Header -->
+                        <af:panelGridLayout id="pgl2">
+                            <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr3">
+                                <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc3">
+                                    <af:button text="Back" id="b2" action="returnToDashboard"/>
+                                </af:gridCell>
+                            </af:gridRow>
+                        </af:panelGridLayout>
                     </af:gridCell>
                 </af:gridRow>
                 <af:gridRow height="100%" id="gr2">
@@ -25,7 +32,6 @@
                             </af:inputText>
                             <af:inputText value="#{pageFlowScope.createModuleBean.moduleId}"
                                           label="#{bindings.ModuleId.hints.label}"
-                                          required="#{bindings.ModuleId.hints.mandatory}"
                                           columns="#{bindings.ModuleId.hints.displayWidth}"
                                           maximumLength="#{bindings.ModuleId.hints.precision}"
                                           shortDesc="#{bindings.ModuleId.hints.tooltip}" id="it2">
@@ -72,7 +78,6 @@
                             <f:facet name="footer">
                                 <af:button text="Submit" id="b1"
                                            action="#{pageFlowScope.createModuleBean.submitModule}"/>
-                                <af:button text="Back" id="b2" action="back"/>
                             </f:facet>
                         </af:panelFormLayout>
                     </af:gridCell>

@@ -24,6 +24,10 @@
     Name="StaticStatusVO1"
     ViewObjectName="model.views.staticvo.StaticStatusVO"
     RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="StaticDocumentVO1"
+    ViewObjectName="model.views.staticvo.StaticDocumentVO"
+    RowLevelBinds="true"/>
   <ListBinding
     Name="LOV_Status"
     ListVOName="StaticStatusVO1"
@@ -38,6 +42,24 @@
     </AttrArray>
     <AttrArray Name="ListDisplayAttrNames">
       <Item Value="status"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_DocumentType"
+    ListVOName="StaticDocumentVO1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="DocumentType"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Document"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Document"/>
     </AttrArray>
     <DisplayCriteria/>
   </ListBinding>
@@ -62,7 +84,15 @@
     PrecisionRule="true"
     EntityAttrName="DocumentType"
     EntityUsage="DocumentEO"
-    AliasName="DOCUMENT_TYPE"/>
+    AliasName="DOCUMENT_TYPE"
+    LOVName="LOV_DocumentType">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="EndDate"
     PrecisionRule="true"
