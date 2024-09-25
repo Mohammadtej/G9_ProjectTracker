@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="tlDashboardPageDef"
+                Package="tlPages">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="ModuleForTl" RangeSize="25" DataControl="PMAppModuleDataControl" id="ModuleForPlIterator"/>
+    <iterator Binds="SubmoduleForModule" RangeSize="25" DataControl="PMAppModuleDataControl"
+              id="SubmoduleForModuleIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="ModuleForPlIterator" id="ModuleForPl">
+      <nodeDefinition DefName="model.views.ModulesVO" Name="ModuleForPl0">
+        <AttrNames>
+          <Item Value="ModuleId"/>
+          <Item Value="ProjectCode"/>
+          <Item Value="TlId"/>
+          <Item Value="StartDate"/>
+          <Item Value="EndDate"/>
+          <Item Value="Status"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="SubmoduleForModuleIterator" id="SubmoduleForModule">
+      <nodeDefinition DefName="model.views.SubmoduleVO" Name="SubmoduleForModule0">
+        <AttrNames>
+          <Item Value="ProjectCode"/>
+          <Item Value="ModuleId"/>
+          <Item Value="SubmoduleId"/>
+          <Item Value="TmId"/>
+          <Item Value="StartDate"/>
+          <Item Value="EndDate"/>
+          <Item Value="Status"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

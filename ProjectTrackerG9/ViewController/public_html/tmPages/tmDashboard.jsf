@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
     <af:document title="tmDashboard.jsf" id="d1">
+        <af:messages id="m1"/>
         <af:form id="f1">
             <af:panelSplitter orientation="vertical" splitterPosition="50" id="ps2">
                 <f:facet name="first">
@@ -14,9 +15,89 @@
                     </af:panelHeader>
                 </f:facet>
                 <f:facet name="second">
-                    <af:panelSplitter orientation="vertical" positionedFromEnd="true" splitterPosition="50" id="ps1">
-                        <f:facet name="first"/>
-                        <f:facet name="second"/>
+                    <af:panelSplitter id="ps1">
+                        <f:facet name="first">
+                            <af:panelGridLayout id="pgl1">
+                                <af:gridRow marginTop="5px" height="auto" id="gr1">
+                                    <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc1">
+                                        <af:button text="ViewSubModules" id="b1"
+                                                   action="#{TmTaskFlowBean.ViewSubModules}"/>
+                                    </af:gridCell>
+                                </af:gridRow>
+                                <af:gridRow marginTop="5px" height="auto" id="gr2">
+                                    <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc2"/>
+                                </af:gridRow>
+                                <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr3">
+                                    <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc3"/>
+                                </af:gridRow>
+                            </af:panelGridLayout>
+                        </f:facet>
+                        <f:facet name="second">
+                            <af:table value="#{bindings.SubmoduleForPM.collectionModel}" var="row"
+                                      rows="#{bindings.SubmoduleForPM.rangeSize}"
+                                      emptyText="#{bindings.SubmoduleForPM.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                      rowBandingInterval="0"
+                                      selectedRowKeys="#{bindings.SubmoduleForPM.collectionModel.selectedRow}"
+                                      selectionListener="#{bindings.SubmoduleForPM.collectionModel.makeCurrent}"
+                                      rowSelection="single" fetchSize="#{bindings.SubmoduleForPM.rangeSize}" id="t1">
+                                <af:column headerText="#{bindings.SubmoduleForPM.hints.ProjectCode.label}" id="c1">
+                                    <af:outputText value="#{row.ProjectCode}"
+                                                   shortDesc="#{bindings.SubmoduleForPM.hints.ProjectCode.tooltip}"
+                                                   id="ot1">
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.SubmoduleForPM.hints.ProjectCode.format}"/>
+                                    </af:outputText>
+                                </af:column>
+                                <af:column headerText="#{bindings.SubmoduleForPM.hints.ModuleId.label}" id="c2">
+                                    <af:outputText value="#{row.ModuleId}"
+                                                   shortDesc="#{bindings.SubmoduleForPM.hints.ModuleId.tooltip}"
+                                                   id="ot2">
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.SubmoduleForPM.hints.ModuleId.format}"/>
+                                    </af:outputText>
+                                </af:column>
+                                <af:column headerText="#{bindings.SubmoduleForPM.hints.SubmoduleId.label}" id="c3">
+                                    <af:outputText value="#{row.SubmoduleId}"
+                                                   shortDesc="#{bindings.SubmoduleForPM.hints.SubmoduleId.tooltip}"
+                                                   id="ot3">
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.SubmoduleForPM.hints.SubmoduleId.format}"/>
+                                    </af:outputText>
+                                </af:column>
+                                <af:column headerText="#{bindings.SubmoduleForPM.hints.TlId.label}" id="c4">
+                                    <af:outputText value="#{row.TlId}"
+                                                   shortDesc="#{bindings.SubmoduleForPM.hints.TlId.tooltip}" id="ot4">
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.SubmoduleForPM.hints.TlId.format}"/>
+                                    </af:outputText>
+                                </af:column>
+                                <af:column headerText="#{bindings.SubmoduleForPM.hints.StartDate.label}" id="c5">
+                                    <af:outputText value="#{row.StartDate}"
+                                                   shortDesc="#{bindings.SubmoduleForPM.hints.StartDate.tooltip}"
+                                                   id="ot5">
+                                        <af:convertDateTime pattern="#{bindings.SubmoduleForPM.hints.StartDate.format}"/>
+                                    </af:outputText>
+                                </af:column>
+                                <af:column headerText="#{bindings.SubmoduleForPM.hints.EndDate.label}" id="c6">
+                                    <af:outputText value="#{row.EndDate}"
+                                                   shortDesc="#{bindings.SubmoduleForPM.hints.EndDate.tooltip}"
+                                                   id="ot6">
+                                        <af:convertDateTime pattern="#{bindings.SubmoduleForPM.hints.EndDate.format}"/>
+                                    </af:outputText>
+                                </af:column>
+                                <af:column headerText="#{bindings.SubmoduleForPM.hints.Status.label}" id="c7">
+                                    <af:selectOneChoice value="#{row.bindings.Status.inputValue}"
+                                                        label="#{row.bindings.Status.label}"
+                                                        required="#{bindings.SubmoduleForPM.hints.Status.mandatory}"
+                                                        shortDesc="#{bindings.SubmoduleForPM.hints.Status.tooltip}"
+                                                        id="soc1" autoSubmit="true"
+                                                        valueChangeListener="#{TmTaskFlowBean.updateSubmoduleStatus}">
+                                        <f:selectItems value="#{row.bindings.Status.items}" id="si1"/>
+                                        <f:validator binding="#{row.bindings.Status.validator}"/>
+                                    </af:selectOneChoice>
+                                </af:column>
+                            </af:table>
+                        </f:facet>
                     </af:panelSplitter>
                 </f:facet>
             </af:panelSplitter>

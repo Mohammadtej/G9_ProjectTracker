@@ -42,7 +42,11 @@
     ViewObjectName="model.views.DocumentsVO"/>
   <ViewUsage
     Name="PLProjects"
-    ViewObjectName="model.views.ProjectsVO"/>
+    ViewObjectName="model.views.ProjectsVO">
+    <ViewCriteriaUsage
+      Name="FilterProjectsForProjectLeader"
+      FullName="model.views.ProjectsVO.FilterProjectsForProjectLeader"/>
+  </ViewUsage>
   <ViewUsage
     Name="Employees"
     ViewObjectName="model.views.EmployeesVO"/>
@@ -61,11 +65,82 @@
   <ViewUsage
     Name="TeamLeaders"
     ViewObjectName="model.views.TeamLeadersVO"/>
+  <ViewUsage
+    Name="PLDocuments"
+    ViewObjectName="model.views.DocumentsVO"/>
+  <ViewUsage
+    Name="Modules1"
+    ViewObjectName="model.views.ModulesVO"/>
+  <ViewUsage
+    Name="Projects1"
+    ViewObjectName="model.views.ProjectsVO"/>
+  <ViewUsage
+    Name="Modules2"
+    ViewObjectName="model.views.ModulesVO"/>
+  <ViewUsage
+    Name="ModulesForProject"
+    ViewObjectName="model.views.ModulesVO"/>
+  <ViewUsage
+    Name="ModuleForTl"
+    ViewObjectName="model.views.ModulesVO">
+    <ViewCriteriaUsage
+      Name="ModulesForTl"
+      FullName="model.views.ModulesVO.ModulesForTl"/>
+  </ViewUsage>
+  <ViewUsage
+    Name="Submodule1"
+    ViewObjectName="model.views.SubmoduleVO"/>
+  <ViewUsage
+    Name="Modules3"
+    ViewObjectName="model.views.ModulesVO"/>
+  <ViewUsage
+    Name="Submodule2"
+    ViewObjectName="model.views.SubmoduleVO"/>
+  <ViewUsage
+    Name="SubmoduleForModule"
+    ViewObjectName="model.views.SubmoduleVO"/>
+  <ViewUsage
+    Name="SubmoduleForPM"
+    ViewObjectName="model.views.SubmoduleVO">
+    <ViewCriteriaUsage
+      Name="FilterByTM"
+      FullName="model.views.SubmoduleVO.FilterByTM"/>
+  </ViewUsage>
   <ViewLinkUsage
     Name="DocumentsForPMProject"
     ViewLinkObjectName="model.views.DocumentsForProject"
     SrcViewUsageName="model.services.PMAppModule.PMProjects"
     DstViewUsageName="model.services.PMAppModule.PMDocuments"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="DocumentsForProject1"
+    ViewLinkObjectName="model.views.DocumentsForProject"
+    SrcViewUsageName="model.services.PMAppModule.PLProjects"
+    DstViewUsageName="model.services.PMAppModule.PLDocuments"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="ModuleForProject"
+    ViewLinkObjectName="model.views.ModuleForProject"
+    SrcViewUsageName="model.services.PMAppModule.Projects1"
+    DstViewUsageName="model.services.PMAppModule.Modules2"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="ModuleForProject1"
+    ViewLinkObjectName="model.views.ModuleForProject"
+    SrcViewUsageName="model.services.PMAppModule.PLProjects"
+    DstViewUsageName="model.services.PMAppModule.ModulesForProject"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="SubmoduleModuleVL"
+    ViewLinkObjectName="model.views.SubmoduleModuleVL"
+    SrcViewUsageName="model.services.PMAppModule.Modules3"
+    DstViewUsageName="model.services.PMAppModule.Submodule2"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="SubmoduleModuleVL1"
+    ViewLinkObjectName="model.views.SubmoduleModuleVL"
+    SrcViewUsageName="model.services.PMAppModule.ModuleForTl"
+    DstViewUsageName="model.services.PMAppModule.SubmoduleForModule"
     Reversed="false"/>
   <ResourceBundle>
     <PropertiesBundle

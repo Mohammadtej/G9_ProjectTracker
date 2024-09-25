@@ -7,16 +7,51 @@
       <property
          name="activityId">tlDashboard</property>
       <property
-         name="x">350.5752</property>
+         name="x">278.5752</property>
       <property
          name="start">true</property>
       <property
          name="description">&lt;html>&lt;p>&lt;b>tlDashboard&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
       <property
-         name="y">255.30078</property>
+         name="y">259.5703</property>
       <property
          name="page">/tlPages/tlDashboard.jsf</property>
       <property
          name="exceptionHandler">false</property>
    </View>
+   <View
+      id="View3">
+      <property
+         name="activityId">createsubmodule</property>
+      <property
+         name="x">538.19434</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>createsubmodule&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">253.23438</property>
+      <property
+         name="page">/tlPages/createsubmodule.jsf</property>
+      <property
+         name="exceptionHandler">false</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase4"
+      from="View2"
+      to="View3">
+      <property
+         name="fromOutcome">createSubmodule</property>
+      <property
+         name="sdm:polyPoints">R46,319.5752,256.0039,497.0695,249.66797,L46</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase5"
+      from="View3"
+      to="View2">
+      <property
+         name="fromOutcome">returntodashboard</property>
+      <property
+         name="sdm:polyPoints">L54,497.19434,256.66797,319.7,263.0039,R54</property>
+   </ControlFlowCase>
 </SDM>

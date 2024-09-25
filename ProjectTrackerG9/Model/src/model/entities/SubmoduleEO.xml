@@ -73,6 +73,18 @@
       <Attr Name="_DisplaySize" Value="15"/>
     </DesignTime>
   </Attribute>
+  <Attribute
+    Name="Path"
+    Precision="200"
+    ColumnName="PATH"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="G9_SUBMODULE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+  </Attribute>
   <AccessorAttribute
     Name="Module"
     Association="model.entities.FkSubmoduleModuleIdAssoc"
@@ -124,7 +136,6 @@
     Name="FkSubmoduleModuleId">
     <DesignTime>
       <Attr Name="_isCascadeDelete" Value="true"/>
-      <Attr Name="_referencedKey" Value="SYS_C009722520"/>
       <Attr Name="_isForeign" Value="true"/>
       <Attr Name="_DBObjectName" Value="FK_SUBMODULE_MODULE_ID"/>
     </DesignTime>
@@ -135,7 +146,6 @@
   <Key
     Name="FkSubmoduleProjectCode">
     <DesignTime>
-      <Attr Name="_referencedKey" Value="SYS_C009722512"/>
       <Attr Name="_isForeign" Value="true"/>
       <Attr Name="_DBObjectName" Value="FK_SUBMODULE_PROJECT_CODE"/>
     </DesignTime>
@@ -146,7 +156,6 @@
   <Key
     Name="FkSubmoduleTlId">
     <DesignTime>
-      <Attr Name="_referencedKey" Value="SYS_C009722504"/>
       <Attr Name="_isForeign" Value="true"/>
       <Attr Name="_DBObjectName" Value="FK_SUBMODULE_TL_ID"/>
     </DesignTime>

@@ -130,7 +130,6 @@
     Name="FkDocumentPlId">
     <DesignTime>
       <Attr Name="_isCascadeDelete" Value="true"/>
-      <Attr Name="_referencedKey" Value="SYS_C009722500"/>
       <Attr Name="_isForeign" Value="true"/>
       <Attr Name="_DBObjectName" Value="FK_DOCUMENT_PL_ID"/>
     </DesignTime>
@@ -142,7 +141,6 @@
     Name="FkDocumentProjectCode">
     <DesignTime>
       <Attr Name="_isCascadeDelete" Value="true"/>
-      <Attr Name="_referencedKey" Value="SYS_C009722512"/>
       <Attr Name="_isForeign" Value="true"/>
       <Attr Name="_DBObjectName" Value="FK_DOCUMENT_PROJECT_CODE"/>
     </DesignTime>

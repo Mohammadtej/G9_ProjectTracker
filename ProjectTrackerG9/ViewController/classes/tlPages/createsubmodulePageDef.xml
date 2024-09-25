@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="createsubmodulePageDef"
+                Package="tlPages">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="Submodule1" RangeSize="25" DataControl="PMAppModuleDataControl" id="Submodule1Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="Submodule1Iterator" id="ProjectCode">
+      <AttrNames>
+        <Item Value="ProjectCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Submodule1Iterator" id="ModuleId">
+      <AttrNames>
+        <Item Value="ModuleId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Submodule1Iterator" id="SubmoduleId">
+      <AttrNames>
+        <Item Value="SubmoduleId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Submodule1Iterator" id="StartDate">
+      <AttrNames>
+        <Item Value="StartDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Submodule1Iterator" id="EndDate">
+      <AttrNames>
+        <Item Value="EndDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Submodule1Iterator" id="Status">
+      <AttrNames>
+        <Item Value="Status"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Submodule1Iterator" id="TmId">
+      <AttrNames>
+        <Item Value="TmId"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

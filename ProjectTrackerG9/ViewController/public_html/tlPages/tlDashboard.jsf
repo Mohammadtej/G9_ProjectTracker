@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
     <af:document title="tlDashboard.jsf" id="d1">
+        <af:messages id="m1"/>
         <af:form id="f1">
             <af:panelSplitter orientation="vertical" splitterPosition="50" id="ps1">
                 <f:facet name="first">
@@ -14,9 +15,177 @@
                     </af:panelHeader>
                 </f:facet>
                 <f:facet name="second">
-                    <af:panelSplitter orientation="vertical" positionedFromEnd="true" splitterPosition="50" id="ps2">
-                        <f:facet name="first"/>
-                        <f:facet name="second"/>
+                    <af:panelSplitter orientation="horizontal" positionedFromEnd="true" splitterPosition="1000" id="ps2">
+                        <f:facet name="first">
+                            <af:panelGridLayout id="pgl1">
+                                <af:gridRow marginTop="5px" height="auto" id="gr1">
+                                    <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc1">
+                                        <af:button text="View Module" id="b1" action="#{TlTaskFlowBean.viewmodules}"/>
+                                    </af:gridCell>
+                                </af:gridRow>
+                                <af:gridRow marginTop="5px" height="auto" id="gr2">
+                                    <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc2">
+                                        <af:button text="Create Sub-Module" id="b2" action="createSubmodule"/>
+                                    </af:gridCell>
+                                </af:gridRow>
+                                <af:gridRow marginTop="5px" height="auto" id="gr3">
+                                    <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc3"/>
+                                </af:gridRow>
+                                <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr4">
+                                    <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc4"/>
+                                </af:gridRow>
+                            </af:panelGridLayout>
+                        </f:facet>
+                        <f:facet name="second">
+                            <af:panelSplitter id="ps3" orientation="vertical">
+                                <f:facet name="first"/>
+                                <f:facet name="second">
+                                    <af:panelSplitter id="ps4" orientation="vertical">
+                                        <f:facet name="first">
+                                            <af:table value="#{bindings.ModuleForPl.collectionModel}" var="row"
+                                                      rows="#{bindings.ModuleForPl.rangeSize}"
+                                                      emptyText="#{bindings.ModuleForPl.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                      rowBandingInterval="0"
+                                                      selectedRowKeys="#{bindings.ModuleForPl.collectionModel.selectedRow}"
+                                                      selectionListener="#{bindings.ModuleForPl.collectionModel.makeCurrent}"
+                                                      rowSelection="single"
+                                                      fetchSize="#{bindings.ModuleForPl.rangeSize}" id="t1">
+                                                <af:column headerText="#{bindings.ModuleForPl.hints.ModuleId.label}"
+                                                           id="c1">
+                                                    <af:outputText value="#{row.ModuleId}"
+                                                                   shortDesc="#{bindings.ModuleForPl.hints.ModuleId.tooltip}"
+                                                                   id="ot1">
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.ModuleForPl.hints.ModuleId.format}"/>
+                                                    </af:outputText>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.ModuleForPl.hints.ProjectCode.label}"
+                                                           id="c2">
+                                                    <af:outputText value="#{row.ProjectCode}"
+                                                                   shortDesc="#{bindings.ModuleForPl.hints.ProjectCode.tooltip}"
+                                                                   id="ot2">
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.ModuleForPl.hints.ProjectCode.format}"/>
+                                                    </af:outputText>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.ModuleForPl.hints.TlId.label}"
+                                                           id="c3">
+                                                    <af:outputText value="#{row.TlId}"
+                                                                   shortDesc="#{bindings.ModuleForPl.hints.TlId.tooltip}"
+                                                                   id="ot3">
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.ModuleForPl.hints.TlId.format}"/>
+                                                    </af:outputText>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.ModuleForPl.hints.StartDate.label}"
+                                                           id="c4">
+                                                    <af:outputText value="#{row.StartDate}"
+                                                                   shortDesc="#{bindings.ModuleForPl.hints.StartDate.tooltip}"
+                                                                   id="ot4">
+                                                        <af:convertDateTime pattern="#{bindings.ModuleForPl.hints.StartDate.format}"/>
+                                                    </af:outputText>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.ModuleForPl.hints.EndDate.label}"
+                                                           id="c5">
+                                                    <af:outputText value="#{row.EndDate}"
+                                                                   shortDesc="#{bindings.ModuleForPl.hints.EndDate.tooltip}"
+                                                                   id="ot5">
+                                                        <af:convertDateTime pattern="#{bindings.ModuleForPl.hints.EndDate.format}"/>
+                                                    </af:outputText>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.ModuleForPl.hints.Status.label}"
+                                                           id="c6">
+                                                    <af:selectOneChoice value="#{row.bindings.Status.inputValue}"
+                                                                        label="#{row.bindings.Status.label}"
+                                                                        required="#{bindings.ModuleForPl.hints.Status.mandatory}"
+                                                                        shortDesc="#{bindings.ModuleForPl.hints.Status.tooltip}"
+                                                                        id="soc1" autoSubmit="true"
+                                                                        valueChangeListener="#{TlTaskFlowBean.updateModuleStatus}">
+                                                        <f:selectItems value="#{row.bindings.Status.items}" id="si1"/>
+                                                        <f:validator binding="#{row.bindings.Status.validator}"/>
+                                                    </af:selectOneChoice>
+                                                </af:column>
+                                            </af:table>
+                                        </f:facet>
+                                        <f:facet name="second">
+                                            <af:table value="#{bindings.SubmoduleForModule.collectionModel}" var="row"
+                                                      rows="#{bindings.SubmoduleForModule.rangeSize}"
+                                                      emptyText="#{bindings.SubmoduleForModule.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                      rowBandingInterval="0"
+                                                      selectedRowKeys="#{bindings.SubmoduleForModule.collectionModel.selectedRow}"
+                                                      selectionListener="#{bindings.SubmoduleForModule.collectionModel.makeCurrent}"
+                                                      rowSelection="single"
+                                                      fetchSize="#{bindings.SubmoduleForModule.rangeSize}" id="t2">
+                                                <af:column headerText="#{bindings.SubmoduleForModule.hints.ProjectCode.label}"
+                                                           id="c7">
+                                                    <af:outputText value="#{row.ProjectCode}"
+                                                                   shortDesc="#{bindings.SubmoduleForModule.hints.ProjectCode.tooltip}"
+                                                                   id="ot6">
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.SubmoduleForModule.hints.ProjectCode.format}"/>
+                                                    </af:outputText>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.SubmoduleForModule.hints.ModuleId.label}"
+                                                           id="c8">
+                                                    <af:outputText value="#{row.ModuleId}"
+                                                                   shortDesc="#{bindings.SubmoduleForModule.hints.ModuleId.tooltip}"
+                                                                   id="ot7">
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.SubmoduleForModule.hints.ModuleId.format}"/>
+                                                    </af:outputText>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.SubmoduleForModule.hints.SubmoduleId.label}"
+                                                           id="c9">
+                                                    <af:outputText value="#{row.SubmoduleId}"
+                                                                   shortDesc="#{bindings.SubmoduleForModule.hints.SubmoduleId.tooltip}"
+                                                                   id="ot8">
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.SubmoduleForModule.hints.SubmoduleId.format}"/>
+                                                    </af:outputText>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.SubmoduleForModule.hints.TmId.label}"
+                                                           id="c10">
+                                                    <af:outputText value="#{row.TmId}"
+                                                                   shortDesc="#{bindings.SubmoduleForModule.hints.TmId.tooltip}"
+                                                                   id="ot9">
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.SubmoduleForModule.hints.TmId.format}"/>
+                                                    </af:outputText>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.SubmoduleForModule.hints.StartDate.label}"
+                                                           id="c11">
+                                                    <af:outputText value="#{row.StartDate}"
+                                                                   shortDesc="#{bindings.SubmoduleForModule.hints.StartDate.tooltip}"
+                                                                   id="ot10">
+                                                        <af:convertDateTime pattern="#{bindings.SubmoduleForModule.hints.StartDate.format}"/>
+                                                    </af:outputText>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.SubmoduleForModule.hints.EndDate.label}"
+                                                           id="c12">
+                                                    <af:outputText value="#{row.EndDate}"
+                                                                   shortDesc="#{bindings.SubmoduleForModule.hints.EndDate.tooltip}"
+                                                                   id="ot11">
+                                                        <af:convertDateTime pattern="#{bindings.SubmoduleForModule.hints.EndDate.format}"/>
+                                                    </af:outputText>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.SubmoduleForModule.hints.Status.label}"
+                                                           id="c13">
+                                                    <af:selectOneChoice value="#{row.bindings.Status.inputValue}"
+                                                                        label="#{row.bindings.Status.label}"
+                                                                        required="#{bindings.SubmoduleForModule.hints.Status.mandatory}"
+                                                                        shortDesc="#{bindings.SubmoduleForModule.hints.Status.tooltip}"
+                                                                        id="soc2" autoSubmit="true"
+                                                                        valueChangeListener="#{TlTaskFlowBean.updateSubmoduleStatus}">
+                                                        <f:selectItems value="#{row.bindings.Status.items}" id="si2"/>
+                                                        <f:validator binding="#{row.bindings.Status.validator}"/>
+                                                    </af:selectOneChoice>
+                                                </af:column>
+                                            </af:table>
+                                        </f:facet>
+                                    </af:panelSplitter>
+                                </f:facet>
+                            </af:panelSplitter>
+                        </f:facet>
                     </af:panelSplitter>
                 </f:facet>
             </af:panelSplitter>

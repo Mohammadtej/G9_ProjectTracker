@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="createDocument.jsf" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:panelGridLayout id="pgl1">
+                <af:gridRow height="50px" id="gr1">
+                    <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc2">
+                        <!-- Header -->
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow height="100%" id="gr2">
+                    <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc1">
+                        <!-- Content -->
+                        <af:panelFormLayout id="pfl1">
+                            <af:inputText value="#{pageFlowScope.createDocumentBean.projectCode}"
+                                          label="#{bindings.ProjectCode.hints.label}"
+                                          required="#{bindings.ProjectCode.hints.mandatory}"
+                                          columns="#{bindings.ProjectCode.hints.displayWidth}"
+                                          maximumLength="#{bindings.ProjectCode.hints.precision}"
+                                          shortDesc="#{bindings.ProjectCode.hints.tooltip}" id="it1">
+                                <f:validator binding="#{bindings.ProjectCode.validator}"/>
+                                <af:convertNumber groupingUsed="false" pattern="#{bindings.ProjectCode.format}"/>
+                            </af:inputText>
+                            <af:inputText value="#{pageFlowScope.createDocumentBean.docId}" label="#{bindings.DocId.hints.label}"
+                                          columns="#{bindings.DocId.hints.displayWidth}"
+                                          maximumLength="#{bindings.DocId.hints.precision}"
+                                          shortDesc="#{bindings.DocId.hints.tooltip}" id="it2">
+                                <f:validator binding="#{bindings.DocId.validator}"/>
+                                <af:convertNumber groupingUsed="false" pattern="#{bindings.DocId.format}"/>
+                            </af:inputText>
+                            <af:inputText value="#{pageFlowScope.createDocumentBean.docName}" label="#{bindings.DocName.hints.label}"
+                                          columns="#{bindings.DocName.hints.displayWidth}"
+                                          maximumLength="#{bindings.DocName.hints.precision}"
+                                          shortDesc="#{bindings.DocName.hints.tooltip}" id="it3">
+                                <f:validator binding="#{bindings.DocName.validator}"/>
+                            </af:inputText>
+                            <af:inputText value="#{pageFlowScope.createDocumentBean.documentType}"
+                                          label="#{bindings.DocumentType.hints.label}"
+                                          required="#{bindings.DocumentType.hints.mandatory}"
+                                          columns="#{bindings.DocumentType.hints.displayWidth}"
+                                          shortDesc="#{bindings.DocumentType.hints.tooltip}" id="it4">
+                                <f:validator binding="#{bindings.DocumentType.validator}"/>
+                            </af:inputText>
+                            <af:inputDate value="#{pageFlowScope.createDocumentBean.startDate}"
+                                          label="#{bindings.StartDate.hints.label}"
+                                          required="#{bindings.StartDate.hints.mandatory}"
+                                          columns="#{bindings.StartDate.hints.displayWidth}"
+                                          shortDesc="#{bindings.StartDate.hints.tooltip}" id="id1">
+                                <f:validator binding="#{bindings.StartDate.validator}"/>
+                                <af:convertDateTime pattern="#{bindings.StartDate.format}"/>
+                            </af:inputDate>
+                            <af:inputDate value="#{pageFlowScope.createDocumentBean.endDate}" label="#{bindings.EndDate.hints.label}"
+                                          required="#{bindings.EndDate.hints.mandatory}"
+                                          columns="#{bindings.EndDate.hints.displayWidth}"
+                                          shortDesc="#{bindings.EndDate.hints.tooltip}" id="id2">
+                                <f:validator binding="#{bindings.EndDate.validator}"/>
+                                <af:convertDateTime pattern="#{bindings.EndDate.format}"/>
+                            </af:inputDate>
+                            <af:inputText value="#{pageFlowScope.createDocumentBean.plId}" label="#{bindings.PlId.hints.label}"
+                                          required="#{bindings.PlId.hints.mandatory}"
+                                          columns="#{bindings.PlId.hints.displayWidth}"
+                                          maximumLength="#{bindings.PlId.hints.precision}"
+                                          shortDesc="#{bindings.PlId.hints.tooltip}" id="it5">
+                                <f:validator binding="#{bindings.PlId.validator}"/>
+                                <af:convertNumber groupingUsed="false" pattern="#{bindings.PlId.format}"/>
+                            </af:inputText>
+                            <af:selectOneChoice value="#{pageFlowScope.createDocumentBean.status}" label="#{bindings.Status.label}"
+                                                required="#{bindings.Status.hints.mandatory}"
+                                                shortDesc="#{bindings.Status.hints.tooltip}" id="soc1">
+                                <f:selectItems value="#{bindings.Status.items}" id="si1"/>
+                                <f:validator binding="#{bindings.Status.validator}"/>
+                            </af:selectOneChoice>
+                            <f:facet name="footer">
+                                <af:button text="Submit" id="b1"
+                                           action="#{pageFlowScope.createDocumentBean.SubmitDocument}"/>
+                                <af:button text="Back" id="b2" action="back"/>
+                            </f:facet>
+                        </af:panelFormLayout>
+                    </af:gridCell>
+                </af:gridRow>
+            </af:panelGridLayout>
+        </af:form>
+    </af:document>
+</f:view>

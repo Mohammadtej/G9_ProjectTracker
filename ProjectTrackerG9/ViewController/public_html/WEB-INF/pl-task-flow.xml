@@ -5,8 +5,71 @@
     <data-control-scope>
       <shared/>
     </data-control-scope>
+    <managed-bean id="__1">
+      <managed-bean-name>PLtaskflowBean</managed-bean-name>
+      <managed-bean-class>view.PLtaskflowBean</managed-bean-class>
+      <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__11">
+      <managed-bean-name>createDocumentBean</managed-bean-name>
+      <managed-bean-class>view.createDocumentBean</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__12">
+      <managed-bean-name>createModuleBean</managed-bean-name>
+      <managed-bean-class>view.createModuleBean</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__10">
+      <managed-bean-name>PLNotificationBean</managed-bean-name>
+      <managed-bean-class>view.PLNotificationBean</managed-bean-class>
+      <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__14">
+      <managed-bean-name>Notification</managed-bean-name>
+      <managed-bean-class>view.Notification</managed-bean-class>
+      <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
     <view id="plDashboard">
       <page>/plPages/plDashboard.jsf</page>
     </view>
+    <view id="createDocument">
+      <page>/plPages/createDocument.jsf</page>
+    </view>
+    <view id="createModule">
+      <page>/plPages/createModule.jsf</page>
+    </view>
+    <task-flow-return id="Submit">
+      <outcome>
+        <name>Submit</name>
+      </outcome>
+    </task-flow-return>
+    <task-flow-return id="Back">
+      <outcome>
+        <name>Back</name>
+      </outcome>
+    </task-flow-return>
+    <control-flow-rule id="__4">
+      <from-activity-id>plDashboard</from-activity-id>
+      <control-flow-case id="__5">
+        <from-outcome>createDocument</from-outcome>
+        <to-activity-id>createDocument</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__6">
+        <from-outcome>createModule</from-outcome>
+        <to-activity-id>createModule</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__7">
+      <from-activity-id>*</from-activity-id>
+      <control-flow-case id="__8">
+        <from-outcome>submit</from-outcome>
+        <to-activity-id>Submit</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__9">
+        <from-outcome>back</from-outcome>
+        <to-activity-id>Back</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
   </task-flow-definition>
 </adfc-config>

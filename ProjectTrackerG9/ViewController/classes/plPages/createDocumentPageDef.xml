@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="createDocumentPageDef"
+                Package="plPages">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="DocumentsVO1" RangeSize="25" DataControl="PMAppModuleDataControl" id="DocumentsVO1Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="DocumentsVO1Iterator" id="ProjectCode">
+      <AttrNames>
+        <Item Value="ProjectCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DocumentsVO1Iterator" id="DocId">
+      <AttrNames>
+        <Item Value="DocId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DocumentsVO1Iterator" id="DocName">
+      <AttrNames>
+        <Item Value="DocName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DocumentsVO1Iterator" id="DocumentType">
+      <AttrNames>
+        <Item Value="DocumentType"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DocumentsVO1Iterator" id="StartDate">
+      <AttrNames>
+        <Item Value="StartDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DocumentsVO1Iterator" id="EndDate">
+      <AttrNames>
+        <Item Value="EndDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DocumentsVO1Iterator" id="PlId">
+      <AttrNames>
+        <Item Value="PlId"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="DocumentsVO1Iterator" StaticList="false" Uses="LOV_Status" id="Status" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="createModulePageDef"
+                Package="plPages">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="Modules1" RangeSize="25" DataControl="PMAppModuleDataControl" id="Modules1Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="Modules1Iterator" id="ProjectCode">
+      <AttrNames>
+        <Item Value="ProjectCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Modules1Iterator" id="ModuleId">
+      <AttrNames>
+        <Item Value="ModuleId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Modules1Iterator" id="PlId">
+      <AttrNames>
+        <Item Value="PlId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Modules1Iterator" id="StartDate">
+      <AttrNames>
+        <Item Value="StartDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Modules1Iterator" id="EndDate">
+      <AttrNames>
+        <Item Value="EndDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Modules1Iterator" id="TlId">
+      <AttrNames>
+        <Item Value="TlId"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="Modules1Iterator" StaticList="false" Uses="LOV_Status" id="Status" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+  </bindings>
+</pageDefinition>

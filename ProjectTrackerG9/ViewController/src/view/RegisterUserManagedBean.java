@@ -7,12 +7,30 @@ import java.io.Serializable;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.faces.event.ValueChangeEvent;
+
 import oracle.jbo.ApplicationModule;
 import oracle.jbo.Row;
 import oracle.jbo.ViewObject;
 import oracle.adf.model.BindingContext;
 import oracle.adf.model.binding.DCBindingContainer;
 import java.math.BigDecimal;
+
+import javax.faces.application.NavigationHandler;
+
+import oracle.adf.controller.ControllerContext;
+
+import oracle.adf.controller.TaskFlowContext;
+
+import oracle.adf.controller.TaskFlowId;
+import oracle.adf.controller.TaskFlowId;
+import oracle.adf.controller.TaskFlowContext;
+import oracle.adf.controller.ControllerContext;
+import oracle.adf.controller.internal.binding.DCTaskFlowBinding;
+
+import javax.faces.context.FacesContext;
+import oracle.adf.view.rich.context.AdfFacesContext;
 
 import oracle.binding.BindingContainer;
 
@@ -26,6 +44,9 @@ public class RegisterUserManagedBean {
     private String password;
     private String confirmPassword;
     private Map<String, String> positionMap;
+    private int pmRendered;
+    private boolean plRendered;
+    private boolean tlRendered;
     
     public RegisterUserManagedBean() {
         super();
@@ -35,6 +56,10 @@ public class RegisterUserManagedBean {
         positionMap.put("Project Leader", "PL");
         positionMap.put("Team Leader", "TL");
         positionMap.put("Team Member", "TM");
+        positionMap.put("Admin", "AD");
+        pmRendered = 0;
+        plRendered = false;
+        tlRendered = false;
     }
 
     public void setEmail(String email) {
@@ -84,7 +109,6 @@ public class RegisterUserManagedBean {
     public String getConfirmPassword() {
         return confirmPassword;
     }
-    
     
     public Map<String, String> getPositionMap() {
         return positionMap;
@@ -151,7 +175,7 @@ public class RegisterUserManagedBean {
                 FacesMessage message = new FacesMessage("User registered successfully!");
                 context.addMessage(null, message);
                 
-                return "toLogin"; // Navigate to admin home
+                return "backToLogin"; // Navigate to admin home
             } else if ("PL".equals(positionVal)) {
                 ViewObject voSub = am.findViewObject("ProjectLeadersVO"); // Replace with your ViewObject name
 
@@ -169,7 +193,7 @@ public class RegisterUserManagedBean {
                 FacesMessage message = new FacesMessage("User registered successfully!");
                 context.addMessage(null, message);
 
-                return "toLogin"; // Navigate to user home
+                return "backToLogin"; // Navigate to user home
             } else if ("TL".equals(positionVal)) {
                 ViewObject voSub = am.findViewObject("TeamLeadersVO"); // Replace with your ViewObject name
 
@@ -187,7 +211,7 @@ public class RegisterUserManagedBean {
                 FacesMessage message = new FacesMessage("User registered successfully!");
                 context.addMessage(null, message);
 
-                return "toLogin"; // Navigate to user home
+                return "backToLogin"; // Navigate to user home
             } else if ("TM".equals(positionVal)) {
                 ViewObject voSub = am.findViewObject("TeamMembersVO"); // Replace with your ViewObject name
 
@@ -205,7 +229,7 @@ public class RegisterUserManagedBean {
                 FacesMessage message = new FacesMessage("User registered successfully!");
                 context.addMessage(null, message);
 
-                return "toLogin"; // Navigate to user home
+                return "backToLogin"; // Navigate to user home
             } else {
                 FacesMessage message = new FacesMessage("Error occurred in finding the role");
                 context.addMessage(null, message);
@@ -220,5 +244,49 @@ public class RegisterUserManagedBean {
             context.addMessage(null, message);
             return null;
         }
+    }
+
+    public void changePositionListener(ValueChangeEvent valueChangeEvent) {
+        String newValue = (String)valueChangeEvent.getNewValue();
+        String positionVal = positionMap.get(newValue);
+        
+        System.out.println("New Value " + positionVal);
+        if (positionVal.equals("PL")) {
+            System.out.println("Hereeeeeee at last");
+            setPmRendered(1);
+            this.plRendered = false;
+            this.tlRendered = false;
+        } else if(positionVal.equals("TL")) {
+            setPmRendered(0);
+            this.plRendered = true;
+            this.tlRendered = false;
+        } else if(positionVal.equals("TM")) {
+            setPmRendered(0);
+            this.plRendered = false;
+            this.tlRendered = true;
+        } else {
+            setPmRendered(0);
+            this.plRendered = false;
+            this.tlRendered = false;
+        }
+    }
+
+    public void setPmRendered(int pmRendered) {
+        this.pmRendered = pmRendered;
+    }
+
+    public int getPmRendered() {
+        return pmRendered;
+    }
+
+    public String doCancel() {
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+    
+        NavigationHandler navHandler = facesContext.getApplication().getNavigationHandler();
+                
+        // Programmatically navigate to the login page
+        navHandler.handleNavigation(facesContext, null, "toLogout");
+        
+        return null;
     }
 }

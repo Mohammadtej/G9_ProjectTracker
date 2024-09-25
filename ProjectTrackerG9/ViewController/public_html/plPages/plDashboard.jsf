@@ -19,60 +19,213 @@
         </af:gridRow>
         <af:gridRow height="100%" id="gr1">
           <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc2">
-            <af:panelSplitter orientation="horizontal" splitterPosition="100" positionedFromEnd="true" id="ps1">
+            <af:panelSplitter id="ps1">
               <f:facet name="first">
-                <!-- Content -->
-                <af:table value="#{bindings.PLProjects.collectionModel}" var="row"
-                          rows="#{bindings.PLProjects.rangeSize}"
-                          emptyText="#{bindings.PLProjects.viewable ? 'No data to display.' : 'Access Denied.'}"
-                          rowBandingInterval="0" selectedRowKeys="#{bindings.PLProjects.collectionModel.selectedRow}"
-                          selectionListener="#{bindings.PLProjects.collectionModel.makeCurrent}" rowSelection="single"
-                          fetchSize="#{bindings.PLProjects.rangeSize}" id="t1">
-                  <af:column headerText="#{bindings.PLProjects.hints.PmId.label}" id="c1">
-                    <af:outputText value="#{row.PmId}" shortDesc="#{bindings.PLProjects.hints.PmId.tooltip}" id="ot1">
-                      <af:convertNumber groupingUsed="false" pattern="#{bindings.PLProjects.hints.PmId.format}"/>
-                    </af:outputText>
-                  </af:column>
-                  <af:column headerText="#{bindings.PLProjects.hints.ProjectCode.label}" id="c2">
-                    <af:outputText value="#{row.ProjectCode}"
-                                   shortDesc="#{bindings.PLProjects.hints.ProjectCode.tooltip}" id="ot2">
-                      <af:convertNumber groupingUsed="false" pattern="#{bindings.PLProjects.hints.ProjectCode.format}"/>
-                    </af:outputText>
-                  </af:column>
-                  <af:column headerText="#{bindings.PLProjects.hints.ProjectName.label}" id="c3">
-                    <af:outputText value="#{row.ProjectName}"
-                                   shortDesc="#{bindings.PLProjects.hints.ProjectName.tooltip}" id="ot3"/>
-                  </af:column>
-                  <af:column headerText="#{bindings.PLProjects.hints.PlId.label}" id="c4">
-                    <af:outputText value="#{row.PlId}" shortDesc="#{bindings.PLProjects.hints.PlId.tooltip}" id="ot4">
-                      <af:convertNumber groupingUsed="false" pattern="#{bindings.PLProjects.hints.PlId.format}"/>
-                    </af:outputText>
-                  </af:column>
-                  <af:column headerText="#{bindings.PLProjects.hints.StartDate.label}" id="c5">
-                    <af:outputText value="#{row.StartDate}" shortDesc="#{bindings.PLProjects.hints.StartDate.tooltip}"
-                                   id="ot5">
-                      <af:convertDateTime pattern="#{bindings.PLProjects.hints.StartDate.format}"/>
-                    </af:outputText>
-                  </af:column>
-                  <af:column headerText="#{bindings.PLProjects.hints.EndDate.label}" id="c6">
-                    <af:outputText value="#{row.EndDate}" shortDesc="#{bindings.PLProjects.hints.EndDate.tooltip}"
-                                   id="ot6">
-                      <af:convertDateTime pattern="#{bindings.PLProjects.hints.EndDate.format}"/>
-                    </af:outputText>
-                  </af:column>
-                  <af:column headerText="#{bindings.PLProjects.hints.Status.label}" id="c7">
-                    <af:selectOneChoice value="#{row.bindings.Status.inputValue}" label="#{row.bindings.Status.label}"
-                                        required="#{bindings.PLProjects.hints.Status.mandatory}"
-                                        shortDesc="#{bindings.PLProjects.hints.Status.tooltip}" readOnly="true"
-                                        id="soc1">
-                      <f:selectItems value="#{row.bindings.Status.items}" id="si1"/>
-                      <f:validator binding="#{row.bindings.Status.validator}"/>
-                    </af:selectOneChoice>
-                  </af:column>
-                </af:table>
-              </f:facet>
+  <af:panelGridLayout id="pgl2">
+    <af:gridRow marginTop="5px" height="auto" id="gr3">
+      <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc3">
+        <af:button text="View Projects" id="b1" action="#{PLtaskflowBean.ViewProjects}"/>
+      </af:gridCell>
+    </af:gridRow>
+
+    <af:gridRow marginTop="5px" height="auto" id="gr4">
+      <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc4">
+        <af:button text="Create Document" id="b2" action="#{PLtaskflowBean.createDocument}"/>
+      </af:gridCell>
+    </af:gridRow>
+
+    <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr5">
+      <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc5">
+        <af:button text="Create Module" id="b3" action="#{PLtaskflowBean.createModule}"/>
+      </af:gridCell>
+    </af:gridRow>
+
+    <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr6">
+      <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc6">
+        <af:commandButton text="Fetch Latest notifications" 
+                          action="#{viewScope.PLNotificationBean.fetchLatestNotifications}"/>
+      </af:gridCell>
+    </af:gridRow>
+
+    <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr7">
+      <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc7" halign="stretch">
+        <af:table value="#{PLNotificationBean.notifications}" var="notification"
+                  rows="10" emptyText="No notifications available" 
+                  id="plnot1" immediate="true">
+          <af:column headerText="Messages" id="not1">
+            <af:outputText value="#{notification.message}" id="not11"/>
+          </af:column>
+        </af:table>
+      </af:gridCell>
+    </af:gridRow>
+  </af:panelGridLayout>
+</f:facet>
+
               <f:facet name="second">
-                <!-- Right -->
+                <af:panelSplitter id="ps2" orientation="vertical">
+                  <f:facet name="first">
+                    <af:table value="#{bindings.PLProjects.collectionModel}" var="row"
+                              rows="#{bindings.PLProjects.rangeSize}"
+                              emptyText="#{bindings.PLProjects.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              rowBandingInterval="0"
+                              selectedRowKeys="#{bindings.PLProjects.collectionModel.selectedRow}"
+                              selectionListener="#{bindings.PLProjects.collectionModel.makeCurrent}"
+                              rowSelection="single" fetchSize="#{bindings.PLProjects.rangeSize}" id="t1">
+                      <af:column headerText="#{bindings.PLProjects.hints.ProjectCode.label}" id="c1">
+                        <af:outputText value="#{row.ProjectCode}"
+                                       shortDesc="#{bindings.PLProjects.hints.ProjectCode.tooltip}" id="ot1">
+                          <af:convertNumber groupingUsed="false"
+                                            pattern="#{bindings.PLProjects.hints.ProjectCode.format}"/>
+                        </af:outputText>
+                      </af:column>
+                      <af:column headerText="#{bindings.PLProjects.hints.ProjectName.label}" id="c2">
+                        <af:outputText value="#{row.ProjectName}"
+                                       shortDesc="#{bindings.PLProjects.hints.ProjectName.tooltip}" id="ot2"/>
+                      </af:column>
+                      <af:column headerText="#{bindings.PLProjects.hints.PmId.label}" id="c3">
+                        <af:outputText value="#{row.PmId}" shortDesc="#{bindings.PLProjects.hints.PmId.tooltip}"
+                                       id="ot3">
+                          <af:convertNumber groupingUsed="false" pattern="#{bindings.PLProjects.hints.PmId.format}"/>
+                        </af:outputText>
+                      </af:column>
+                      <af:column headerText="#{bindings.PLProjects.hints.StartDate.label}" id="c4">
+                        <af:outputText value="#{row.StartDate}"
+                                       shortDesc="#{bindings.PLProjects.hints.StartDate.tooltip}" id="ot4">
+                          <af:convertDateTime pattern="#{bindings.PLProjects.hints.StartDate.format}"/>
+                        </af:outputText>
+                      </af:column>
+                      <af:column headerText="#{bindings.PLProjects.hints.EndDate.label}" id="c5">
+                        <af:outputText value="#{row.EndDate}" shortDesc="#{bindings.PLProjects.hints.EndDate.tooltip}"
+                                       id="ot5">
+                          <af:convertDateTime pattern="#{bindings.PLProjects.hints.EndDate.format}"/>
+                        </af:outputText>
+                      </af:column>
+                      <af:column headerText="#{bindings.PLProjects.hints.Status.label}" id="c6">
+                        <af:selectOneChoice value="#{row.bindings.Status.inputValue}"
+                                            label="#{row.bindings.Status.label}"
+                                            required="#{bindings.PLProjects.hints.Status.mandatory}"
+                                            shortDesc="#{bindings.PLProjects.hints.Status.tooltip}" id="soc1">
+                          <f:selectItems value="#{row.bindings.Status.items}" id="si1"/>
+                          <f:validator binding="#{row.bindings.Status.validator}"/>
+                        </af:selectOneChoice>
+                      </af:column>
+                    </af:table>
+                  </f:facet>
+                  <f:facet name="second">
+                    <af:panelSplitter id="ps3" orientation="vertical">
+                      <f:facet name="first">
+                        <af:table value="#{bindings.PLDocuments.collectionModel}" var="row"
+                                  rows="#{bindings.PLDocuments.rangeSize}"
+                                  emptyText="#{bindings.PLDocuments.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  rowBandingInterval="0"
+                                  selectedRowKeys="#{bindings.PLDocuments.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.PLDocuments.collectionModel.makeCurrent}"
+                                  rowSelection="single" fetchSize="#{bindings.PLDocuments.rangeSize}" id="t2">
+                          <af:column headerText="#{bindings.PLDocuments.hints.ProjectCode.label}" id="c8">
+                            <af:outputText value="#{row.ProjectCode}"
+                                           shortDesc="#{bindings.PLDocuments.hints.ProjectCode.tooltip}" id="ot7">
+                              <af:convertNumber groupingUsed="false"
+                                                pattern="#{bindings.PLDocuments.hints.ProjectCode.format}"/>
+                            </af:outputText>
+                          </af:column>
+                          <af:column headerText="#{bindings.PLDocuments.hints.DocId.label}" id="c9">
+                            <af:outputText value="#{row.DocId}" shortDesc="#{bindings.PLDocuments.hints.DocId.tooltip}"
+                                           id="ot8">
+                              <af:convertNumber groupingUsed="false"
+                                                pattern="#{bindings.PLDocuments.hints.DocId.format}"/>
+                            </af:outputText>
+                          </af:column>
+                          <af:column headerText="#{bindings.PLDocuments.hints.DocName.label}" id="c10">
+                            <af:outputText value="#{row.DocName}"
+                                           shortDesc="#{bindings.PLDocuments.hints.DocName.tooltip}" id="ot9"/>
+                          </af:column>
+                          <af:column headerText="#{bindings.PLDocuments.hints.DocumentType.label}" id="c11">
+                            <af:outputText value="#{row.DocumentType}"
+                                           shortDesc="#{bindings.PLDocuments.hints.DocumentType.tooltip}" id="ot10"/>
+                          </af:column>
+                          <af:column headerText="#{bindings.PLDocuments.hints.StartDate.label}" id="c12">
+                            <af:outputText value="#{row.StartDate}"
+                                           shortDesc="#{bindings.PLDocuments.hints.StartDate.tooltip}" id="ot11">
+                              <af:convertDateTime pattern="#{bindings.PLDocuments.hints.StartDate.format}"/>
+                            </af:outputText>
+                          </af:column>
+                          <af:column headerText="#{bindings.PLDocuments.hints.EndDate.label}" id="c13">
+                            <af:outputText value="#{row.EndDate}"
+                                           shortDesc="#{bindings.PLDocuments.hints.EndDate.tooltip}" id="ot12">
+                              <af:convertDateTime pattern="#{bindings.PLDocuments.hints.EndDate.format}"/>
+                            </af:outputText>
+                          </af:column>
+                          <af:column headerText="#{bindings.PLDocuments.hints.Status.label}" id="c14">
+                            <af:selectOneChoice value="#{row.bindings.Status.inputValue}"
+                                                label="#{row.bindings.Status.label}"
+                                                required="#{bindings.PLDocuments.hints.Status.mandatory}"
+                                                shortDesc="#{bindings.PLDocuments.hints.Status.tooltip}" id="soc2"
+                                                autoSubmit="true"
+                                                valueChangeListener="#{PLtaskflowBean.updateDocumentStatus}">
+                              <f:selectItems value="#{row.bindings.Status.items}" id="si2"/>
+                              <f:validator binding="#{row.bindings.Status.validator}"/>
+                            </af:selectOneChoice>
+                          </af:column>
+                        </af:table>
+                      </f:facet>
+                      <f:facet name="second">
+                        <af:table value="#{bindings.ModulesForProject.collectionModel}" var="row"
+                                  rows="#{bindings.ModulesForProject.rangeSize}"
+                                  emptyText="#{bindings.ModulesForProject.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  rowBandingInterval="0"
+                                  selectedRowKeys="#{bindings.ModulesForProject.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.ModulesForProject.collectionModel.makeCurrent}"
+                                  rowSelection="single" fetchSize="#{bindings.ModulesForProject.rangeSize}" id="t3">
+                          <af:column headerText="#{bindings.ModulesForProject.hints.ProjectCode.label}" id="c15">
+                            <af:outputText value="#{row.ProjectCode}"
+                                           shortDesc="#{bindings.ModulesForProject.hints.ProjectCode.tooltip}"
+                                           id="ot13">
+                              <af:convertNumber groupingUsed="false"
+                                                pattern="#{bindings.ModulesForProject.hints.ProjectCode.format}"/>
+                            </af:outputText>
+                          </af:column>
+                          <af:column headerText="#{bindings.ModulesForProject.hints.ModuleId.label}" id="c16">
+                            <af:outputText value="#{row.ModuleId}"
+                                           shortDesc="#{bindings.ModulesForProject.hints.ModuleId.tooltip}" id="ot14">
+                              <af:convertNumber groupingUsed="false"
+                                                pattern="#{bindings.ModulesForProject.hints.ModuleId.format}"/>
+                            </af:outputText>
+                          </af:column>
+                          <af:column headerText="#{bindings.ModulesForProject.hints.StartDate.label}" id="c17">
+                            <af:outputText value="#{row.StartDate}"
+                                           shortDesc="#{bindings.ModulesForProject.hints.StartDate.tooltip}" id="ot15">
+                              <af:convertDateTime pattern="#{bindings.ModulesForProject.hints.StartDate.format}"/>
+                            </af:outputText>
+                          </af:column>
+                          <af:column headerText="#{bindings.ModulesForProject.hints.EndDate.label}" id="c18">
+                            <af:outputText value="#{row.EndDate}"
+                                           shortDesc="#{bindings.ModulesForProject.hints.EndDate.tooltip}" id="ot16">
+                              <af:convertDateTime pattern="#{bindings.ModulesForProject.hints.EndDate.format}"/>
+                            </af:outputText>
+                          </af:column>
+                          <af:column headerText="#{bindings.ModulesForProject.hints.TlId.label}" id="c19">
+                            <af:outputText value="#{row.TlId}"
+                                           shortDesc="#{bindings.ModulesForProject.hints.TlId.tooltip}" id="ot17">
+                              <af:convertNumber groupingUsed="false"
+                                                pattern="#{bindings.ModulesForProject.hints.TlId.format}"/>
+                            </af:outputText>
+                          </af:column>
+                          <af:column headerText="#{bindings.ModulesForProject.hints.Status.label}" id="c20">
+                            <af:selectOneChoice value="#{row.bindings.Status.inputValue}"
+                                                label="#{row.bindings.Status.label}"
+                                                required="#{bindings.ModulesForProject.hints.Status.mandatory}"
+                                                shortDesc="#{bindings.ModulesForProject.hints.Status.tooltip}"
+                                                id="soc3" autoSubmit="true"
+                                                valueChangeListener="#{PLtaskflowBean.updateModuleStatus}">
+                              <f:selectItems value="#{row.bindings.Status.items}" id="si3"/>
+                              <f:validator binding="#{row.bindings.Status.validator}"/>
+                            </af:selectOneChoice>
+                          </af:column>
+                        </af:table>
+                      </f:facet>
+                    </af:panelSplitter>
+                  </f:facet>
+                </af:panelSplitter>
               </f:facet>
             </af:panelSplitter>
           </af:gridCell>

@@ -163,5 +163,133 @@ public class PMAppModuleImpl extends ApplicationModuleImpl {
     public ViewObjectImpl getTeamLeaders() {
         return (ViewObjectImpl) findViewObject("TeamLeaders");
     }
+
+    /**
+     * Container's getter for Documents1.
+     * @return Documents1
+     */
+    public ViewObjectImpl getPLDocuments() {
+        return (ViewObjectImpl) findViewObject("PLDocuments");
+    }
+
+    /**
+     * Container's getter for DocumentsForProject1.
+     * @return DocumentsForProject1
+     */
+    public ViewLinkImpl getDocumentsForProject1() {
+        return (ViewLinkImpl) findViewLink("DocumentsForProject1");
+    }
+
+    /**
+     * Container's getter for Modules1.
+     * @return Modules1
+     */
+    public ViewObjectImpl getModules1() {
+        return (ViewObjectImpl) findViewObject("Modules1");
+    }
+
+    /**
+     * Container's getter for Projects1.
+     * @return Projects1
+     */
+    public ViewObjectImpl getProjects1() {
+        return (ViewObjectImpl) findViewObject("Projects1");
+    }
+
+    /**
+     * Container's getter for Modules2.
+     * @return Modules2
+     */
+    public ViewObjectImpl getModules2() {
+        return (ViewObjectImpl) findViewObject("Modules2");
+    }
+
+    /**
+     * Container's getter for ModuleForProject.
+     * @return ModuleForProject
+     */
+    public ViewLinkImpl getModuleForProject() {
+        return (ViewLinkImpl) findViewLink("ModuleForProject");
+    }
+
+    /**
+     * Container's getter for Modules3.
+     * @return Modules3
+     */
+    public ViewObjectImpl getModulesForProject() {
+        return (ViewObjectImpl) findViewObject("ModulesForProject");
+    }
+
+    /**
+     * Container's getter for ModuleForProject1.
+     * @return ModuleForProject1
+     */
+    public ViewLinkImpl getModuleForProject1() {
+        return (ViewLinkImpl) findViewLink("ModuleForProject1");
+    }
+
+    /**
+     * Container's getter for Modules3.
+     * @return Modules3
+     */
+    public ViewObjectImpl getModuleForTl() {
+        return (ViewObjectImpl) findViewObject("ModuleForTl");
+    }
+
+    /**
+     * Container's getter for Submodule1.
+     * @return Submodule1
+     */
+    public ViewObjectImpl getSubmodule1() {
+        return (ViewObjectImpl) findViewObject("Submodule1");
+    }
+
+    /**
+     * Container's getter for Modules3.
+     * @return Modules3
+     */
+    public ViewObjectImpl getModules3() {
+        return (ViewObjectImpl) findViewObject("Modules3");
+    }
+
+    /**
+     * Container's getter for Submodule2.
+     * @return Submodule2
+     */
+    public ViewObjectImpl getSubmodule2() {
+        return (ViewObjectImpl) findViewObject("Submodule2");
+    }
+
+    /**
+     * Container's getter for SubmoduleModuleVL.
+     * @return SubmoduleModuleVL
+     */
+    public ViewLinkImpl getSubmoduleModuleVL() {
+        return (ViewLinkImpl) findViewLink("SubmoduleModuleVL");
+    }
+
+    /**
+     * Container's getter for Submodule3.
+     * @return Submodule3
+     */
+    public ViewObjectImpl getSubmoduleForModule() {
+        return (ViewObjectImpl) findViewObject("SubmoduleForModule");
+    }
+
+    /**
+     * Container's getter for SubmoduleModuleVL1.
+     * @return SubmoduleModuleVL1
+     */
+    public ViewLinkImpl getSubmoduleModuleVL1() {
+        return (ViewLinkImpl) findViewLink("SubmoduleModuleVL1");
+    }
+
+    /**
+     * Container's getter for Submodule3.
+     * @return Submodule3
+     */
+    public ViewObjectImpl getSubmoduleForPM() {
+        return (ViewObjectImpl) findViewObject("SubmoduleForPM");
+    }
 }
 

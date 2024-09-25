@@ -7,6 +7,11 @@
     <page path="/plPages/plDashboard.jsf" usageId="view_plDashboardPageDef"/>
     <page path="/login.jsf" usageId="view_loginPageDef"/>
     <page path="/register.jsf" usageId="view_registerPageDef"/>
+    <page path="/plPages/createDocument.jsf" usageId="view_createDocumentPageDef"/>
+    <page path="/plPages/createModule.jsf" usageId="view_createModulePageDef"/>
+    <page path="/tlPages/tlDashboard.jsf" usageId="view_tlDashboardPageDef"/>
+    <page path="/tlPages/createsubmodule.jsf" usageId="view_createsubmodulePageDef"/>
+    <page path="/tmPages/tmDashboard.jsf" usageId="view_tmDashboardPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="view_pmDashboardPageDef" path="pmPages.pmDashboardPageDef"/>
@@ -14,6 +19,11 @@
     <page id="view_plDashboardPageDef" path="plPages.plDashboardPageDef"/>
     <page id="view_loginPageDef" path="view.pageDefs.loginPageDef"/>
     <page id="view_registerPageDef" path="view.pageDefs.registerPageDef"/>
+    <page id="view_createDocumentPageDef" path="plPages.createDocumentPageDef"/>
+    <page id="view_createModulePageDef" path="plPages.createModulePageDef"/>
+    <page id="view_tlDashboardPageDef" path="tlPages.tlDashboardPageDef"/>
+    <page id="view_createsubmodulePageDef" path="tlPages.createsubmodulePageDef"/>
+    <page id="view_tmDashboardPageDef" path="tmPages.tmDashboardPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <BC4JDataControl id="PMAppModuleDataControl" Package="model.services"

@@ -5,8 +5,35 @@
     <data-control-scope>
       <shared/>
     </data-control-scope>
+    <managed-bean id="__1">
+      <managed-bean-name>TlTaskFlowBean</managed-bean-name>
+      <managed-bean-class>view.TlTaskFlowBean</managed-bean-class>
+      <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__4">
+      <managed-bean-name>createsubmoduleBean</managed-bean-name>
+      <managed-bean-class>view.createsubmoduleBean</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
     <view id="tlDashboard">
       <page>/tlPages/tlDashboard.jsf</page>
     </view>
+    <view id="createsubmodule">
+      <page>/tlPages/createsubmodule.jsf</page>
+    </view>
+    <control-flow-rule id="__2">
+      <from-activity-id>tlDashboard</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome>createSubmodule</from-outcome>
+        <to-activity-id>createsubmodule</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__5">
+      <from-activity-id>createsubmodule</from-activity-id>
+      <control-flow-case id="__6">
+        <from-outcome>returntodashboard</from-outcome>
+        <to-activity-id>tlDashboard</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
   </task-flow-definition>
 </adfc-config>

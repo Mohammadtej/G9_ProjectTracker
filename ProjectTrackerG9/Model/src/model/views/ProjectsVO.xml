@@ -24,6 +24,10 @@
     Name="retrievedPMId"
     Kind="viewcriteria"
     Type="oracle.jbo.domain.Number"/>
+  <Variable
+    Name="retrievedPLId"
+    Kind="viewcriteria"
+    Type="oracle.jbo.domain.Number"/>
   <ViewAccessor
     Name="PMAppModule_PLs1"
     ViewObjectName="model.views.PLsForAParticularPMVO"
@@ -179,9 +183,67 @@
         Required="Optional"/>
     </ViewCriteriaRow>
   </ViewCriteria>
+  <ViewCriteria
+    Name="FilterProjectsForProjectLeader"
+    ViewObjectName="model.views.ProjectsVO"
+    Conjunction="AND">
+    <Properties Name="_Props">
+      <CustomProperties>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="FilterProjectsForProjectLeader_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="FilterProjectsForProjectLeader_FilterProjectsForProjectLeader_row_0_Documents"
+        ViewAttribute="Documents"
+        Operator="EXISTS"
+        Conjunction="AND"
+        IsNestedCriteria="true"
+        Required="Optional">
+        <ViewCriteria
+          Name="DocumentsVONestedCriteria"
+          ViewObjectName="model.views.DocumentsVO"
+          Conjunction="AND">
+          <ViewCriteriaRow
+            Name="DocumentsVONestedCriteria_row_0"
+            UpperColumns="1">
+            <ViewCriteriaItem
+              Name="PlId"
+              ViewAttribute="PlId"
+              Operator="="
+              Conjunction="AND"
+              Value=":retrievedPLId"
+              IsBindVarValue="true"
+              Required="Optional"/>
+          </ViewCriteriaRow>
+        </ViewCriteria>
+      </ViewCriteriaItem>
+    </ViewCriteriaRow>
+  </ViewCriteria>
   <ViewLinkAccessor
     Name="Documents"
     ViewLink="model.views.DocumentsForProject"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="Modules"
+    ViewLink="model.views.ModuleForProject"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
   <LOVUIHints

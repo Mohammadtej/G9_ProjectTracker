@@ -24,7 +24,7 @@
                 </af:gridRow>
                 <af:gridRow height="100%" id="gr2">
                     <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc2">
-                        <af:panelSplitter orientation="horizontal" splitterPosition="100" id="ps1">
+                        <af:panelSplitter orientation="horizontal" splitterPosition="331" id="ps1">
                             <f:facet name="first">
                                 <!-- Left -->
                                 <af:panelBox text="PanelBox1" id="pb1">
@@ -33,6 +33,16 @@
                                                       action="#{taskFlowManagedBean.applyFilterToViewObject}" id="cb1"/>
                                     <af:separator id="s1"/>
                                     <af:button text="#{viewcontrollerBundle.CREATE_PROJECT}" id="b1" action="createProject"/>
+                                    <af:commandButton text="Add Notification"
+                                                      action="#{NotificationsBean.fetchLatestNotifications}"/>
+                                    <af:table value="#{NotificationsBean.notifications}" var="notification"
+                                              rows="10" emptyText="No notifications available"
+                                              id="notificationsTable55" immediate="true">
+                                        
+                                        <af:column headerText="Messages" id="not1">
+                                            <af:outputText value="#{notification.message}" id="not11"/>
+                                        </af:column>
+                                    </af:table>
                                 </af:panelBox>
                             </f:facet>
                             <f:facet name="second">
@@ -103,10 +113,10 @@
                                                     <f:validator binding="#{row.bindings.Status.validator}"/>
                                                 </af:selectOneChoice>
                                             </af:column>
-                                            <af:column headerText="Uploaded File" id="c8">
+                                            <af:column headerText="Uploaded File" id="c16">
                                                 <af:link text="Download File"
                                                     id="l1" action="#{TaskFlowManagedBean.downloadFile}"
-                                                         rendered="true" disabled="false"/>
+                                                         rendered="true" disabled="false" partialSubmit="true"/>
                                             </af:column>
                                             
                                         </af:table>

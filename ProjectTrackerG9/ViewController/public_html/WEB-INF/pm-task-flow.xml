@@ -42,5 +42,12 @@
         <to-activity-id>Logout</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
+    <control-flow-rule id="__7">
+      <from-activity-id>createProject</from-activity-id>
+      <control-flow-case id="__8">
+        <from-outcome>backToDashboard</from-outcome>
+        <to-activity-id>pmDashboard</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
   </task-flow-definition>
 </adfc-config>

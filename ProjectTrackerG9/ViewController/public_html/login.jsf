@@ -32,13 +32,6 @@
                                           shortDesc="#{bindings.Password.hints.tooltip}" id="it2">
                                 <f:validator binding="#{bindings.Password.validator}"/>
                             </af:inputText>
-                            <af:selectOneChoice value="#{LoginUserManagedBean.position}"
-                                                label="#{bindings.Position.label}"
-                                                required="#{bindings.Position.hints.mandatory}"
-                                                shortDesc="#{bindings.Position.hints.tooltip}" id="soc1">
-                                <f:selectItems value="#{bindings.Position.items}" id="si1"/>
-                                <f:validator binding="#{bindings.Position.validator}"/>
-                            </af:selectOneChoice>
                             <f:facet name="footer">
                                 <af:button text="Submit" id="b1" action="#{LoginUserManagedBean.doSubmit}"/>
                             </f:facet>

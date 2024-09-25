@@ -20,7 +20,6 @@ import oracle.binding.BindingContainer;
 public class LoginUserManagedBean {
     private String email;
     private String password;
-    private String position;
     private Map<String, String> positionMap;
 
     public LoginUserManagedBean() {
@@ -31,6 +30,7 @@ public class LoginUserManagedBean {
         positionMap.put("Project Leader", "PL");
         positionMap.put("Team Leader", "TL");
         positionMap.put("Team Member", "TM");
+        positionMap.put("Admin", "AD");
     }
 
     public void setEmail(String email) {
@@ -49,27 +49,15 @@ public class LoginUserManagedBean {
         return password;
     }
 
-    public void setPosition(String position) {
-        this.position = position;
-    }
-
-    public String getPosition() {
-        return position;
-    }
-    
     public Map<String, String> getPositionMap() {
         return positionMap;
     }
     
     public String doSubmit() {
         FacesContext context = FacesContext.getCurrentInstance();
-        
-        String positionVal = getPositionMap().get(getPosition());
-        
+                
         System.out.println(getEmail());
         System.out.println(getPassword());
-        System.out.println(getPosition());
-        System.out.println(positionVal);
 
 
         try {
@@ -79,20 +67,31 @@ public class LoginUserManagedBean {
             // Find the View Object by its iterator binding name (replace with your actual VO iterator name)
             ViewObject viewObject = bindings.findIteratorBinding("EmployeesIterator").getViewObject();
             
-            viewObject.setWhereClause(String.format("email = '%s' AND password = '%s' AND position = '%s'", getEmail(), getPassword(), positionVal)); // Assuming plain-text password for simplicity, use encryption in production
+            viewObject.setWhereClause(String.format("email = '%s' AND password = '%s'", getEmail(), getPassword())); // Assuming plain-text password for simplicity, use encryption in production
             //viewObject.setNamedWhereClauseParam("1", getEmail());
             //viewObject.setNamedWhereClauseParam("2", getPassword());
             //viewObject.setNamedWhereClauseParam("3", positionVal);
             viewObject.executeQuery();
 
             Row userRow = viewObject.first();
+            
+            if (viewObject.getRowCount() > 1) {
+                FacesMessage message = new FacesMessage("Mutiple users may exist with the same email and password. Please consult your admin");
+                context.addMessage(null, message);
+                return null;
+            }
+            
             if (userRow != null) {
                 System.out.println("Success in Login");
+                
+                String positionVal = (String)userRow.getAttribute("Position");
+                
+                System.out.println(positionVal);
                 // Valid credentials
                 context.getExternalContext().getSessionMap().put("userId", userRow.getAttribute("EmpId"));                
                 context.getExternalContext().getSessionMap().put("userEmail", getEmail());
                 context.getExternalContext().getSessionMap().put("userName", userRow.getAttribute("EmployeeName"));
-                context.getExternalContext().getSessionMap().put("userPosition", getPosition());
+                //context.getExternalContext().getSessionMap().put("userPosition", userRow.getAttribute("Position"));
                 context.getExternalContext().getSessionMap().put("userPositionVal", positionVal);
                 context.getExternalContext().getSessionMap().put("userPhone", userRow.getAttribute("Phonenumber"));
                 context.getExternalContext().getSessionMap().put("userEmail", getEmail());
@@ -107,10 +106,12 @@ public class LoginUserManagedBean {
                     return "toTLDashboard"; // Navigate to user home
                 } else if ("TM".equals(positionVal)) {
                     return "toTMDashboard"; // Navigate to user home
+                } else if ("AD".equals(positionVal)) {
+                    return "toAdminDashboard"; // Navigate to user home
                 } else {
                     FacesMessage message = new FacesMessage("Error occurred in finding the role");
                     context.addMessage(null, message);
-                    return "login"; // If no matching role, stay on login
+                    return null; // If no matching role, stay on login
                 }
             } else {
                 // Invalid credentials

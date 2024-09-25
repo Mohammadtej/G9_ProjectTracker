@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="tmDashboardPageDef"
+                Package="tmPages">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="SubmoduleForPM" RangeSize="25" DataControl="PMAppModuleDataControl" id="SubmoduleForPMIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="SubmoduleForPMIterator" id="SubmoduleForPM">
+      <nodeDefinition DefName="model.views.SubmoduleVO" Name="SubmoduleForPM0">
+        <AttrNames>
+          <Item Value="ProjectCode"/>
+          <Item Value="ModuleId"/>
+          <Item Value="SubmoduleId"/>
+          <Item Value="TlId"/>
+          <Item Value="StartDate"/>
+          <Item Value="EndDate"/>
+          <Item Value="Status"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>
